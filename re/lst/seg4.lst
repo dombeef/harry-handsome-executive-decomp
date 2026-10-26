@@ -1,0 +1,1189 @@
+
+; _tail_c   (seg 4 +00000c, 3466 bytes)
+    c move.w #$a8d7, d0
+   10 _GetTrapAddress 
+   12 movea.l a0, a1
+   14 move.w #$a89f, d0
+   18 _GetTrapAddress 
+   1a cmpa.l a0, a1
+   1c beq.b $20
+   1e jmp (a1)
+   20 link.w a6, #$ffe2
+   24 movem.l d3-d7/a2-a5, -(sp)
+   28 clr.l locc
+   2c clr.w arg10
+   30 movea.l argc, a0
+   34 movea.l (a0), a2
+   36 moveq #$0, d0
+   38 move.w (a2), d0
+   3a move.l d0, loc1a
+   3e movea.l arg8, a1
+   42 move.w $4(a1), d0
+   46 bpl.b $62
+   48 btst.b #$e, d0
+   4c beq.b $52
+   4e movea.l (a1), a0
+   50 movea.l (a0), a1
+   52 cmpi.w #$1, $20(a1)
+   58 beq.b $62
+   5a move.w #$ff6c, d0
+   5e bra.w $2bc
+   62 move.w $4(a1), loc10
+   68 andi.w #$7fff, loc10
+   6e move.l $6(a1), d2
+   72 move.w $c(a1), d0
+   76 sub.w d2, d0
+   78 ble.w $2c0
+   7c ext.l d0
+   7e move.l d0, d4
+   80 add.l d4, d4
+   82 addq.l #$6, d4
+   84 add.l d4, d4
+   86 move.l d4, loc1e
+   8a moveq #$20, d7
+   8c divu.w d7, d0
+   8e move.l d0, d3
+   90 swap d3
+   92 moveq #$ff, d1
+   94 tst.w d3
+   96 beq.b $9e
+   98 addq.w #$1, d0
+   9a sub.w d3, d7
+   9c asl.l d7, d1
+   9e move.l d1, loc8
+   a2 ext.l d0
+   a4 move.l d0, loc4
+   a8 asl.l #$2, d0
+   aa _NewHandle 
+   ac bne.w $2bc
+   b0 move.l a0, locc
+   b4 move.l d2, d3
+   b6 swap d3
+   b8 move.w $a(a1), d0
+   bc sub.w d3, d0
+   be ble.w $2c0
+   c2 move.w d0, loce
+   c6 movea.l (a1), a4
+   c8 move.w #$a, d7
+   cc movea.l argc, a2
+   d0 movea.l (a2), a2
+   d2 lea.l (a2, d7.w), a5
+   d6 move.l loc1a, d1
+   da sub.w d7, d1
+   dc cmp.l loc1e, d1
+   e0 bge.b $fa
+   e2 move.l loc1a, d0
+   e6 add.l loc1e, d0
+   ea move.l d0, loc1a
+   ee movea.l argc, a0
+   f2 _SetHandleSize 
+   f4 bne.w $2bc
+   f8 bra.b $cc
+   fa move.w d2, d4
+   fc moveq #$0, d6
+   fe movea.l a4, a1
+  100 move.l loc4, d5
+  104 movea.l locc, a3
+  108 movea.l (a3), a3
+  10a move.w d3, d0
+  10c bsr.w $25a
+  110 move.w d7, loc12
+  114 bra.w $20a
+  118 move.l (a1)+, d0
+  11a move.l (a3), d1
+  11c eor.l d0, d1
+  11e bne.w $1ce
+  122 tst.b d6
+  124 beq.b $12a
+  126 move.w d4, (a5)+
+  128 moveq #$0, d6
+  12a addi.w #$20, d4
+  12e addq.w #$4, a3
+  130 bra.w $20a
+  134 addq.w #$3, d4
+  136 move.w d4, (a5)+
+  138 addq.w #$1, d4
+  13a not.b d6
+  13c rts 
+  13e addq.w #$2, d4
+  140 move.w d4, (a5)+
+  142 bsr.b $16a
+  144 addq.w #$1, d4
+  146 rts 
+  148 addq.w #$2, d4
+  14a move.w d4, (a5)+
+  14c addq.w #$2, d4
+  14e bra.b $13a
+  150 bsr.b $16a
+  152 bsr.b $16a
+  154 addq.w #$2, d4
+  156 rts 
+  158 bsr.b $150
+  15a subq.w #$1, d4
+  15c bra.b $136
+  15e bsr.b $16a
+  160 addq.w #$1, d4
+  162 bra.b $142
+  164 bsr.b $16a
+  166 addq.w #$3, d4
+  168 bra.b $13a
+  16a addq.w #$1, d4
+  16c move.w d4, (a5)+
+  16e rts 
+  170 move.w d4, (a5)+
+  172 bsr.b $16a
+  174 addq.w #$3, d4
+  176 rts 
+  178 move.w d4, (a5)+
+  17a bsr.b $16a
+  17c addq.w #$2, d4
+  17e bra.b $136
+  180 move.w d4, (a5)+
+  182 bsr.b $16a
+  184 bsr.b $16a
+  186 bra.b $142
+  188 move.w d4, (a5)+
+  18a bsr.b $16a
+  18c bsr.b $16a
+  18e addq.w #$2, d4
+  190 bra.b $13a
+  192 move.w d4, (a5)+
+  194 addq.w #$2, d4
+  196 move.w d4, (a5)+
+  198 bra.b $154
+  19a bsr.b $192
+  19c subq.w #$1, d4
+  19e bra.b $136
+  1a0 move.w d4, (a5)+
+  1a2 addq.w #$3, d4
+  1a4 move.w d4, (a5)+
+  1a6 bra.b $144
+  1a8 bra.b $1ca
+  1aa bra.b $134
+  1ac bra.b $13e
+  1ae bra.b $148
+  1b0 bra.b $150
+  1b2 bra.b $158
+  1b4 bra.b $15e
+  1b6 bra.b $164
+  1b8 bra.b $170
+  1ba bra.b $178
+  1bc bra.b $180
+  1be bra.b $188
+  1c0 bra.b $192
+  1c2 bra.b $19a
+  1c4 bra.b $1a0
+  1c6 move.w d4, (a5)+
+  1c8 not.b d6
+  1ca addq.w #$4, d4
+  1cc rts 
+  1ce move.l d0, (a3)+
+  1d0 moveq #$3, d7
+  1d2 moveq #$0, d0
+  1d4 rol.l #$8, d1
+  1d6 tst.b d1
+  1d8 bne.b $1ec
+  1da tst.b d6
+  1dc bne.b $1ec
+  1de addq.w #$8, d4
+  1e0 bra.b $206
+  1e2 move.l (a1), d0
+  1e4 and.l loc8, d0
+  1e8 bra.w $11a
+  1ec move.b d1, d0
+  1ee eor.b d6, d0
+  1f0 lsr.b #$4, d0
+  1f2 add.w d0, d0
+  1f4 jsr $1a8(pc, d0.w)
+  1f8 move.b d1, d0
+  1fa eor.b d6, d0
+  1fc andi.w #$f, d0
+  200 add.w d0, d0
+  202 jsr $1a8(pc, d0.w)
+  206 dbra d7, $1d4
+  20a subq.w #$1, d5
+  20c bgt.w $118
+  210 beq.b $1e2
+  212 move.w a5, d7
+  214 sub.w a2, d7
+  216 cmp.w loc12, d7
+  21a beq.b $250
+  21c blt.w $2b8
+  220 tst.b d6
+  222 beq.b $228
+  224 move.w d4, (a5)+
+  226 addq.w #$2, d7
+  228 bsr.b $256
+  22a addq.w #$1, d3
+  22c move.w d2, d4
+  22e adda.w loc10, a4
+  232 subq.w #$1, loce
+  236 bgt.w $d2
+  23a blt.b $260
+  23c move.l loc4, d0
+  240 asl.l #$2, d0
+  242 _NewHandle 
+  244 bne.b $2bc
+  246 move.l a0, loc16
+  24a movea.l (a0), a4
+  24c bra.w $cc
+  250 subq.l #$2, a5
+  252 subq.w #$2, d7
+  254 bra.b $22a
+  256 move.w #$7fff, d0
+  25a move.w d0, (a5)+
+  25c addq.w #$2, d7
+  25e rts 
+  260 movea.l loc16, a0
+  264 move.l a0, d0
+  266 beq.b $26a
+  268 _DisposeHandle 
+  26a cmpi.w #$a, d7
+  26e beq.b $2c0
+  270 bsr.b $256
+  272 bmi.b $2b8
+  274 lea.l $a(a2), a0
+  278 move.w #$7fff, d4
+  27c move.w d4, d1
+  27e move.w #$8000, d2
+  282 move.w (a0), d3
+  284 bra.b $29e
+  286 movea.l a0, a1
+  288 cmp.w (a0)+, d1
+  28a ble.b $290
+  28c move.w -$2(a0), d1
+  290 cmp.w (a0)+, d4
+  292 bne.b $290
+  294 cmp.w -$4(a0), d2
+  298 bge.b $29e
+  29a move.w -$4(a0), d2
+  29e move.w (a0)+, d0
+  2a0 cmp.w d4, d0
+  2a2 bne.b $286
+  2a4 swap d3
+  2a6 move.w d1, d3
+  2a8 move.w -$2(a1), d4
+  2ac swap d4
+  2ae move.w d2, d4
+  2b0 cmpi.w #$1c, d7
+  2b4 beq.b $2ca
+  2b6 bra.b $2cc
+  2b8 move.w #$fe0c, d0
+  2bc move.w d0, arg10
+  2c0 movea.l argc, a0
+  2c4 movea.l (a0), a2
+  2c6 moveq #$0, d3
+  2c8 moveq #$0, d4
+  2ca moveq #$a, d7
+  2cc move.w d7, (a2)+
+  2ce move.l d3, (a2)+
+  2d0 move.l d4, (a2)
+  2d2 move.l d7, d0
+  2d4 movea.l argc, a0
+  2d8 _SetHandleSize 
+  2da movea.l locc, a0
+  2de move.l a0, d0
+  2e0 beq.b $2e4
+  2e2 _DisposeHandle 
+  2e4 movem.l (sp)+, d3-d7/a2-a5
+  2e8 unlk a6
+  2ea movea.l (sp)+, a0
+  2ec addq.w #$8, sp
+  2ee jmp (a0)
+  2f0 move.l (sp)+, d0
+  2f2 move.w #$402, -(sp)
+  2f6 movea.l sp, a0
+  2f8 move.l d0, -(sp)
+  2fa _trap_a08b 
+  2fc movea.l (sp)+, a0
+  2fe lea.l $c(sp), sp
+  302 jmp (a0)
+  304 move.l (sp)+, d0
+  306 move.w #$403, -(sp)
+  30a movea.l sp, a0
+  30c move.l d0, -(sp)
+  30e _trap_a08b 
+  310 movea.l (sp)+, a0
+  312 addq.w #$6, sp
+  314 move.w d0, (sp)
+  316 jmp (a0)
+  318 move.l (sp)+, d0
+  31a move.w #$404, -(sp)
+  31e movea.l sp, a0
+  320 move.l d0, -(sp)
+  322 _trap_a08b 
+  324 movea.l (sp)+, a0
+  326 addq.w #$8, sp
+  328 jmp (a0)
+  32a tst.w $28e.w
+  32e bmi.b $352
+  330 move.w #$90, d0
+  334 _GetTrapAddress 
+  336 movea.l a0, a1
+  338 move.w #$9f, d0
+  33c _GetTrapAddress 
+  33e cmpa.l a0, a1
+  340 beq.b $352
+  342 movea.l (sp)+, a1
+  344 movea.l (sp)+, a0
+  346 move.w (sp)+, d0
+  348 move.l a1, -(sp)
+  34a _SysEnvirons 
+  34c move.w d0, $4(sp)
+  350 rts 
+  352 movea.l $4(sp), a0
+  356 move.w #$1, d0
+  35a movea.l a0, a1
+  35c bra.b $364
+  35e btst.l d1, (a3)
+  360 btst.l d5, d2
+  362 btst.l d0, d0
+  364 move.w #$10, d0
+  368 asr.w #$1, d0
+  36a subq.w #$1, d0
+  36c clr.w (a0)+
+  36e dbra d0, $36c
+  372 move.w #$2, (a1)
+  376 movea.l $2ae.w, a0
+  37a move.w #$fffe, $2(a1)
+  380 cmpi.b #$ff, $9(a0)
+  386 beq.b $3ca
+  388 tst.b $8(a0)
+  38c bgt.b $3ae
+  38e move.w #$ffff, $2(a1)
+  394 tst.w $28e.w
+  398 bmi.b $3ca
+  39a move.w #$1, $2(a1)
+  3a0 tst.w $b22.w
+  3a4 bpl.b $3ca
+  3a6 move.w #$2, $2(a1)
+  3ac bra.b $3ca
+  3ae clr.w $2(a1)
+  3b2 cmpi.b #$2, $8(a0)
+  3b8 bgt.b $3ca
+  3ba beq.b $3c4
+  3bc move.w #$4, $2(a1)
+  3c2 bra.b $3ca
+  3c4 move.w #$3, $2(a1)
+  3ca clr.w $4(a1)
+  3ce cmpi.b #$2, $12f.w
+  3d4 bgt.b $3e0
+  3d6 move.b $12f.w, d0
+  3da addq.w #$1, d0
+  3dc move.b d0, $7(a1)
+  3e0 tst.w $28e.w
+  3e4 bmi.b $3f4
+  3e6 btst.b #$4, $b22.w
+  3ec beq.b $3f4
+  3ee move.b #$1, $8(a1)
+  3f4 cmpi.w #$3fff, $28e.w
+  3fa bhi.b $402
+  3fc move.b #$1, $9(a1)
+  402 move.b $21e.w, d0
+  406 lea.l $363(pc), a0
+  40a move.w #$4, d1
+  40e cmp.b -(a0), d0
+  410 dbeq d1, $40e
+  414 addq.w #$1, d1
+  416 move.w d1, $a(a1)
+  41a tst.b $291.w
+  41e bmi.b $438
+  420 move.b $1fb.w, d1
+  424 andi.b #$f, d1
+  428 cmpi.b #$1, d1
+  42c bne.b $438
+  42e movea.l $2dc.w, a0
+  432 move.b $7(a0), $d(a1)
+  438 move.w $210.w, $e(a1)
+  43e tst.w $3f6.w
+  442 blt.b $488
+  444 clr.w $e(a1)
+  448 move.w #$3c, d1
+  44c clr.w -(sp)
+  44e dbra d1, $44c
+  452 movea.l sp, a0
+  454 move.w $a58.w, $18(a0)
+  45a moveq #$8, d0
+  45c _HFSDispatch 
+  45e bne.b $484
+  460 move.w $34(a0), $16(a0)
+  466 _GetVolInfo 
+  468 bne.b $484
+  46a move.l $5a(a0), $30(a0)
+  470 move.l #$4552494b, $1c(a0)
+  478 moveq #$1, d0
+  47a _HFSDispatch 
+  47c bne.b $484
+  47e move.w $16(a0), $e(a1)
+  484 lea.l $7a(sp), sp
+  488 movea.l a1, a0
+  48a movea.l (sp)+, a1
+  48c addq.w #$6, sp
+  48e move.w #$ea84, (sp)
+  492 jmp (a1)
+  494 link.w a6, #$0
+  498 move.l #$a89f, d0
+  49e _GetTrapAddress 
+  4a0 move.l a0, -(sp)
+  4a2 move.l #$a0ad, d0
+  4a8 _GetTrapAddress 
+  4aa cmpa.l (sp)+, a0
+  4ac beq.b $4bc
+  4ae move.l argc, d0
+  4b2 _Gestalt 
+  4b4 movea.l arg8, a1
+  4b8 move.l a0, (a1)
+  4ba bra.b $4e2
+  4bc lea.l $4f4(pc), a0
+  4c0 move.w #$ea51, d0
+  4c4 move.l argc, d1
+  4c8 cmp.l (a0)+, d1
+  4ca beq.b $4d2
+  4cc tst.l (a0)+
+  4ce beq.b $4e2
+  4d0 bra.b $4c8
+  4d2 lea.l $4f4(pc), a1
+  4d6 adda.l (a0), a1
+  4d8 jmp (a1)
+  4da movea.l arg8, a1
+  4de move.l d0, (a1)
+  4e0 clr.w d0
+  4e2 move.w d0, arg10
+  4e6 unlk a6
+  4e8 movea.l (sp)+, a0
+  4ea addq.l #$8, sp
+  4ec jmp (a0)
+  4ee move.w #$ea52, d0
+  4f2 bra.b $4e2
+  4f4 moveq #$65, d3
+  4f6 moveq #$73, d1
+  4f8 ori.b #$60, d0
+  4fc blt.b $55f
+  4fe bls.b $568
+  500 ori.b #$64, d0
+  504 dc.w $7379
+  506 dc.w $7376
+  508 ori.b #$88, d0
+  50c moveq #$72, d0
+  50e ble.b $573
+  510 ori.b #$92, d0
+  514 bne.b $586
+  516 dc.w $7520
+  518 ori.b #$9e, d0
+  51c dc.w $7164
+  51e move.l -(a0), d0
+  520 ori.b #$e8, d0
+  524 bmi.b $588
+  526 bcc.b $548
+  528 ori.b #$1a, d0
+  52c bsr.b $5a2
+  52e bge.b $59b
+  530 ori.b #$42, d0
+  534 blt.b $5a3
+  536 dc.w $7520
+  538 ori.b #$64, d0
+  53c moveq #$61, d1
+  53e blt.b $560
+  540 ori.b #$88, d0
+  544 bge.b $5b8
+  546 bsr.b $5b5
+  548 ori.b #$88, d0
+  54c ori.b #$0, d0
+  550 ori.b #$0, d0
+  554 moveq #$1, d0
+  556 bra.b $4da
+  558 movea.l $2ae.w, a1
+  55c moveq #$4, d0
+  55e cmpi.w #$75, $8(a1)
+  564 beq.b $578
+  566 cmpi.w #$276, $8(a1)
+  56c bne.b $572
+  56e addq.w #$1, d0
+  570 bra.b $578
+  572 move.b $cb3.w, d0
+  576 addq.l #$6, d0
+  578 bra.w $4da
+  57c moveq #$0, d0
+  57e move.w $15a.w, d0
+  582 bra.w $4da
+  586 moveq #$0, d0
+  588 move.b $12f.w, d0
+  58c addq.w #$1, d0
+  58e bra.w $4da
+  592 cmpi.b #$4, $12f.w
+  598 beq.b $5d2
+  59a btst.b #$4, $b22.w
+  5a0 beq.b $5d6
+  5a2 movea.l sp, a0
+  5a4 fnop 
+  5a8 fsave -(sp)
+  5aa move.w (sp), d0
+  5ac movea.l a0, sp
+  5ae cmpi.w #$1f18, d0
+  5b2 beq.b $5ca
+  5b4 cmpi.w #$3f18, d0
+  5b8 beq.b $5ca
+  5ba cmpi.w #$3f38, d0
+  5be beq.b $5ce
+  5c0 cmpi.w #$1f38, d0
+  5c4 beq.b $5ce
+  5c6 moveq #$0, d0
+  5c8 bra.b $5d8
+  5ca moveq #$1, d0
+  5cc bra.b $5d8
+  5ce moveq #$2, d0
+  5d0 bra.b $5d8
+  5d2 moveq #$3, d0
+  5d4 bra.b $5d8
+  5d6 moveq #$0, d0
+  5d8 bra.w $4da
+  5dc cmpi.w #$3fff, $28e.w
+  5e2 bgt.b $600
+  5e4 move.w #$a89f, d0
+  5e8 _GetTrapAddress 
+  5ea move.l a0, d2
+  5ec move.l #$ab03, d0
+  5f2 _GetTrapAddress 
+  5f4 move.l #$100, d0
+  5fa cmp.l a0, d2
+  5fc bne.b $604
+  5fe bra.b $60a
+  600 moveq #$0, d0
+  602 bra.b $60a
+  604 move.l #$200, d0
+  60a bra.w $4da
+  60e move.b $21e.w, d0
+  612 lea.l $62a(pc), a0
+  616 movea.l a0, a1
+  618 move.b (a0)+, d1
+  61a beq.w $4ee
+  61e cmp.b d0, d1
+  620 bne.b $618
+  622 suba.l a1, a0
+  624 move.l a0, d0
+  626 bra.w $4da
+  62a btst.l d1, (a3)
+  62c btst.l d5, d2
+  62e btst.l d0, d6
+  630 btst.l d3, d4
+  632 movep.w $900(a0), d2
+  636 moveq #$0, d0
+  638 tst.b $291.w
+  63c bmi.b $654
+  63e move.b $1fb.w, d1
+  642 andi.b #$f, d1
+  646 cmpi.b #$1, d1
+  64a bne.b $654
+  64c movea.l $2dc.w, a0
+  650 move.b $7(a0), d0
+  654 bra.w $4da
+  658 cmpi.b #$2, $12f.w
+  65e blt.b $676
+  660 moveq #$0, d0
+  662 move.b $cb1.w, d0
+  666 cmpi.b #$1, d0
+  66a beq.b $678
+  66c cmpi.b #$3, d0
+  670 blt.b $676
+  672 subq.w #$1, d0
+  674 bra.b $678
+  676 moveq #$0, d0
+  678 bra.w $4da
+  67c move.w #$a89f, d0
+  680 _GetTrapAddress 
+  682 move.l a0, d2
+  684 move.l #$a88f, d0
+  68a _GetTrapAddress 
+  68c move.l $108.w, d0
+  690 cmp.l a0, d2
+  692 beq.b $69e
+  694 subq.l #$4, sp
+  696 move.w #$16, -(sp)
+  69a _trap_a88f 
+  69c move.l (sp)+, d0
+  69e bra.w $4da
+  6a2 movea.l (sp)+, a1
+  6a4 movea.l (sp)+, a0
+  6a6 _GetHandleSize 
+  6a8 move.l d0, (sp)
+  6aa bpl.b $6ae
+  6ac clr.l (sp)
+  6ae jmp (a1)
+  6b0 movea.l (sp)+, a1
+  6b2 move.b (sp)+, d1
+  6b4 move.w (sp)+, d0
+  6b6 tst.b d1
+  6b8 beq.b $6be
+  6ba _GetTrapAddress 
+  6bc bra.b $6c0
+  6be _GetTrapAddress 
+  6c0 move.l a0, (sp)
+  6c2 jmp (a1)
+  6c4 movea.l $c(sp), a0
+  6c8 movea.l $8(sp), a1
+  6cc moveq #$0, d0
+  6ce move.b (a0)+, d0
+  6d0 swap d0
+  6d2 move.b (a1)+, d0
+  6d4 tst.b $4(sp)
+  6d8 beq.b $6e8
+  6da tst.b $6(sp)
+  6de beq.b $6e4
+  6e0 _CmpString 
+  6e2 bra.b $6f4
+  6e4 _CmpString 
+  6e6 bra.b $6f4
+  6e8 tst.b $6(sp)
+  6ec beq.b $6f2
+  6ee _CmpString 
+  6f0 bra.b $6f4
+  6f2 _CmpString 
+  6f4 eori.b #$1, d0
+  6f8 move.b d0, $10(sp)
+  6fc movea.l (sp)+, a0
+  6fe lea.l $c(sp), sp
+  702 jmp (a0)
+  704 movea.l (sp)+, a1
+  706 move.b (sp)+, d1
+  708 movea.l (sp)+, a0
+  70a moveq #$0, d0
+  70c move.b (a0)+, d0
+  70e move.l a1, -(sp)
+  710 tst.b d1
+  712 beq.b $718
+  714 _UprString 
+  716 bra.b $71a
+  718 _UprString 
+  71a rts 
+  71c link.w a6, #$ffce
+  720 movea.l sp, a0
+  722 move.w arg8, $18(a0)
+  728 _Close 
+  72a move.w d0, arga
+  72e unlk a6
+  730 movea.l (sp)+, a0
+  732 addq.l #$2, sp
+  734 jmp (a0)
+  736 sf.b d1
+  738 bra.b $73c
+  73a st.b d1
+  73c link.w a6, #$ffce
+  740 movea.l sp, a0
+  742 move.l arg8, $20(a0)
+  748 move.w arg10, $18(a0)
+  74e movea.l argc, a1
+  752 move.l (a1), $24(a0)
+  756 clr.w $2c(a0)
+  75a clr.l $2e(a0)
+  75e tst.b d1
+  760 bne.b $766
+  762 _Read 
+  764 bra.b $768
+  766 _Write 
+  768 move.w d0, arg12
+  76c movea.l argc, a1
+  770 move.l $28(a0), (a1)
+  774 unlk a6
+  776 movea.l (sp)+, a1
+  778 lea.l $a(sp), sp
+  77c jmp (a1)
+  77e link.w a6, #$ffc0
+  782 movea.l sp, a0
+  784 move.w arg8, $16(a0)
+  78a move.l arga, $12(a0)
+  790 _FlushVol 
+  792 move.w d0, arge
+  796 unlk a6
+  798 movea.l (sp)+, a1
+  79a addq.l #$6, sp
+  79c jmp (a1)
+  79e link.w a6, #$ffce
+  7a2 movea.l sp, a0
+  7a4 move.w argc, $18(a0)
+  7aa _GetEOF 
+  7ac move.w d0, arge
+  7b0 movea.l arg8, a1
+  7b4 move.l $1c(a0), (a1)
+  7b8 unlk a6
+  7ba movea.l (sp)+, a1
+  7bc addq.l #$6, sp
+  7be jmp (a1)
+  7c0 link.w a6, #$ffce
+  7c4 movea.l sp, a0
+  7c6 move.w arge, $18(a0)
+  7cc move.w argc, $2c(a0)
+  7d2 move.l arg8, $2e(a0)
+  7d8 _SetFPos 
+  7da move.w d0, arg10
+  7de unlk a6
+  7e0 movea.l (sp)+, a1
+  7e2 addq.l #$8, sp
+  7e4 jmp (a1)
+  7e6 movea.l (sp)+, a0
+  7e8 move.w (sp)+, d0
+  7ea move.l a0, -(sp)
+  7ec link.w a6, #$ffe0
+  7f0 movea.l sp, a0
+  7f2 move.w #$fffc, $18(a0)
+  7f8 move.w #$2, $1a(a0)
+  7fe move.w d0, $1c(a0)
+  802 _Control 
+  804 unlk a6
+  806 rts 
+  808 movea.l $ae8.w, a0
+  80c move.l a0, d0
+  80e bpl.b $82e
+  810 moveq #$3a, d0
+  812 _NewHandle 
+  814 bne.w $8f6
+  818 _HLock 
+  81a move.l a0, $ae8.w
+  81e movea.l (a0), a1
+  820 move.l $33c.w, $34(a1)
+  826 lea.l $934(pc), a1
+  82a move.l a1, $33c.w
+  82e movea.l (a0), a1
+  830 tst.w $10(a1)
+  834 ble.w $8ba
+  838 move.l $4(sp), d1
+  83c cmp.l $a06.w, d0
+  840 beq.b $8b4
+  842 st.b $39(a1)
+  846 move.w $32(a1), d1
+  84a move.l a0, d2
+  84c movem.l d1-d2, -(sp)
+  850 _HandToHand 
+  852 movem.l (sp)+, d1-d2
+  856 tst.w d0
+  858 bne.w $8f2
+  85c moveq #$0, d0
+  85e addi.w #$c, d1
+  862 move.w d1, d0
+  864 _SetHandleSize 
+  866 bne.w $8f2
+  86a _HLock 
+  86c move.l a0, $ae8.w
+  870 movea.l (a0), a1
+  872 movea.l $27a.w, a0
+  876 move.l a1, $8(a0)
+  87a move.l a1, $c(a0)
+  87e movea.l d2, a0
+  880 movea.l (a0), a0
+  882 move.b $38(a0), d0
+  886 or.b d0, $38(a1)
+  88a movea.l d2, a0
+  88c _DisposeHandle 
+  88e move.w d1, $32(a1)
+  892 bclr.b #$0, $38(a1)
+  898 beq.b $8a2
+  89a clr.w $10(a1)
+  89e jsr $940(pc)
+  8a2 sf.b $39(a1)
+  8a6 adda.w d1, a1
+  8a8 moveq #$c, d0
+  8aa suba.w d0, a1
+  8ac lea.l $4(sp), a0
+  8b0 _BlockMove 
+  8b2 bra.b $8f6
+  8b4 move.w $10(a1), d0
+  8b8 bgt.b $8b4
+  8ba movea.l a1, a0
+  8bc move.w #$3a, $32(a0)
+  8c2 move.l $8(sp), $24(a0)
+  8c8 move.l $c(sp), $20(a0)
+  8ce move.w #$fffc, $18(a0)
+  8d4 move.l $4(sp), d1
+  8d8 cmp.l $a06.w, d1
+  8dc bne.b $8e2
+  8de _Write 
+  8e0 bra.b $8f4
+  8e2 move.l d1, $1c(a0)
+  8e6 lea.l $940(pc), a1
+  8ea move.l a1, $c(a0)
+  8ee _Write 
+  8f0 tst.w d0
+  8f2 beq.b $8f6
+  8f4 bsr.b $8fe
+  8f6 movea.l (sp)+, a1
+  8f8 lea.l $c(sp), sp
+  8fc jmp (a1)
+  8fe movea.l $ae8.w, a0
+  902 cmpa.w $a06.w, a0
+  906 beq.b $918
+  908 movea.l (a0), a1
+  90a move.l $34(a1), $33c.w
+  910 _DisposeHandle 
+  912 move.l $a06.w, $ae8.w
+  918 rts 
+  91a link.w a6, #$ffe0
+  91e lea.l loc20, a0
+  922 move.w #$fffc, $18(a0)
+  928 _KillIO 
+  92a clr.w $280.w
+  92e bsr.b $8fe
+  930 unlk a6
+  932 rts 
+  934 bsr.b $91a
+  936 move.l $33c.w, d0
+  93a ble.b $932
+  93c movea.l d0, a0
+  93e jmp (a0)
+  940 movem.l d0-d2/a0-a1, -(sp)
+  944 movea.l $ae8.w, a0
+  948 movea.l (a0), a0
+  94a tst.b $39(a0)
+  94e beq.b $956
+  950 st.b $38(a0)
+  954 bra.b $9be
+  956 move.w $32(a0), d0
+  95a move.l $1c(a0), d1
+  95e beq.b $96c
+  960 movea.l d1, a1
+  962 movem.l d0/a0, -(sp)
+  966 jsr (a1)
+  968 movem.l (sp)+, d0/a0
+  96c cmpi.w #$3a, d0
+  970 bne.b $978
+  972 jsr $8fe(pc)
+  976 bra.b $9be
+  978 movea.l a0, a1
+  97a lea.l $3a(a0), a0
+  97e move.l (a0)+, $1c(a1)
+  982 move.l (a0)+, $24(a1)
+  986 move.l (a0)+, $20(a1)
+  98a move.w #$fffc, $18(a1)
+  990 moveq #$46, d1
+  992 sub.w d1, d0
+  994 beq.b $9a8
+  996 move.w d0, d1
+  998 ext.l d0
+  99a movea.l a0, a1
+  99c suba.w #$c, a1
+  9a0 _BlockMove 
+  9a2 addi.w #$3a, d1
+  9a6 bra.b $9aa
+  9a8 moveq #$3a, d1
+  9aa movea.l $ae8.w, a0
+  9ae movea.l (a0), a0
+  9b0 move.w d1, $32(a0)
+  9b4 lea.l $940(pc), a1
+  9b8 move.l a1, $c(a0)
+  9bc _Write 
+  9be movem.l (sp)+, d0-d2/a0-a1
+  9c2 rts 
+  9c4 movea.l (sp)+, a1
+  9c6 st.b (sp)
+  9c8 movea.l $ae8.w, a0
+  9cc cmpa.w $a06.w, a0
+  9d0 beq.b $9da
+  9d2 movea.l (a0), a0
+  9d4 tst.w $10(a0)
+  9d8 sle.b (sp)
+  9da neg.b (sp)
+  9dc jmp (a1)
+  9de movea.l $8(sp), a0
+  9e2 move.w #$1, -(sp)
+  9e6 _Pack7_BinDec 
+  9e8 movea.l $4(sp), a0
+  9ec move.l d0, (a0)
+  9ee jmp $9fe(pc)
+  9f2 movea.l $4(sp), a0
+  9f6 move.l $8(sp), d0
+  9fa clr.w -(sp)
+  9fc _Pack7_BinDec 
+  9fe movea.l (sp)+, a0
+  a00 addq.w #$8, sp
+  a02 jmp (a0)
+  a04 movea.l (sp)+, a1
+  a06 move.l (sp)+, d0
+  a08 btst.b #$6, $28e.w
+  a0e bne.b $a16
+  a10 _StripAddress 
+  a12 move.l d0, (sp)
+  a14 jmp (a1)
+  a16 and.l $31a.w, d0
+  a1a move.l d0, (sp)
+  a1c jmp (a1)
+  a1e movea.l $4(sp), a0
+  a22 movea.l (a0), a0
+  a24 _HandToHand 
+  a26 movea.l $4(sp), a1
+  a2a move.l a0, (a1)
+  a2c move.w d0, $8(sp)
+  a30 move.l (sp)+, (sp)
+  a32 rts 
+  a34 movea.l $c(sp), a0
+  a38 move.l $4(sp), d0
+  a3c _PtrToHand 
+  a3e move.w d0, $10(sp)
+  a42 movea.l $8(sp), a1
+  a46 move.l a0, (a1)
+  a48 movea.l (sp)+, a0
+  a4a lea.l $c(sp), sp
+  a4e jmp (a0)
+  a50 link.w a6, #$0
+  a54 subq.w #$4, sp
+  a56 move.l #$53545223, -(sp)
+  a5c move.w arga, -(sp)
+  a60 _GetResource 
+  a62 movea.l argc, a1
+  a66 clr.b (a1)
+  a68 move.l (sp)+, d0
+  a6a beq.b $a8e
+  a6c movea.l d0, a0
+  a6e movea.l (a0), a0
+  a70 move.w (a0)+, d0
+  a72 move.w arg8, d1
+  a76 beq.b $a8e
+  a78 cmp.w d0, d1
+  a7a bhi.b $a8e
+  a7c moveq #$0, d0
+  a7e subq.w #$1, d1
+  a80 beq.b $a88
+  a82 move.b (a0)+, d0
+  a84 adda.l d0, a0
+  a86 bra.b $a7e
+  a88 move.b (a0), d0
+  a8a addq.w #$1, d0
+  a8c _BlockMove 
+  a8e unlk a6
+  a90 movea.l (sp)+, a0
+  a92 addq.l #$8, sp
+  a94 jmp (a0)
+  a96 link.w a6, #$ffcc
+  a9a move.l d3, -(sp)
+  a9c move.l arg10, loc22
+  aa2 lea.l loc34, a0
+  aa6 _GetVol 
+  aa8 move.w d0, d3
+  aaa movea.l argc, a0
+  aae move.w loc1e, (a0)
+  ab2 movea.l arg8, a0
+  ab6 move.l loc4, (a0)
+  aba move.w d3, d0
+  abc move.w d0, arg14
+  ac0 move.l (sp)+, d3
+  ac2 unlk a6
+  ac4 movea.l (sp)+, a0
+  ac6 lea.l $c(sp), sp
+  aca jmp (a0)
+  acc link.w a6, #$ff84
+  ad0 move.l d3, -(sp)
+  ad2 move.w arg16, loc66
+  ad8 move.l arg12, loc4c
+  ade move.l arge, loc6a
+  ae4 clr.b loc62
+  ae8 move.b argc, loc61
+  aee moveq #$0, d0
+  af0 move.l d0, loc60
+  af4 lea.l loc7c, a0
+  af8 _Open 
+  afa move.w d0, d3
+  afc movea.l arg8, a0
+  b00 move.w loc64, (a0)
+  b04 move.w d3, d0
+  b06 move.w d0, arg18
+  b0a move.l (sp)+, d3
+  b0c unlk a6
+  b0e movea.l (sp)+, a0
+  b10 lea.l $10(sp), sp
+  b14 jmp (a0)
+  b16 link.w a6, #$ff84
+  b1a movem.l d3-d4, -(sp)
+  b1e move.w arg18, loc66
+  b24 move.l arg14, d3
+  b28 move.l d3, loc4c
+  b2c move.l arg10, loc6a
+  b32 clr.b loc62
+  b36 lea.l loc7c, a0
+  b3a _Create 
+  b3c move.w d0, d4
+  b3e bne.b $b68
+  b40 clr.w d0
+  b42 move.w d0, loc60
+  b46 lea.l loc7c, a0
+  b4a _GetFileInfo 
+  b4c move.w d0, d4
+  b4e bne.b $b68
+  b50 move.l argc, loc58
+  b56 move.l arg8, loc5c
+  b5c move.l d3, loc4c
+  b60 lea.l loc7c, a0
+  b64 _SetFileInfo 
+  b66 move.w d0, d4
+  b68 move.w d4, d0
+  b6a move.w d0, arg1a
+  b6e movem.l (sp)+, d3-d4
+  b72 unlk a6
+  b74 movea.l (sp)+, a0
+  b76 lea.l $12(sp), sp
+  b7a jmp (a0)
+  b7c link.w a6, #$ff84
+  b80 move.l d3, -(sp)
+  b82 move.w arg14, loc66
+  b88 move.l arg10, loc4c
+  b8e move.l argc, loc6a
+  b94 clr.b loc62
+  b98 clr.w d0
+  b9a move.w d0, loc60
+  b9e lea.l loc7c, a0
+  ba2 _GetFileInfo 
+  ba4 move.w d0, d3
+  ba6 lea.l loc5c, a0
+  baa movea.l arg8, a1
+  bae move.l (a0)+, (a1)+
+  bb0 move.l (a0)+, (a1)+
+  bb2 move.l (a0)+, (a1)+
+  bb4 move.l (a0)+, (a1)+
+  bb6 move.w d3, d0
+  bb8 move.w d0, arg16
+  bbc move.l (sp)+, d3
+  bbe unlk a6
+  bc0 movea.l (sp)+, a0
+  bc2 lea.l $e(sp), sp
+  bc6 jmp (a0)
+  bc8 link.w a6, #$ff84
+  bcc movem.l d3-d4, -(sp)
+  bd0 move.w arg14, loc66
+  bd6 move.l arg10, d3
+  bda move.l d3, loc4c
+  bde move.l argc, loc6a
+  be4 clr.b loc62
+  be8 clr.w d0
+  bea move.w d0, loc60
+  bee lea.l loc7c, a0
+  bf2 _GetFileInfo 
+  bf4 move.w d0, d4
+  bf6 bne.b $c14
+  bf8 movea.l arg8, a0
+  bfc lea.l loc5c, a1
+  c00 move.l (a0)+, (a1)+
+  c02 move.l (a0)+, (a1)+
+  c04 move.l (a0)+, (a1)+
+  c06 move.l (a0)+, (a1)+
+  c08 move.l d3, loc4c
+  c0c lea.l loc7c, a0
+  c10 _SetFileInfo 
+  c12 move.w d0, d4
+  c14 move.w d4, d0
+  c16 move.w d0, arg16
+  c1a movem.l (sp)+, d3-d4
+  c1e unlk a6
+  c20 movea.l (sp)+, a0
+  c22 lea.l $e(sp), sp
+  c26 jmp (a0)
+  c28 link.w a6, #$ff74
+  c2c movem.l d3-d5, -(sp)
+  c30 move.l arg12, d4
+  c34 move.w arg16, d5
+  c38 clr.b loc88
+  c3c subq.w #$2, sp
+  c3e move.l #$666f6c64, -(sp)
+  c44 pea.l loc8c
+  c48 jsr $494(pc)
+  c4c move.w (sp)+, d0
+  c4e bne.b $c60
+  c50 move.l loc8c, d0
+  c54 moveq #$1, d1
+  c56 and.l d1, d0
+  c58 beq.b $c60
+  c5a move.b #$1, loc88
+  c60 move.b loc88, d0
+  c64 beq.b $c86
+  c66 subq.w #$2, sp
+  c68 move.w d5, -(sp)
+  c6a move.l d4, -(sp)
+  c6c move.b arg10, -(sp)
+  c70 move.l argc, -(sp)
+  c74 move.l arg8, -(sp)
+  c78 moveq #$0, d0
+  c7a _AliasDispatch 
+  c7c move.w (sp)+, d0
+  c7e move.w d0, arg18
+  c82 jmp $d7c(pc)
+  c86 cmpi.l #$6d616373, d4
+  c8c beq.b $cd0
+  c8e cmpi.l #$74656d70, d4
+  c94 beq.b $cd0
+  c96 cmpi.l #$70726566, d4
+  c9c beq.b $cd0
+  c9e cmpi.l #$6578746e, d4
+  ca4 beq.b $cd0
+  ca6 cmpi.l #$6374726c, d4
+  cac beq.b $cd0
+  cae cmpi.l #$616d6e75, d4
+  cb4 beq.b $cd0
+  cb6 cmpi.l #$73747274, d4
+  cbc beq.b $cd0
+  cbe cmpi.l #$70726e74, d4
+  cc4 beq.b $cd0
+  cc6 moveq #$ce, d0
+  cc8 move.w d0, arg18
+  ccc jmp $d7c(pc)
+  cd0 moveq #$0, d0
+  cd2 move.l d0, loc72
+  cd6 cmpi.w #$8000, d5
+  cda bne.b $d08
+  cdc subq.w #$2, sp
+  cde move.w $a58.w, (sp)
+  ce2 move.w (sp)+, d0
+  ce4 move.w d0, loc6c
+  ce8 clr.w d0
+  cea move.w d0, loc68
+  cee moveq #$2, d0
+  cf0 move.l d0, loc4a
+  cf4 lea.l loc84, a0
+  cf8 moveq #$8, d0
+  cfa _HFSDispatch 
+  cfc move.w d0, d4
+  cfe bne.b $d76
+  d00 move.w loc50, loc6e
+  d06 bra.b $d0c
+  d08 move.w d5, loc6e
+  d0c moveq #$6, d0
+  d0e move.l d0, loc60
+  d12 lea.l loc8, a0
+  d16 move.l a0, loc64
+  d1a lea.l loc84, a0
+  d1e moveq #$30, d0
+  d20 _HFSDispatch 
+  d22 move.w d0, d4
+  d24 moveq #$ce, d0
+  d26 cmp.w d0, d4
+  d28 beq.b $d3a
+  d2a tst.w d4
+  d2c bne.b $d70
+  d2e move.l loc6, d0
+  d32 andi.l #$20000, d0
+  d38 bne.b $d70
+  d3a clr.w d0
+  d3c move.w d0, loc68
+  d40 moveq #$0, d3
+  d42 move.l d3, loc2a
+  d46 move.l d3, loc54
+  d4a lea.l loc84, a0
+  d4e _GetVolInfo 
+  d50 move.w d0, d4
+  d52 bne.b $d76
+  d54 move.l loc2a, d0
+  d58 beq.b $d6c
+  d5a movea.l argc, a0
+  d5e move.w loc6e, (a0)
+  d62 movea.l arg8, a0
+  d66 move.l loc2a, (a0)
+  d6a bra.b $d76
+  d6c moveq #$d5, d4
+  d6e bra.b $d76
+  d70 tst.w d4
+  d72 bne.b $d76
+  d74 moveq #$d5, d4
+  d76 move.w d4, d0
+  d78 move.w d0, arg18
+  d7c movem.l (sp)+, d3-d5
+  d80 unlk a6
+  d82 movea.l (sp)+, a0
+  d84 lea.l $10(sp), sp
+  d88 jmp (a0)
+  d8a ori.b #$0, d0
+  d8e ori.b #$0, d0
+  d92 ori.b #$0, d0

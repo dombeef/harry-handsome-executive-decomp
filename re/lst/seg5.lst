@@ -1,0 +1,137 @@
+
+; _tail_c   (seg 5 +00000c, 406 bytes)
+    c tst.l g_583a
+   12 bne.b $62
+   14 clr.l -(sp)
+   16 jsr seg5+d8
+   1c addq.w #$4, sp
+   1e bra.b $3a
+   20 subq.l #$1, g_572a
+   26 move.l g_572a, d0
+   2c lsl.l #$2, d0
+   2e lea.l g_562a, a0
+   34 movea.l (a0, d0.l), a0
+   38 jsr (a0)
+   3a tst.l g_572a
+   40 bgt.b $20
+   42 clr.l -(sp)
+   44 jsr seg5+da
+   4a tst.l g_5832
+   50 addq.w #$4, sp
+   52 beq.b $62
+   54 movea.l g_5832, a0
+   5a jsr (a0)
+   5c clr.l g_5832
+   62 move.l $4(sp), -(sp)
+   66 jsr seg5+70
+   6c addq.w #$4, sp
+   6e rts 
+   70 tst.l g_583a
+   76 bne.b $7e
+   78 jsr seg1+4ae
+   7e clr.l -(sp)
+   80 jsr seg5+d8
+   86 addq.w #$4, sp
+   88 bra.b $a4
+   8a subq.l #$1, g_582e
+   90 move.l g_582e, d0
+   96 lsl.l #$2, d0
+   98 lea.l g_572e, a0
+   9e movea.l (a0, d0.l), a0
+   a2 jsr (a0)
+   a4 tst.l g_582e
+   aa bgt.b $8a
+   ac clr.l -(sp)
+   ae jsr seg5+da
+   b4 jsr seg5+d6
+   ba tst.l g_5836
+   c0 addq.w #$4, sp
+   c2 beq.b $d2
+   c4 movea.l g_5836, a0
+   ca jsr (a0)
+   cc clr.l g_5836
+   d2 _ExitToShell 
+   d4 rts 
+   d6 rts 
+   d8 rts 
+   da rts 
+   dc move.l $c(sp), -(sp)
+   e0 move.l $c(sp), -(sp)
+   e4 move.l $c(sp), -(sp)
+   e8 jsr seg5+f8
+   ee movea.l $10(sp), a0
+   f2 lea.l $c(sp), sp
+   f6 rts 
+   f8 movem.l d3-d5, -(sp)
+   fc movea.l $10(sp), a0
+  100 move.l $18(sp), d5
+  104 moveq #$0, d3
+  106 move.b $17(sp), d3
+  10a moveq #$20, d0
+  10c cmp.l d0, d5
+  10e bcs.b $16e
+  110 moveq #$3, d0
+  112 move.l a0, d4
+  114 neg.l d4
+  116 and.l d0, d4
+  118 tst.l d4
+  11a beq.b $124
+  11c sub.l d4, d5
+  11e move.b d3, (a0)+
+  120 subq.l #$1, d4
+  122 bne.b $11e
+  124 tst.l d3
+  126 beq.b $13e
+  128 move.l d3, d0
+  12a moveq #$10, d1
+  12c lsl.l d1, d0
+  12e move.l d3, d1
+  130 moveq #$18, d2
+  132 lsl.l d2, d1
+  134 or.l d0, d1
+  136 move.l d3, d0
+  138 lsl.l #$8, d0
+  13a or.l d1, d0
+  13c or.l d0, d3
+  13e move.l d5, d4
+  140 lsr.l #$5, d4
+  142 tst.l d4
+  144 beq.b $15a
+  146 move.l d3, (a0)+
+  148 move.l d3, (a0)+
+  14a move.l d3, (a0)+
+  14c move.l d3, (a0)+
+  14e move.l d3, (a0)+
+  150 move.l d3, (a0)+
+  152 move.l d3, (a0)+
+  154 move.l d3, (a0)+
+  156 subq.l #$1, d4
+  158 bne.b $146
+  15a moveq #$1f, d4
+  15c and.l d5, d4
+  15e lsr.l #$2, d4
+  160 tst.l d4
+  162 beq.b $16a
+  164 move.l d3, (a0)+
+  166 subq.l #$1, d4
+  168 bne.b $164
+  16a moveq #$3, d0
+  16c and.l d0, d5
+  16e tst.l d5
+  170 beq.b $178
+  172 move.b d3, (a0)+
+  174 subq.l #$1, d5
+  176 bne.b $172
+  178 movem.l (sp)+, d3-d5
+  17c rts 
+  17e ori.b #$10, d0
+  182 or.l d3, (sp)
+  184 fbf.l $8797fe81
+  18a sub.l d1, (a2)+
+  18c fbf.l $879afe89
+  192 ori.b #$1, d0
+  196 eor.b d6, d0
+  198 ori.b #$8c, d0
+  19c sub.l d3, (a1)
+  19e or.l d6, (sp)
+  1a0 or.l d1, (a2)+

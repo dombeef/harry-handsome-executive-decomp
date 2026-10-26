@@ -1,0 +1,6078 @@
+
+; InitBuzzwords   (seg 6 +00000c, 196 bytes)
+    c link.w a6, #$fffc
+   10 movem.l d3-d4, -(sp)
+   14 moveq #$0, d4
+   16 clr.l loc4
+   1a moveq #$0, d3
+   1c bra.b $6a
+   1e subq.w #$4, sp
+   20 move.l #$53545223, -(sp)
+   26 move.w d3, d0
+   2a addi.l #$1af4, d0
+   30 move.w d0, -(sp)
+   32 _Get1Resource 
+   34 movea.l (sp)+, a0
+   36 lea.l g_6b44, a1
+   3c move.l a0, (a1, d3.w * 4)
+   40 move.l a0, d0
+   42 beq.b $5e
+   44 lea.l g_6b44, a0
+   4a movea.l (a0, d3.w * 4), a0
+   4e _HNoPurge 
+   50 lea.l g_6b44, a0
+   56 move.l (a0, d3.w * 4), -(sp)
+   5a _DetachResource 
+   5c bra.b $68
+   5e subq.w #$2, sp
+   60 _ResError 
+   62 move.w (sp)+, d0
+   64 move.w d0, d4
+   66 bra.b $70
+   68 addq.w #$1, d3
+   6a cmpi.w #$5, d3
+   6e ble.b $1e
+   70 moveq #$0, d3
+   72 bra.b $c0
+   74 subq.w #$4, sp
+   76 move.l #$53545223, -(sp)
+   7c move.w d3, d0
+   80 addi.l #$1a90, d0
+   86 move.w d0, -(sp)
+   88 _Get1Resource 
+   8a movea.l (sp)+, a0
+   8c lea.l g_6b5c, a1
+   92 move.l a0, (a1, d3.w * 4)
+   96 move.l a0, d0
+   98 beq.b $b4
+   9a lea.l g_6b5c, a0
+   a0 movea.l (a0, d3.w * 4), a0
+   a4 _HNoPurge 
+   a6 lea.l g_6b5c, a0
+   ac move.l (a0, d3.w * 4), -(sp)
+   b0 _DetachResource 
+   b2 bra.b $be
+   b4 subq.w #$2, sp
+   b6 _ResError 
+   b8 move.w (sp)+, d0
+   ba move.w d0, d4
+   bc bra.b $c6
+   be addq.w #$1, d3
+   c0 cmpi.w #$1, d3
+   c4 ble.b $74
+   c6 move.w d4, d0
+   c8 movem.l (sp)+, d3-d4
+   cc unlk a6
+   ce rts 
+
+; GenerateBuzzwords   (seg 6 +0000e0, 582 bytes)
+   e0 link.w a6, #$fef8
+   e4 movem.l d3-d4/a2, -(sp)
+   e8 movea.l arg8, a2
+   ec moveq #$0, d4
+   ee clr.l loc104
+   f2 move.l g_eb0, loc108
+   fa clr.b (a2)
+  10c call PickAString(&g_6b64, &loc100, g_6b44)
+  112 pea.l locff
+  116 pea.l loc104
+  11a moveq #$0, d0
+  11c move.b loc100, d0
+  122 call seg4+a34(d0)
+  128 move.w (sp)+, d0
+  12a move.w d0, d4
+  12c lea.l $a(sp), sp
+  130 bne.w $31c
+  134 moveq #$0, d3
+  136 move.b #$30, loc107
+  13c bra.b $176
+  14e call PickAString(&g_6b66, &loc100, g_6b48)
+  154 move.l loc104, -(sp)
+  158 move.l d3, -(sp)
+  15a pea.l loc108
+  15e pea.l $2.w
+  162 pea.l locff
+  166 moveq #$0, d0
+  168 move.b loc100, d0
+  16c move.l d0, -(sp)
+  16e _Munger 
+  170 move.l (sp)+, d0
+  172 move.l d0, d3
+  174 addq.w #$8, sp
+  176 tst.l d3
+  178 bge.b $13e
+  17a moveq #$0, d3
+  17c move.b #$31, loc107
+  182 bra.b $1bc
+  194 call PickAString(&g_6b68, &loc100, g_6b4c)
+  19a move.l loc104, -(sp)
+  19e move.l d3, -(sp)
+  1a0 pea.l loc108
+  1a4 pea.l $2.w
+  1a8 pea.l locff
+  1ac moveq #$0, d0
+  1ae move.b loc100, d0
+  1b2 move.l d0, -(sp)
+  1b4 _Munger 
+  1b6 move.l (sp)+, d0
+  1b8 move.l d0, d3
+  1ba addq.w #$8, sp
+  1bc tst.l d3
+  1be bge.b $184
+  1c0 moveq #$0, d3
+  1c2 move.b #$32, loc107
+  1c8 bra.b $202
+  1da call PickAString(&g_6b6a, &loc100, g_6b50)
+  1e0 move.l loc104, -(sp)
+  1e4 move.l d3, -(sp)
+  1e6 pea.l loc108
+  1ea pea.l $2.w
+  1ee pea.l locff
+  1f2 moveq #$0, d0
+  1f4 move.b loc100, d0
+  1f8 move.l d0, -(sp)
+  1fa _Munger 
+  1fc move.l (sp)+, d0
+  1fe move.l d0, d3
+  200 addq.w #$8, sp
+  202 tst.l d3
+  204 bge.b $1ca
+  206 moveq #$0, d3
+  208 move.b #$33, loc107
+  20e bra.b $248
+  220 call PickAString(&g_6b6c, &loc100, g_6b54)
+  226 move.l loc104, -(sp)
+  22a move.l d3, -(sp)
+  22c pea.l loc108
+  230 pea.l $2.w
+  234 pea.l locff
+  238 moveq #$0, d0
+  23a move.b loc100, d0
+  23e move.l d0, -(sp)
+  240 _Munger 
+  242 move.l (sp)+, d0
+  244 move.l d0, d3
+  246 addq.w #$8, sp
+  248 tst.l d3
+  24a bge.b $210
+  24c moveq #$0, d3
+  24e move.b #$34, loc107
+  254 bra.b $28e
+  266 call PickAString(&g_6b6e, &loc100, g_6b58)
+  26c move.l loc104, -(sp)
+  270 move.l d3, -(sp)
+  272 pea.l loc108
+  276 pea.l $2.w
+  27a pea.l locff
+  27e moveq #$0, d0
+  280 move.b loc100, d0
+  284 move.l d0, -(sp)
+  286 _Munger 
+  288 move.l (sp)+, d0
+  28a move.l d0, d3
+  28c addq.w #$8, sp
+  28e tst.l d3
+  290 bge.b $256
+  292 movea.l loc104, a0
+  296 movea.l (a0), a0
+  298 cmpi.b #$61, (a0)
+  29c blt.b $2b4
+  29e movea.l loc104, a0
+  2a2 movea.l (a0), a0
+  2a4 cmpi.b #$7a, (a0)
+  2a8 bgt.b $2b4
+  2aa movea.l loc104, a0
+  2ae movea.l (a0), a0
+  2b0 addi.b #$e0, (a0)
+  2b4 movea.l loc104, a0
+  2b8 movea.l (a0), a0
+  2ba cmpi.b #$22, (a0)
+  2be beq.b $2cc
+  2c0 movea.l loc104, a0
+  2c4 movea.l (a0), a0
+  2c6 cmpi.b #$d2, (a0)
+  2ca bne.b $2f4
+  2cc movea.l loc104, a0
+  2d0 movea.l (a0), a0
+  2d2 cmpi.b #$61, $1(a0)
+  2d8 blt.b $2f4
+  2da movea.l loc104, a0
+  2de movea.l (a0), a0
+  2e0 cmpi.b #$7a, $1(a0)
+  2e6 bgt.b $2f4
+  2e8 movea.l loc104, a0
+  2ec movea.l (a0), a0
+  2ee addi.b #$e0, $1(a0)
+  2f4 subq.w #$4, sp
+  2fa call seg4+6a2(loc104)
+  300 move.l (sp)+, d0
+  302 move.b d0, (a2)
+  304 moveq #$0, d1
+  306 move.b d0, d1
+  308 move.l d1, d0
+  30a movea.l loc104, a0
+  30e movea.l (a0), a0
+  310 lea.l $1(a2), a1
+  314 _BlockMove 
+  316 movea.l loc104, a0
+  31a _DisposeHandle 
+  31c move.w d4, d0
+  31e movem.l (sp)+, d3-d4/a2
+  322 unlk a6
+  324 rts 
+
+; GeneratePhonewords   (seg 6 +00033a, 302 bytes)
+  33a link.w a6, #$fef8
+  33e movem.l d3-d4/a2, -(sp)
+  342 movea.l arg8, a2
+  346 moveq #$0, d4
+  348 clr.l loc104
+  34c move.l g_eac, loc108
+  354 clr.b (a2)
+  366 call PickAString(&g_6b70, &loc100, g_6b5c)
+  36c pea.l locff
+  370 pea.l loc104
+  374 moveq #$0, d0
+  376 move.b loc100, d0
+  37c call seg4+a34(d0)
+  382 move.w (sp)+, d0
+  384 move.w d0, d4
+  386 lea.l $a(sp), sp
+  38a bne.w $45e
+  38e moveq #$0, d3
+  390 move.b #$30, loc107
+  396 bra.b $3d0
+  3a8 call PickAString(&g_6b72, &loc100, g_6b60)
+  3ae move.l loc104, -(sp)
+  3b2 move.l d3, -(sp)
+  3b4 pea.l loc108
+  3b8 pea.l $2.w
+  3bc pea.l locff
+  3c0 moveq #$0, d0
+  3c2 move.b loc100, d0
+  3c6 move.l d0, -(sp)
+  3c8 _Munger 
+  3ca move.l (sp)+, d0
+  3cc move.l d0, d3
+  3ce addq.w #$8, sp
+  3d0 tst.l d3
+  3d2 bge.b $398
+  3d4 movea.l loc104, a0
+  3d8 movea.l (a0), a0
+  3da cmpi.b #$61, (a0)
+  3de blt.b $3f6
+  3e0 movea.l loc104, a0
+  3e4 movea.l (a0), a0
+  3e6 cmpi.b #$7a, (a0)
+  3ea bgt.b $3f6
+  3ec movea.l loc104, a0
+  3f0 movea.l (a0), a0
+  3f2 addi.b #$e0, (a0)
+  3f6 movea.l loc104, a0
+  3fa movea.l (a0), a0
+  3fc cmpi.b #$22, (a0)
+  400 beq.b $40e
+  402 movea.l loc104, a0
+  406 movea.l (a0), a0
+  408 cmpi.b #$d2, (a0)
+  40c bne.b $436
+  40e movea.l loc104, a0
+  412 movea.l (a0), a0
+  414 cmpi.b #$61, $1(a0)
+  41a blt.b $436
+  41c movea.l loc104, a0
+  420 movea.l (a0), a0
+  422 cmpi.b #$7a, $1(a0)
+  428 bgt.b $436
+  42a movea.l loc104, a0
+  42e movea.l (a0), a0
+  430 addi.b #$e0, $1(a0)
+  436 subq.w #$4, sp
+  43c call seg4+6a2(loc104)
+  442 move.l (sp)+, d0
+  444 move.b d0, (a2)
+  446 moveq #$0, d1
+  448 move.b d0, d1
+  44a move.l d1, d0
+  44c movea.l loc104, a0
+  450 movea.l (a0), a0
+  452 lea.l $1(a2), a1
+  456 _BlockMove 
+  458 movea.l loc104, a0
+  45c _DisposeHandle 
+  45e move.w d4, d0
+  460 movem.l (sp)+, d3-d4/a2
+  464 unlk a6
+  466 rts 
+
+; PickAString   (seg 6 +00047e, 98 bytes)
+  47e link.w a6, #$fffc
+  482 movem.l d3-d4/a2-a4, -(sp)
+  486 movea.l arg8, a4
+  48a movea.l argc, a3
+  48e movea.l arg10, a2
+  492 clr.b (a3)
+  496 call CountIndexedStringsInHandle(a4)
+  49c move.w d0, d4
+  49e addq.w #$4, sp
+  4a0 beq.b $4d8
+  4a2 moveq #$0, d0
+  4a4 move.w d4, d0
+  4a6 move.l d0, loc4
+  4aa subq.w #$2, sp
+  4ac _Random 
+  4ae move.w (sp)+, d0
+  4b0 moveq #$0, d1
+  4b2 move.w d0, d1
+  4b4 divsl.l loc4, d0:d1
+  4ba move.w d0, d3
+  4bc cmp.w (a2), d3
+  4be beq.b $4a2
+  4c0 move.w d3, (a2)
+  4c2 moveq #$0, d0
+  4c4 move.w d3, d0
+  4c6 addq.l #$1, d0
+  4ce call GetIndexedStringInHandle(d0, a4, a3)
+  4d8 movem.l (sp)+, d3-d4/a2-a4
+  4dc unlk a6
+  4de rts 
+
+; CountIndexedStringsInHandle   (seg 6 +0004ee, 50 bytes)
+  4ee link.w a6, #$0
+  4f2 move.l a2, -(sp)
+  4f4 movea.l arg8, a2
+  4f8 move.l a2, d0
+  4fa tst.l d0
+  4fc beq.b $518
+  4fe subq.w #$4, sp
+  502 call seg4+6a2(a2)
+  508 move.l (sp)+, d0
+  50a moveq #$2, d1
+  50c cmp.l d1, d0
+  50e bcs.b $518
+  510 movea.l (a2), a0
+  512 move.w (a0), d0
+  516 bra.b $51a
+  518 moveq #$0, d0
+  51a movea.l (sp)+, a2
+  51c unlk a6
+  51e rts 
+
+; GetIndexedStringInHandle   (seg 6 +00053e, 118 bytes)
+  53e link.w a6, #$0
+  542 movem.l d3-d6/a2-a3, -(sp)
+  546 movea.l arg8, a3
+  54a movea.l argc, a2
+  54e move.w arg10, d5
+  552 clr.b (a3)
+  554 tst.w d5
+  556 ble.b $5ac
+  55a call CountIndexedStringsInHandle(a2)
+  560 cmp.w d0, d5
+  562 addq.w #$4, sp
+  564 bgt.b $5ac
+  566 subq.w #$4, sp
+  56a call seg4+6a2(a2)
+  570 move.l (sp)+, d0
+  572 move.l d0, d6
+  574 moveq #$1, d4
+  576 moveq #$2, d3
+  578 bra.b $588
+  57a addq.w #$1, d4
+  57c movea.l (a2), a0
+  57e moveq #$0, d0
+  580 move.b (a0, d3.l), d0
+  584 addq.l #$1, d0
+  586 add.l d0, d3
+  588 cmp.w d5, d4
+  58a bge.b $590
+  58c cmp.l d6, d3
+  58e blt.b $57a
+  590 cmp.w d5, d4
+  592 bne.b $5ac
+  594 cmp.l d6, d3
+  596 bge.b $5ac
+  598 movea.l (a2), a0
+  59a moveq #$0, d0
+  59c move.b (a0, d3.l), d0
+  5a0 addq.l #$1, d0
+  5a2 movea.l (a2), a0
+  5a4 lea.l (a0, d3.l), a0
+  5a8 movea.l a3, a1
+  5aa _BlockMove 
+  5ac movem.l (sp)+, d3-d6/a2-a3
+  5b0 unlk a6
+  5b2 rts 
+
+; DOABOUTDIALOG   (seg 6 +0005d0, 1210 bytes)
+  5d0 link.w a6, #$0
+  5d4 move.l d3, -(sp)
+  5d6 move.w arg8, d3
+  5da move.w #$fffd, g_6ada
+  5e2 subq.w #$4, sp
+  5e4 move.w arga, -(sp)
+  5e8 pea.l $0.w
+  5ec pea.l $ffff.w
+  5f0 _GetNewDialog 
+  5f2 movea.l (sp)+, a0
+  5f4 move.l a0, g_6ad6
+  5fa tst.l g_6ad6
+  600 bne.b $608
+  602 move.w #$19, -(sp)
+  606 _SysBeep 
+  608 move.w #$10e, g_6ae4
+  610 move.w #$aa, g_6ae6
+  618 pea.l g_6adc
+  61e move.l #$780022, -(sp)
+  624 move.w g_6ae6, -(sp)
+  62a move.w g_6ae4, -(sp)
+  630 _SetRect 
+  632 move.l g_6ad6, -(sp)
+  638 _SetPort 
+  63a move.l g_6ad6, -(sp)
+  640 _ShowWindow 
+  642 move.l g_6ad6, -(sp)
+  648 _DrawDialog 
+  64a subq.w #$4, sp
+  64c move.w d3, -(sp)
+  64e _GetPicture 
+  650 movea.l (sp)+, a0
+  652 move.l a0, g_6aec
+  658 tst.l g_6aec
+  65e bne.b $666
+  660 move.w #$19, -(sp)
+  664 _SysBeep 
+  666 movea.l g_6aec, a0
+  66c movea.l (a0), a0
+  66e movea.l g_6aec, a1
+  674 movea.l (a1), a1
+  676 move.w $6(a1), d0
+  67a sub.w $2(a0), d0
+  67e move.w d0, g_6af0
+  684 movea.l g_6aec, a0
+  68a movea.l (a0), a0
+  68c movea.l g_6aec, a1
+  692 movea.l (a1), a1
+  694 move.w $8(a1), d0
+  698 sub.w $4(a0), d0
+  69c move.w d0, g_6af2
+  6a2 pea.l g_6afe
+  6a8 pea.l g_6b02
+  6ae move.l #$80005, d0
+  6b4 _QDExtensions 
+  6b6 pea.l g_6b24
+  6bc move.l #$10e0022, -(sp)
+  6c2 moveq #$22, d0
+  6c4 add.w g_6af2, d0
+  6ca move.w d0, -(sp)
+  6cc move.w #$96, d0
+  6d0 add.w g_6af0, d0
+  6d6 addi.w #$78, d0
+  6da move.w d0, -(sp)
+  6dc _SetRect 
+  6de pea.l g_6b3c
+  6e4 clr.l -(sp)
+  6e6 move.l #$960088, -(sp)
+  6ec _SetRect 
+  6ee subq.w #$2, sp
+  6f0 pea.l g_6af4
+  6f6 move.w #$8, -(sp)
+  6fa movea.l g_6aec, a0
+  700 movea.l (a0), a0
+  702 pea.l $2(a0)
+  706 pea.l $0.w
+  70a pea.l $0.w
+  70e clr.l -(sp)
+  710 move.l #$160000, d0
+  716 _QDExtensions 
+  718 move.w (sp)+, d0
+  71a move.w d0, g_6afc
+  720 subq.w #$2, sp
+  722 pea.l g_6af8
+  728 move.w #$1, -(sp)
+  72c pea.l g_6b24
+  732 pea.l $0.w
+  736 pea.l $0.w
+  73a clr.l -(sp)
+  73c move.l #$160000, d0
+  742 _QDExtensions 
+  744 move.w (sp)+, d0
+  746 move.w d0, g_6afc
+  74c tst.l g_6af4
+  752 beq.b $75c
+  754 tst.w g_6afc
+  75a beq.b $762
+  75c move.w #$19, -(sp)
+  760 _SysBeep 
+  762 move.l g_6af8, -(sp)
+  768 pea.l $0.w
+  76c move.l #$80006, d0
+  772 _QDExtensions 
+  774 moveq #$0, d3
+  776 bra.b $7ce
+  778 move.w g_6b26, -(sp)
+  77e move.w g_6b24, d0
+  784 add.w g_6b34, d0
+  78a move.w d0, -(sp)
+  78c _MoveTo 
+  78e move.w d3, d0
+  790 muls.w #$1900, d0
+  794 move.w d0, g_6b36
+  79a move.w g_6b36, g_6b38
+  7a4 move.w g_6b36, g_6b3a
+  7ae pea.l g_6b36
+  7b4 _RGBForeColor 
+  7b6 move.w g_6b2a, -(sp)
+  7bc move.w g_6b24, d0
+  7c2 add.w g_6b34, d0
+  7c8 move.w d0, -(sp)
+  7ca _LineTo 
+  7cc addq.w #$1, d3
+  7ce cmpi.w #$a, d3
+  7d2 ble.b $778
+  7d4 moveq #$0, d3
+  7d6 bra.b $82e
+  7d8 move.w g_6b26, -(sp)
+  7de move.w g_6b28, d0
+  7e4 sub.w g_6b34, d0
+  7ea move.w d0, -(sp)
+  7ec _MoveTo 
+  7ee move.w d3, d0
+  7f0 muls.w #$1900, d0
+  7f4 move.w d0, g_6b36
+  7fa move.w g_6b36, g_6b38
+  804 move.w g_6b36, g_6b3a
+  80e pea.l g_6b36
+  814 _RGBForeColor 
+  816 move.w g_6b2a, -(sp)
+  81c move.w g_6b28, d0
+  822 sub.w g_6b34, d0
+  828 move.w d0, -(sp)
+  82a _LineTo 
+  82c addq.w #$1, d3
+  82e cmpi.w #$a, d3
+  832 ble.b $7d8
+  834 move.l g_6af4, -(sp)
+  83a pea.l $0.w
+  83e move.l #$80006, d0
+  844 _QDExtensions 
+  846 subq.w #$2, sp
+  848 subq.w #$4, sp
+  84a move.l g_6af4, -(sp)
+  850 move.l #$40017, d0
+  856 _QDExtensions 
+  858 movea.l (sp)+, a0
+  85a move.l a0, -(sp)
+  85c move.l #$40001, d0
+  862 _QDExtensions 
+  864 move.b (sp)+, d0
+  866 subq.b #$1, d0
+  868 beq.b $870
+  86a move.w #$19, -(sp)
+  86e _SysBeep 
+  870 movea.l g_6af4, a0
+  876 pea.l $10(a0)
+  87a _EraseRect 
+  87c move.l g_6aec, -(sp)
+  882 movea.l g_6af4, a0
+  888 pea.l $10(a0)
+  88c _DrawPicture 
+  88e subq.w #$4, sp
+  890 move.l g_6af4, -(sp)
+  896 move.l #$40017, d0
+  89c _QDExtensions 
+  89e movea.l (sp)+, a0
+  8a0 move.l a0, -(sp)
+  8a2 move.l #$40002, d0
+  8a8 _QDExtensions 
+  8aa move.l g_6aec, -(sp)
+  8b0 _ReleaseResource 
+  8b2 move.l g_6afe, -(sp)
+  8b8 move.l g_6b02, -(sp)
+  8be move.l #$80006, d0
+  8c4 _QDExtensions 
+  8c6 subq.w #$4, sp
+  8c8 _NewRgn 
+  8ca movea.l (sp)+, a0
+  8cc move.l a0, g_6b06
+  8d2 move.l g_6b06, -(sp)
+  8d8 _GetClip 
+  8da pea.l g_6adc
+  8e0 _ClipRect 
+  8e2 clr.w g_6b22
+  8e8 move.w #$96, d0
+  8ec add.w g_6af0, d0
+  8f2 move.w d0, g_6b2c
+  8f8 clr.w g_6b2e
+  8fe clr.w g_6b1c
+  904 clr.w g_6b1e
+  90a clr.w g_6b20
+  910 move.w #$ffff, g_6b16
+  918 move.w #$ffff, g_6b18
+  920 move.w #$ffff, g_6b1a
+  928 pea.l g_6b0a
+  92e _GetForeColor 
+  930 pea.l g_6b10
+  936 _GetBackColor 
+  938 pea.l g_6b1c
+  93e _RGBForeColor 
+  940 pea.l g_6b16
+  946 _RGBBackColor 
+  948 bra.w $a3c
+  94c movea.l g_6af4, a0
+  952 pea.l $2(a0)
+  956 movea.l g_6ad6, a0
+  95c pea.l $2(a0)
+  960 movea.l g_6af4, a0
+  966 pea.l $10(a0)
+  96a pea.l g_6b24
+  970 clr.w -(sp)
+  972 pea.l $0.w
+  976 _CopyBits 
+  978 pea.l g_6b24
+  97e clr.w -(sp)
+  980 moveq #$1, d0
+  982 add.w g_6b22, d0
+  988 neg.w d0
+  98a move.w d0, -(sp)
+  98c _OffsetRect 
+  98e moveq #$1, d0
+  990 add.w g_6b2e, d0
+  996 move.w d0, g_6b2e
+  99c pea.l $3.w
+  9a0 pea.l g_6b30
+  9a6 movea.l (sp)+, a1
+  9a8 movea.l (sp)+, a0
+  9aa _Delay 
+  9ac move.l d0, (a1)
+  9ae subq.w #$2, sp
+  9b0 _Button 
+  9b2 move.b (sp)+, d0
+  9b4 beq.b $9ee
+  9b6 pea.l g_6ae8
+  9bc _GetMouse 
+  9be pea.l $2.w
+  9c2 move.l (sp)+, d0
+  9c4 _FlushEvents 
+  9c6 subq.w #$2, sp
+  9c8 move.l g_6ae8, -(sp)
+  9ce movea.l g_6ad6, a0
+  9d4 pea.l $10(a0)
+  9d8 _PtInRect 
+  9da move.b (sp)+, d0
+  9dc beq.b $9e8
+  9de move.w #$1, g_6ada
+  9e6 bra.b $9ee
+  9e8 move.w #$19, -(sp)
+  9ec _SysBeep 
+  9ee cmpi.w #$1, g_6ada
+  9f6 beq.b $a08
+  9f8 move.w g_6b2e, d0
+  9fe cmp.w g_6b2c, d0
+  a04 blt.w $94c
+  a08 clr.w g_6b2e
+  a0e clr.w g_6b22
+  a14 pea.l g_6b24
+  a1a move.l #$10e0022, -(sp)
+  a20 moveq #$22, d0
+  a22 add.w g_6af2, d0
+  a28 move.w d0, -(sp)
+  a2a move.w #$96, d0
+  a2e add.w g_6af0, d0
+  a34 addi.w #$78, d0
+  a38 move.w d0, -(sp)
+  a3a _SetRect 
+  a3c cmpi.w #$1, g_6ada
+  a44 bne.b $9ee
+  a46 pea.l g_6b0a
+  a4c _RGBForeColor 
+  a4e pea.l g_6b10
+  a54 _RGBBackColor 
+  a56 move.l g_6b06, -(sp)
+  a5c _SetClip 
+  a5e move.l g_6ad6, -(sp)
+  a64 _DisposeDialog 
+  a66 move.l g_6af4, -(sp)
+  a6c move.l #$40004, d0
+  a72 _QDExtensions 
+  a74 move.l g_6af8, -(sp)
+  a7a move.l #$40004, d0
+  a80 _QDExtensions 
+  a82 move.l (sp)+, d3
+  a84 unlk a6
+  a86 rtd #$4
+
+; ISCOLORGAMMAAVAILABLE   (seg 6 +000a9a, 70 bytes)
+  a9a link.w a6, #$0
+  a9e tst.l g_6ad0
+  aa4 beq.b $ab0
+  aa6 move.b g_6ad3, $8(sp)
+  aae bra.b $adc
+  ab4 call ColorGamma_TrapAvailable(0xaa29)
+  aba tst.b d0
+  abc addq.w #$2, sp
+  abe bne.b $ace
+  ac0 moveq #$1, d0
+  ac2 move.l d0, g_6ad0
+  ac8 clr.b $8(sp)
+  acc bra.b $adc
+  ace moveq #$2, d0
+  ad0 move.l d0, g_6ad0
+  ad6 move.b #$1, $8(sp)
+  adc unlk a6
+  ade rts 
+
+; STARTFADING   (seg 6 +000af8, 34 bytes)
+  af8 link.w a6, #$0
+  afc subq.w #$4, sp
+  afe call GETMONITORSTATE()
+  b04 movea.l (sp)+, a0
+  b06 movea.l arg8, a1
+  b0a move.l a0, (a1)
+  b0c move.w g_6ad4, $c(sp)
+  b14 unlk a6
+  b16 rtd #$4
+
+; STOPFADING   (seg 6 +000b28, 44 bytes)
+  b28 link.w a6, #$0
+  b2c tst.b arg8
+  b30 beq.b $b40
+  b32 subq.w #$2, sp
+  b38 call SETMONITORSTATE(arga)
+  b3e move.w (sp)+, d0
+  b40 subq.w #$2, sp
+  b46 call DISPOSEGAMMAREF(arga)
+  b4c move.w (sp)+, d0
+  b4e unlk a6
+  b50 rtd #$6
+
+; GETMONITORSTATE   (seg 6 +000b62, 124 bytes)
+  b62 link.w a6, #$0
+  b66 movem.l a2-a4, -(sp)
+  b6a suba.l a4, a4
+  b6c tst.l g_6ad0
+  b72 bne.b $b7e
+  b74 subq.w #$2, sp
+  b76 call ISCOLORGAMMAAVAILABLE()
+  b7c move.b (sp)+, d0
+  b7e moveq #$1, d0
+  b80 cmp.l g_6ad0, d0
+  b86 bne.b $b96
+  b88 move.w #$ff37, g_6ad4
+  b90 clr.l $14(sp)
+  b94 bra.b $bd6
+  b96 subq.w #$4, sp
+  b98 _GetDeviceList 
+  b9a movea.l (sp)+, a0
+  b9c movea.l a0, a2
+  b9e bra.b $bc2
+  ba0 subq.w #$4, sp
+  ba4 call GET1MONITORSTATE(a2)
+  baa movea.l (sp)+, a0
+  bac movea.l a0, a3
+  bae move.l a3, d0
+  bb0 beq.b $bb8
+  bb2 movea.l (a3), a0
+  bb4 move.l a4, (a0)
+  bb6 movea.l a3, a4
+  bb8 subq.w #$4, sp
+  bba move.l a2, -(sp)
+  bbc _GetNextDevice 
+  bbe movea.l (sp)+, a0
+  bc0 movea.l a0, a2
+  bc2 move.l a2, d0
+  bc4 bne.b $ba0
+  bc6 move.l a4, d0
+  bc8 bne.b $bd2
+  bca move.w #$b438, g_6ad4
+  bd2 move.l a4, $14(sp)
+  bd6 movem.l (sp)+, a2-a4
+  bda unlk a6
+  bdc rts 
+
+; GET1MONITORSTATE   (seg 6 +000bf0, 620 bytes)
+  bf0 link.w a6, #$fff8
+  bf4 movem.l d3-d6/a2-a4, -(sp)
+  bf8 movea.l arg8, a4
+  bfc suba.l a3, a3
+  bfe clr.l loc4
+  c02 suba.l a2, a2
+  c04 moveq #$0, d6
+  c06 moveq #$0, d3
+  c08 tst.l g_6ad0
+  c0e bne.b $c1a
+  c10 subq.w #$2, sp
+  c12 call ISCOLORGAMMAAVAILABLE()
+  c18 move.b (sp)+, d0
+  c1a moveq #$1, d0
+  c1c cmp.l g_6ad0, d0
+  c22 bne.b $c34
+  c24 move.w #$ff37, g_6ad4
+  c2c clr.l $30(sp)
+  c30 bra.w $e52
+  c34 subq.w #$2, sp
+  c36 move.l a4, -(sp)
+  c38 move.w #$d, -(sp)
+  c3c _TestDeviceAttribute 
+  c3e move.b (sp)+, d0
+  c40 beq.b $c5a
+  c42 subq.w #$2, sp
+  c44 move.l a4, -(sp)
+  c46 move.w #$e, -(sp)
+  c4a _TestDeviceAttribute 
+  c4c move.b (sp)+, d0
+  c4e bne.b $c5a
+  c50 movea.l (a4), a0
+  c52 cmpi.w #$1, $4(a0)
+  c58 bne.b $c6a
+  c5a move.w #$ff65, g_6ad4
+  c62 clr.l $30(sp)
+  c66 bra.w $e52
+  c70 call GetDeviceGammaTable(&loc8, a4)
+  c76 move.w d0, d5
+  c78 tst.w d5
+  c7a addq.w #$8, sp
+  c7c beq.b $c8c
+  c7e move.w d5, g_6ad4
+  c84 clr.l $30(sp)
+  c88 bra.w $e52
+  c8c movea.l loc8, a0
+  c90 movea.l loc8, a1
+  c94 move.w $6(a1), d0
+  c98 muls.w $8(a0), d0
+  c9c movea.l loc8, a0
+  ca0 move.w $a(a0), d3
+  ca6 muls.l d0, d3
+  caa move.l d3, d0
+  cac asr.l #$2, d0
+  cae lsr.l #$8, d0
+  cb0 lsr.l #$8, d0
+  cb2 lsr.l #$8, d0
+  cb4 lsr.l #$5, d0
+  cb6 add.l d3, d0
+  cb8 asr.l #$3, d0
+  cba movea.l loc8, a0
+  cbe move.w $4(a0), d3
+  cc4 moveq #$e, d2
+  cc6 add.l d2, d3
+  cc8 add.l d0, d3
+  cca moveq #$18, d0
+  ccc _NewHandle 
+  cce movea.l a0, a3
+  cd0 moveq #$0, d0
+  cd2 move.w d3, d0
+  cd4 _NewHandle 
+  cd6 move.l a0, loc4
+  cda moveq #$0, d0
+  cdc move.w d3, d0
+  cde _NewHandle 
+  ce0 movea.l a0, a2
+  ce2 move.l a3, d0
+  ce4 beq.b $cf0
+  ce6 tst.l loc4
+  cea beq.b $cf0
+  cec move.l a2, d0
+  cee bne.b $d34
+  cf0 subq.w #$2, sp
+  cf2 move.w $220.w, (sp)
+  cf6 move.w (sp)+, d0
+  cf8 move.w d0, g_6ad4
+  cfe move.w g_6ad4, d0
+  d06 bne.b $d10
+  d08 move.w #$ff94, g_6ad4
+  d10 move.l a3, d0
+  d12 beq.b $d18
+  d14 movea.l a3, a0
+  d16 _DisposeHandle 
+  d18 tst.l loc4
+  d1c beq.b $d24
+  d1e movea.l loc4, a0
+  d22 _DisposeHandle 
+  d24 move.l a2, d0
+  d26 beq.b $d2c
+  d28 movea.l a2, a0
+  d2a _DisposeHandle 
+  d2c clr.l $30(sp)
+  d30 bra.w $e52
+  d34 movea.l loc8, a0
+  d38 movea.l loc4, a1
+  d3c movea.l (a1), a1
+  d3e moveq #$0, d0
+  d40 move.w d3, d0
+  d42 _BlockMove 
+  d44 movea.l loc4, a0
+  d48 movea.l (a0), a0
+  d4a cmpi.w #$1, $6(a0)
+  d50 bne.w $e10
+  d54 movea.l loc4, a0
+  d58 movea.l (a0), a0
+  d5a movea.l (a2), a1
+  d5c moveq #$0, d0
+  d5e move.w d3, d0
+  d60 _BlockMove 
+  d62 movea.l loc4, a0
+  d66 movea.l (a0), a0
+  d68 movea.l (a2), a1
+  d6a moveq #$0, d0
+  d6c move.w d3, d0
+  d6e _BlockMove 
+  d70 movea.l loc4, a0
+  d74 movea.l (a0), a0
+  d76 movea.l loc4, a1
+  d7a movea.l (a1), a1
+  d7c move.w $8(a1), d0
+  d80 muls.w $a(a0), d0
+  d84 move.l d0, d4
+  d86 asr.l #$2, d4
+  d88 lsr.l #$8, d4
+  d8a lsr.l #$8, d4
+  d8c lsr.l #$8, d4
+  d8e lsr.l #$5, d4
+  d90 add.l d0, d4
+  d92 asr.l #$3, d4
+  d94 moveq #$3, d0
+  d96 mulu.l d4, d0
+  d9a movea.l loc4, a0
+  d9e movea.l (a0), a0
+  da0 move.w $4(a0), d1
+  da6 moveq #$e, d2
+  da8 add.l d2, d1
+  daa add.l d0, d1
+  dac move.l d1, d0
+  dae movea.l a2, a0
+  db0 _SetHandleSize 
+  db2 movea.l (a2), a0
+  db4 movea.l (a2), a1
+  db6 addq.l #$8, a1
+  db8 addq.l #$4, a1
+  dba adda.w $4(a0), a1
+  dbe move.l a1, d5
+  dc0 movea.l d5, a0
+  dc2 movea.l d5, a1
+  dc4 lea.l (a1, d4.l), a1
+  dc8 move.l d4, d0
+  dca _BlockMove 
+  dcc movea.l d5, a0
+  dce movea.l d5, a1
+  dd0 lea.l (a1, d4.l * 2), a1
+  dd4 move.l d4, d0
+  dd6 _BlockMove 
+  dd8 movea.l (a2), a0
+  dda move.w #$3, $6(a0)
+  de4 call SetDeviceGammaTable(a2, a4)
+  dea move.w d0, d5
+  dec move.w d5, d0
+  df0 addq.w #$8, sp
+  df2 bne.b $e10
+  df4 move.l loc4, d6
+  df8 move.l a2, loc4
+  dfc subq.w #$2, sp
+  e02 call seg4+a1e(&loc4)
+  e08 move.w (sp)+, d0
+  e0a move.l d4, d0
+  e0c add.l d0, d0
+  e0e add.w d0, d3
+  e10 movea.l (a3), a0
+  e12 clr.l (a0)
+  e14 movea.l (a3), a0
+  e16 move.l a4, $4(a0)
+  e1a movea.l (a3), a0
+  e1c move.l loc4, $8(a0)
+  e22 movea.l (a3), a0
+  e24 move.l d6, $c(a0)
+  e28 movea.l (a3), a0
+  e2a move.l a2, $10(a0)
+  e2e movea.l (a3), a0
+  e30 move.w d3, $14(a0)
+  e34 movea.l loc4, a0
+  e38 movea.l (a0), a0
+  e3a cmpi.w #$3, $6(a0)
+  e40 bne.b $e46
+  e42 moveq #$1, d0
+  e44 bra.b $e48
+  e46 moveq #$0, d0
+  e48 movea.l (a3), a0
+  e4a move.b d0, $16(a0)
+  e4e move.l a3, $30(sp)
+  e52 movem.l (sp)+, d3-d6/a2-a4
+  e56 unlk a6
+  e58 rtd #$4
+
+; SETMONITORSTATE   (seg 6 +000e70, 68 bytes)
+  e70 link.w a6, #$0
+  e74 movem.l a2-a3, -(sp)
+  e78 movea.l arg8, a2
+  e7c bra.b $ea2
+  e7e movea.l (a2), a0
+  e80 movea.l $c(a0), a3
+  e84 move.l a3, d0
+  e86 bne.b $e8e
+  e88 movea.l (a2), a0
+  e8a movea.l $8(a0), a3
+  e8e move.l a3, -(sp)
+  e90 movea.l (a2), a0
+  e96 call SetDeviceGammaTable($4(a0))
+  e9c movea.l (a2), a0
+  e9e movea.l (a0), a2
+  ea0 addq.w #$8, sp
+  ea2 move.l a2, d0
+  ea4 bne.b $e7e
+  ea6 clr.w $14(sp)
+  eaa movem.l (sp)+, a2-a3
+  eae unlk a6
+  eb0 rtd #$4
+
+; DISPOSEGAMMAREF   (seg 6 +000ec6, 84 bytes)
+  ec6 link.w a6, #$0
+  eca movem.l a2-a3, -(sp)
+  ece movea.l arg8, a2
+  ed2 move.l a2, d0
+  ed4 bne.b $f08
+  ed6 move.w #$ff93, $14(sp)
+  edc bra.b $f10
+  ede movea.l (a2), a0
+  ee0 movea.l (a0), a3
+  ee2 movea.l (a2), a0
+  ee4 tst.l $c(a0)
+  ee8 beq.b $ef2
+  eea movea.l (a2), a0
+  eec movea.l $c(a0), a0
+  ef0 _DisposeHandle 
+  ef2 movea.l (a2), a0
+  ef4 movea.l $8(a0), a0
+  ef8 _DisposeHandle 
+  efa movea.l (a2), a0
+  efc movea.l $10(a0), a0
+  f00 _DisposeHandle 
+  f02 movea.l a2, a0
+  f04 _DisposeHandle 
+  f06 movea.l a3, a2
+  f08 move.l a2, d0
+  f0a bne.b $ede
+  f0c clr.w $14(sp)
+  f10 movem.l (sp)+, a2-a3
+  f14 unlk a6
+  f16 rtd #$4
+
+; FADETOGAMMA   (seg 6 +000f2c, 38 bytes)
+  f2c link.w a6, #$0
+  f42 call XHighLevelFade(arg8, arga, argc, 0x1, 0)
+  f48 move.w d0, $1e(sp)
+  f4c unlk a6
+  f4e rtd #$8
+
+; XHighLevelFade   (seg 6 +000f60, 296 bytes)
+  f60 link.w a6, #$0
+  f64 movem.l d3-d7/a2-a4, -(sp)
+  f68 movea.l arg8, a4
+  f6c movea.l arge, a3
+  f70 move.w arg12, d7
+  f74 move.w #$b437, d5
+  f78 move.w arg14, d0
+  f7c moveq #$4, d1
+  f7e and.l d1, d0
+  f80 beq.b $f8c
+  f82 bra.b $f86
+  f84 lsr.w #$1, d7
+  f86 cmpi.w #$100, d7
+  f8a bhi.b $f84
+  f8c moveq #$0, d0
+  f8e move.w arg14, d0
+  f92 subq.l #$2, d0
+  f94 beq.b $fa0
+  f96 subq.l #$2, d0
+  f98 beq.b $fa6
+  f9a subq.l #$1, d0
+  f9c beq.b $fa6
+  f9e bra.b $fb4
+  fa0 moveq #$0, d6
+  fa2 move.w d7, d6
+  fa4 bra.b $fbc
+  fa6 moveq #$0, d0
+  fa8 move.w d7, d0
+  faa moveq #$0, d6
+  fac move.w d7, d6
+  fae muls.l d0, d6
+  fb2 bra.b $fbc
+  fb4 move.w #$b437, d0
+  fb8 bra.w $1080
+  fbc call HideCursorSafe()
+  fc2 move.l a4, d0
+  fc4 beq.b $fd6
+  fc6 subq.w #$4, sp
+  fca call GET1MONITORSTATE(a4)
+  fd0 movea.l (sp)+, a0
+  fd2 movea.l a0, a2
+  fd4 bra.b $fe2
+  fd6 subq.w #$4, sp
+  fd8 call GETMONITORSTATE()
+  fde movea.l (sp)+, a0
+  fe0 movea.l a0, a2
+  fe2 move.l a2, d0
+  fe4 bne.b $ff0
+  fe6 move.w g_6ad4, d0
+  fec bra.w $1080
+  ff0 moveq #$0, d3
+  ff2 bra.b $105e
+  ff4 moveq #$0, d0
+  ff6 move.w arg14, d0
+  ffa subq.l #$2, d0
+  ffc beq.b $1008
+  ffe subq.l #$2, d0
+ 1000 beq.b $100c
+ 1002 subq.l #$1, d0
+ 1004 beq.b $1014
+ 1006 bra.b $1028
+ 1008 move.l d3, d4
+ 100a bra.b $1028
+ 100c move.l d3, d4
+ 100e mulu.l d3, d4
+ 1012 bra.b $1028
+ 1014 moveq #$0, d4
+ 1016 move.w d7, d4
+ 1018 sub.l d3, d4
+ 101a moveq #$0, d1
+ 101c move.w d7, d1
+ 101e sub.l d3, d1
+ 1020 mulu.l d4, d1
+ 1024 move.l d6, d4
+ 1026 sub.l d1, d4
+ 1028 tst.b argc
+ 102c bne.b $1044
+ 102e subq.w #$2, sp
+ 1038 call FADEFROMGAMMATOCOLOR(a2, a3, d4, d6)
+ 103e move.w (sp)+, d0
+ 1040 move.w d0, d5
+ 1042 bra.b $1058
+ 1044 subq.w #$2, sp
+ 104e call FADEFROMGAMMATOGAMMA(a2, a3, d4, d6)
+ 1054 move.w (sp)+, d0
+ 1056 move.w d0, d5
+ 1058 tst.w d5
+ 105a bne.b $1066
+ 105c addq.l #$1, d3
+ 105e moveq #$0, d0
+ 1060 move.w d7, d0
+ 1062 cmp.l d0, d3
+ 1064 bls.b $ff4
+ 1066 subq.w #$2, sp
+ 106a call DISPOSEGAMMAREF(a2)
+ 1070 move.w (sp)+, d0
+ 1072 call ShowCursorSafe()
+ 1078 move.w d5, g_6ad4
+ 107e move.w d5, d0
+ 1080 movem.l (sp)+, d3-d7/a2-a4
+ 1084 unlk a6
+ 1086 rts 
+
+; FADEFROMGAMMATOCOLOR   (seg 6 +00109a, 122 bytes)
+ 109a link.w a6, #$0
+ 109e movem.l d3-d5/a2-a3, -(sp)
+ 10a2 movea.l arg10, a2
+ 10a6 movea.l argc, a3
+ 10aa move.w arga, d5
+ 10ae move.w arg8, d4
+ 10b2 clr.w g_6ad4
+ 10b8 bra.b $10fe
+ 10c2 call XCalcFadeToColor(d4, d5, a3, a2)
+ 10c8 move.w d0, d3
+ 10ca tst.w d3
+ 10cc lea.l $c(sp), sp
+ 10d0 beq.b $10da
+ 10d2 move.w d3, g_6ad4
+ 10d8 bra.b $10fa
+ 10da movea.l (a2), a0
+ 10dc move.l $10(a0), -(sp)
+ 10e0 movea.l (a2), a0
+ 10e6 call SetDeviceGammaTable($4(a0))
+ 10ec move.w d0, d3
+ 10ee tst.w d3
+ 10f0 addq.w #$8, sp
+ 10f2 beq.b $10fa
+ 10f4 move.w d3, g_6ad4
+ 10fa movea.l (a2), a0
+ 10fc movea.l (a0), a2
+ 10fe move.l a2, d0
+ 1100 bne.b $10ba
+ 1102 move.w g_6ad4, $28(sp)
+ 110a movem.l (sp)+, d3-d5/a2-a3
+ 110e unlk a6
+ 1110 rtd #$c
+
+; FADEFROMGAMMATOGAMMA   (seg 6 +00112c, 122 bytes)
+ 112c link.w a6, #$0
+ 1130 movem.l d3-d5/a2-a3, -(sp)
+ 1134 movea.l arg10, a2
+ 1138 movea.l argc, a3
+ 113c move.w arga, d5
+ 1140 move.w arg8, d4
+ 1144 clr.w g_6ad4
+ 114a bra.b $1190
+ 1154 call XCalcFadeToGamma(d4, d5, a3, a2)
+ 115a move.w d0, d3
+ 115c tst.w d3
+ 115e lea.l $c(sp), sp
+ 1162 beq.b $116c
+ 1164 move.w d3, g_6ad4
+ 116a bra.b $118c
+ 116c movea.l (a2), a0
+ 116e move.l $10(a0), -(sp)
+ 1172 movea.l (a2), a0
+ 1178 call SetDeviceGammaTable($4(a0))
+ 117e move.w d0, d3
+ 1180 tst.w d3
+ 1182 addq.w #$8, sp
+ 1184 beq.b $118c
+ 1186 move.w d3, g_6ad4
+ 118c movea.l (a2), a0
+ 118e movea.l (a0), a2
+ 1190 move.l a2, d0
+ 1192 bne.b $114c
+ 1194 move.w g_6ad4, $28(sp)
+ 119c movem.l (sp)+, d3-d5/a2-a3
+ 11a0 unlk a6
+ 11a2 rtd #$c
+
+; CALCFADETOCOLOR   (seg 6 +0011be, 240 bytes)
+ 11be link.w a6, #$0
+ 11c2 movem.l d3-d7/a2-a4, -(sp)
+ 11c6 move.l arg10, d3
+ 11ca moveq #$0, d7
+ 11cc suba.l a2, a2
+ 11ce clr.w g_6ad4
+ 11d4 bra.w $129a
+ 11d8 movea.l d3, a0
+ 11da movea.l (a0), a0
+ 11dc move.w $14(a0), d5
+ 11ee call XCalcFadeToColor(arg8, arga, argc, d3)
+ 11f4 move.w d0, d4
+ 11f6 moveq #$18, d0
+ 11f8 _NewHandle 
+ 11fa movea.l a0, a3
+ 11fc moveq #$0, d0
+ 11fe move.w d5, d0
+ 1200 _NewHandle 
+ 1202 movea.l a0, a4
+ 1204 moveq #$0, d0
+ 1206 move.w d5, d0
+ 1208 _NewHandle 
+ 120a move.l a0, d4
+ 120c move.l a3, d0
+ 120e lea.l $c(sp), sp
+ 1212 beq.b $121c
+ 1214 move.l a4, d0
+ 1216 beq.b $121c
+ 1218 tst.l d4
+ 121a bne.b $125a
+ 121c subq.w #$2, sp
+ 121e move.w $220.w, (sp)
+ 1222 move.w (sp)+, d0
+ 1224 move.w d0, g_6ad4
+ 122a move.w g_6ad4, d0
+ 1232 bne.b $123c
+ 1234 move.w #$ff94, g_6ad4
+ 123c move.l a3, d0
+ 123e beq.b $1244
+ 1240 movea.l a3, a0
+ 1242 _DisposeHandle 
+ 1244 move.l a4, d0
+ 1246 beq.b $124c
+ 1248 movea.l a4, a0
+ 124a _DisposeHandle 
+ 124c tst.l d4
+ 124e beq.b $1254
+ 1250 movea.l d4, a0
+ 1252 _DisposeHandle 
+ 1254 move.l d7, $34(sp)
+ 1258 bra.b $12a4
+ 125a movea.l d3, a0
+ 125c move.l (a0), d6
+ 125e movea.l (a3), a2
+ 1260 movea.l d6, a0
+ 1262 movea.l $10(a0), a0
+ 1266 movea.l (a0), a0
+ 1268 movea.l (a4), a1
+ 126a moveq #$0, d0
+ 126c move.w d5, d0
+ 126e _BlockMove 
+ 1270 move.l d7, (a2)
+ 1272 movea.l d6, a0
+ 1274 move.l $4(a0), $4(a2)
+ 127a move.l a4, $8(a2)
+ 127e move.l d4, $10(a2)
+ 1282 clr.l $c(a2)
+ 1286 move.w d5, $14(a2)
+ 128a movea.l d6, a0
+ 128c move.b $16(a0), $16(a2)
+ 1292 move.l a3, d7
+ 1294 movea.l d3, a0
+ 1296 movea.l (a0), a0
+ 1298 move.l (a0), d3
+ 129a tst.l d3
+ 129c bne.w $11d8
+ 12a0 move.l d7, $34(sp)
+ 12a4 movem.l (sp)+, d3-d7/a2-a4
+ 12a8 unlk a6
+ 12aa rtd #$c
+
+; XCalcFadeToColor   (seg 6 +0012c0, 264 bytes)
+ 12c0 link.w a6, #$0
+ 12c4 movem.l d3-d7/a2-a4, -(sp)
+ 12c8 movea.l arg8, a2
+ 12cc movea.l (a2), a0
+ 12ce movea.l $4(a0), a3
+ 12d2 movea.l (a2), a0
+ 12d4 movea.l $8(a0), a3
+ 12d8 movea.l (a2), a0
+ 12da movea.l $10(a0), a4
+ 12de movea.l (a2), a0
+ 12e0 tst.b $16(a0)
+ 12e4 bne.b $12ee
+ 12e6 move.w #$b436, d0
+ 12ea bra.w $13c0
+ 12ee movea.l (a3), a0
+ 12f0 move.w $4(a0), d0
+ 12f6 moveq #$e, d1
+ 12f8 add.l d1, d0
+ 12fa movea.l (a3), a0
+ 12fc movea.l (a4), a1
+ 12fe _BlockMove 
+ 1300 movea.l (a4), a0
+ 1302 move.w $a(a0), d0
+ 1308 moveq #$1, d7
+ 130a lsl.l d0, d7
+ 130c subq.l #$1, d7
+ 130e cmpi.w #$100, arg12
+ 1314 bls.b $1332
+ 1316 moveq #$0, d0
+ 1318 move.w arg12, d0
+ 131c moveq #$0, d1
+ 131e move.w arg10, d1
+ 1322 lsl.l #$8, d1
+ 1324 divs.l d0, d1
+ 1328 move.w d1, arg10
+ 132c move.w #$100, arg12
+ 1332 movea.l (a3), a0
+ 1334 movea.l (a3), a2
+ 1336 addq.l #$8, a2
+ 1338 addq.l #$4, a2
+ 133a adda.w $4(a0), a2
+ 133e movea.l (a4), a0
+ 1340 movea.l (a4), a3
+ 1342 addq.l #$8, a3
+ 1344 addq.l #$4, a3
+ 1346 adda.w $4(a0), a3
+ 134a movea.l (a4), a0
+ 134c movea.w $8(a0), a1
+ 1350 move.l a1, d4
+ 1352 moveq #$0, d6
+ 1354 bra.b $13b2
+ 1356 moveq #$3, d0
+ 1358 cmp.l d0, d6
+ 135a bcc.b $1360
+ 135c move.l d6, d0
+ 135e bra.b $1362
+ 1360 moveq #$2, d0
+ 1362 move.l d0, d3
+ 1364 movea.l argc, a0
+ 1368 moveq #$0, d5
+ 136a move.w (a0, d3.l * 2), d5
+ 136e mulu.l d7, d5
+ 1372 divu.l #$ffff, d5
+ 137a moveq #$0, d3
+ 137c bra.b $13a8
+ 137e moveq #$0, d0
+ 1380 move.w arg12, d0
+ 1384 moveq #$0, d1
+ 1386 move.b (a2, d3.l), d1
+ 138a sub.l d5, d1
+ 138c moveq #$0, d2
+ 138e move.w arg10, d2
+ 1392 muls.l d1, d2
+ 1396 divs.l d0, d2
+ 139a moveq #$0, d0
+ 139c move.b (a2, d3.l), d0
+ 13a0 sub.l d2, d0
+ 13a2 move.b d0, (a3, d3.l)
+ 13a6 addq.l #$1, d3
+ 13a8 cmp.l d4, d3
+ 13aa bcs.b $137e
+ 13ac adda.l d4, a2
+ 13ae adda.l d4, a3
+ 13b0 addq.l #$1, d6
+ 13b2 movea.l (a4), a0
+ 13b4 move.w $6(a0), d0
+ 13ba cmp.l d0, d6
+ 13bc bcs.b $1356
+ 13be moveq #$0, d0
+ 13c0 movem.l (sp)+, d3-d7/a2-a4
+ 13c4 unlk a6
+ 13c6 rts 
+
+; XCalcFadeToGamma   (seg 6 +0013dc, 284 bytes)
+ 13dc link.w a6, #$0
+ 13e0 movem.l d3-d6/a2-a4, -(sp)
+ 13e4 movea.l arg8, a2
+ 13e8 move.w arg10, d6
+ 13ec move.w arg12, d5
+ 13f0 movea.l (a2), a0
+ 13f2 movea.l $4(a0), a3
+ 13f6 movea.l (a2), a0
+ 13f8 movea.l $8(a0), a4
+ 13fc movea.l (a2), a0
+ 13fe move.l $10(a0), d3
+ 1402 movea.l argc, a2
+ 1406 bra.b $1414
+ 1408 movea.l (a2), a0
+ 140a cmpa.l $4(a0), a3
+ 140e beq.b $1418
+ 1410 movea.l (a2), a0
+ 1412 movea.l (a0), a2
+ 1414 move.l a2, d0
+ 1416 bne.b $1408
+ 1418 move.l a2, d0
+ 141a bne.b $1422
+ 141c moveq #$d5, d0
+ 141e bra.w $14f0
+ 1422 movea.l (a2), a0
+ 1424 move.l $8(a0), d4
+ 1428 movea.l (a4), a0
+ 142a movea.l d4, a1
+ 142c movea.l (a1), a1
+ 142e move.w $6(a1), d0
+ 1432 cmp.w $6(a0), d0
+ 1436 bne.b $1448
+ 1438 movea.l (a4), a0
+ 143a movea.l d4, a1
+ 143c movea.l (a1), a1
+ 143e move.w $8(a1), d0
+ 1442 cmp.w $8(a0), d0
+ 1446 beq.b $1450
+ 1448 move.w #$ff65, d0
+ 144c bra.w $14f0
+ 1450 movea.l (a4), a0
+ 1452 move.w $4(a0), d0
+ 1458 moveq #$e, d1
+ 145a add.l d1, d0
+ 145c movea.l (a4), a0
+ 145e movea.l d3, a1
+ 1460 movea.l (a1), a1
+ 1462 _BlockMove 
+ 1464 cmpi.w #$100, d5
+ 1468 bls.b $147e
+ 146a moveq #$0, d0
+ 146c move.w d5, d0
+ 146e moveq #$0, d1
+ 1470 move.w d6, d1
+ 1472 lsl.l #$8, d1
+ 1474 divs.l d0, d1
+ 1478 move.w d1, d6
+ 147a move.w #$100, d5
+ 147e movea.l (a4), a0
+ 1480 movea.l (a4), a2
+ 1482 addq.l #$8, a2
+ 1484 addq.l #$4, a2
+ 1486 adda.w $4(a0), a2
+ 148a movea.l d4, a0
+ 148c movea.l (a0), a0
+ 148e movea.l d4, a3
+ 1490 movea.l (a3), a3
+ 1492 addq.l #$8, a3
+ 1494 addq.l #$4, a3
+ 1496 adda.w $4(a0), a3
+ 149a movea.l d3, a0
+ 149c movea.l (a0), a0
+ 149e movea.l d3, a4
+ 14a0 movea.l (a4), a4
+ 14a2 addq.l #$8, a4
+ 14a4 addq.l #$4, a4
+ 14a6 adda.w $4(a0), a4
+ 14aa movea.l d3, a0
+ 14ac movea.l (a0), a0
+ 14ae movea.l d3, a1
+ 14b0 movea.l (a1), a1
+ 14b2 move.w $8(a1), d4
+ 14b6 muls.w $6(a0), d4
+ 14ba moveq #$0, d3
+ 14bc bra.b $14ea
+ 14be moveq #$0, d0
+ 14c0 move.w d5, d0
+ 14c2 moveq #$0, d1
+ 14c4 move.b (a3, d3.l), d1
+ 14c8 moveq #$0, d2
+ 14ca move.b (a2, d3.l), d2
+ 14ce sub.l d1, d2
+ 14d0 moveq #$0, d1
+ 14d2 move.w d6, d1
+ 14d4 muls.l d2, d1
+ 14d8 divs.l d0, d1
+ 14dc moveq #$0, d0
+ 14de move.b (a2, d3.l), d0
+ 14e2 sub.l d1, d0
+ 14e4 move.b d0, (a4, d3.l)
+ 14e8 addq.l #$1, d3
+ 14ea cmp.l d4, d3
+ 14ec bcs.b $14be
+ 14ee moveq #$0, d0
+ 14f0 movem.l (sp)+, d3-d6/a2-a4
+ 14f4 unlk a6
+ 14f6 rts 
+
+; GetDeviceGammaTable   (seg 6 +00150c, 72 bytes)
+ 150c link.w a6, #$ffce
+ 1510 move.l d3, -(sp)
+ 1512 moveq #$0, d3
+ 1514 movea.l argc, a0
+ 1518 clr.l (a0)
+ 1524 call seg5+dc(&$32.w, 0, &loc32)
+ 152a move.w #$8, loc18
+ 1530 movea.l arg8, a0
+ 1534 movea.l (a0), a0
+ 1536 move.w (a0), loc1a
+ 153a move.l argc, loc16
+ 1540 lea.l loc32, a0
+ 1544 _Status 
+ 1546 move.w d0, d3
+ 1548 move.w d3, d0
+ 154a lea.l $c(sp), sp
+ 154e move.l (sp)+, d3
+ 1550 unlk a6
+ 1552 rts 
+
+; SetDeviceGammaTable   (seg 6 +00156a, 118 bytes)
+ 156a link.w a6, #$ffce
+ 156e movem.l d3/a2-a4, -(sp)
+ 1572 movea.l arg8, a4
+ 1576 moveq #$0, d3
+ 1582 call seg5+dc(&$32.w, 0, &loc32)
+ 1588 move.w #$4, loc18
+ 158e movea.l (a4), a0
+ 1590 move.w (a0), loc1a
+ 1594 move.l argc, loc16
+ 159a lea.l loc32, a0
+ 159e _Control 
+ 15a0 move.w d0, d3
+ 15a2 move.w d3, d0
+ 15a6 lea.l $c(sp), sp
+ 15aa bne.b $15d6
+ 15ac subq.w #$4, sp
+ 15ae _GetGDevice 
+ 15b0 movea.l (sp)+, a0
+ 15b2 movea.l a0, a3
+ 15b4 move.l a4, -(sp)
+ 15b6 _SetGDevice 
+ 15b8 movea.l (a4), a0
+ 15ba movea.l $16(a0), a0
+ 15be movea.l (a0), a0
+ 15c0 movea.l $2a(a0), a0
+ 15c4 movea.l (a0), a2
+ 15c6 clr.w -(sp)
+ 15c8 move.w $6(a2), -(sp)
+ 15cc pea.l $8(a2)
+ 15d0 _SetEntries 
+ 15d2 move.l a3, -(sp)
+ 15d4 _SetGDevice 
+ 15d6 move.w d3, d0
+ 15d8 movem.l (sp)+, d3/a2-a4
+ 15dc unlk a6
+ 15de rts 
+
+; ColorGamma_TrapAvailable   (seg 6 +0015f6, 70 bytes)
+ 15f6 link.w a6, #$fffc
+ 15fa subq.w #$4, sp
+ 1604 call seg4+6b0(0xa89f, 0x1)
+ 160a movea.l (sp)+, a0
+ 160c move.l a0, loc4
+ 1610 subq.w #$4, sp
+ 1612 move.w arg8, -(sp)
+ 1616 btst.b #$3, arg8
+ 161c beq.b $1622
+ 161e moveq #$1, d0
+ 1620 bra.b $1624
+ 1622 moveq #$0, d0
+ 1626 call seg4+6b0(d0)
+ 162c movea.l (sp)+, a0
+ 162e cmpa.l loc4, a0
+ 1632 sne.b d0
+ 1634 neg.b d0
+ 1638 unlk a6
+ 163a rts 
+
+; SetTextDItem   (seg 6 +001658, 106 bytes)
+ 1658 link.w a6, #$fff2
+ 165c move.l arg8, -(sp)
+ 1660 move.w argc, -(sp)
+ 1664 pea.l loc2
+ 1668 pea.l loc6
+ 166c pea.l loce
+ 1670 _GetDialogItem 
+ 1672 move.w loc2, d0
+ 1676 moveq #$7f, d1
+ 1678 and.l d1, d0
+ 167a move.w d0, loc2
+ 167e move.w loc2, d0
+ 1684 cmpi.l #$10, d0
+ 168a bhi.b $16b8
+ 168c subq.w #$3, d0
+ 168e blt.b $16ac
+ 1690 beq.b $16b8
+ 1692 subq.w #$4, d0
+ 1694 blt.b $16ac
+ 1696 beq.b $16b8
+ 1698 subq.w #$1, d0
+ 169a beq.b $16a0
+ 169c subq.w #$8, d0
+ 169e blt.b $16b8
+ 16a0 move.l loc6, -(sp)
+ 16a4 move.l arge, -(sp)
+ 16a8 _SetDialogItemText 
+ 16aa bra.b $16be
+ 16ac move.l loc6, -(sp)
+ 16b0 move.l arge, -(sp)
+ 16b4 _trap_a95f 
+ 16b6 bra.b $16be
+ 16b8 move.w #$1, -(sp)
+ 16bc _SysBeep 
+ 16be unlk a6
+ 16c0 rts 
+
+; GetTextDItem   (seg 6 +0016d2, 112 bytes)
+ 16d2 link.w a6, #$fff2
+ 16d6 move.l a2, -(sp)
+ 16d8 movea.l arge, a2
+ 16dc move.l arg8, -(sp)
+ 16e0 move.w argc, -(sp)
+ 16e4 pea.l loc2
+ 16e8 pea.l loc6
+ 16ec pea.l loce
+ 16f0 _GetDialogItem 
+ 16f2 move.w loc2, d0
+ 16f6 moveq #$7f, d1
+ 16f8 and.l d1, d0
+ 16fa move.w d0, loc2
+ 16fe clr.b (a2)
+ 1700 move.w loc2, d0
+ 1706 cmpi.l #$10, d0
+ 170c bhi.b $1736
+ 170e subq.w #$3, d0
+ 1710 blt.b $172c
+ 1712 beq.b $1736
+ 1714 subq.w #$4, d0
+ 1716 blt.b $172c
+ 1718 beq.b $1736
+ 171a subq.w #$1, d0
+ 171c beq.b $1722
+ 171e subq.w #$8, d0
+ 1720 blt.b $1736
+ 1722 move.l loc6, -(sp)
+ 1726 move.l a2, -(sp)
+ 1728 _GetDialogItemText 
+ 172a bra.b $173c
+ 172c move.l loc6, -(sp)
+ 1730 move.l a2, -(sp)
+ 1732 _trap_a95e 
+ 1734 bra.b $173c
+ 1736 move.w #$1, -(sp)
+ 173a _SysBeep 
+ 173c movea.l (sp)+, a2
+ 173e unlk a6
+ 1740 rts 
+
+; InitMusic   (seg 6 +001752, 260 bytes)
+ 1752 link.w a6, #$fffe
+ 1756 clr.w loc2
+ 175a tst.b g_6abe
+ 1760 bne.w $1852
+ 1764 clr.b g_6abe
+ 176a tst.b g_6ac0
+ 1770 beq.b $17d0
+ 1772 tst.l g_6aca
+ 1778 beq.b $17a4
+ 177a subq.w #$4, sp
+ 177c move.l g_6aca, -(sp)
+ 1782 clr.l -(sp)
+ 1784 move.l #$4000d, -(sp)
+ 178a moveq #$0, d0
+ 178c _ComponentDispatch 
+ 178e move.l (sp)+, d0
+ 1790 subq.w #$2, sp
+ 1792 move.l g_6aca, -(sp)
+ 1798 moveq #$8, d0
+ 179a _ComponentDispatch 
+ 179c move.w (sp)+, d0
+ 179e clr.l g_6aca
+ 17a4 tst.l g_6ac6
+ 17aa beq.b $17ba
+ 17ac movea.l g_6ac6, a0
+ 17b2 _DisposePtr 
+ 17b4 clr.l g_6ac6
+ 17ba tst.l g_6ac2
+ 17c0 beq.b $17d0
+ 17c2 movea.l g_6ac2, a0
+ 17c8 _DisposePtr 
+ 17ca clr.l g_6ac2
+ 17d0 clr.l g_6ac2
+ 17d6 clr.l g_6ac6
+ 17dc clr.l g_6aca
+ 17e2 call IsQuickTimeInstalled()
+ 17e8 tst.b d0
+ 17ea beq.b $17f6
+ 17ec move.b #$1, g_6ac0
+ 17f4 bra.b $17fc
+ 17f6 clr.b g_6ac0
+ 17fc tst.b g_6ac0
+ 1802 beq.b $1852
+ 1804 tst.b g_6ac1
+ 180a bne.b $181c
+ 180c subq.w #$2, sp
+ 180e moveq #$1, d0
+ 1810 _trap_aaaa 
+ 1812 move.w (sp)+, d0
+ 1814 move.b #$1, g_6ac1
+ 181c subq.w #$4, sp
+ 181e move.l #$74756e65, -(sp)
+ 1824 clr.l -(sp)
+ 1826 moveq #$21, d0
+ 1828 _ComponentDispatch 
+ 182a movea.l (sp)+, a0
+ 182c move.l a0, g_6aca
+ 1832 tst.l g_6aca
+ 1838 bne.b $1842
+ 183a clr.b g_6ac0
+ 1840 bra.b $1852
+ 1842 move.b #$1, g_6abe
+ 184a move.b #$1, g_6abf
+ 1852 unlk a6
+ 1854 rts 
+
+; SetMusic   (seg 6 +001862, 678 bytes)
+ 1862 link.w a6, #$fffc
+ 1866 movem.l d3-d7/a2, -(sp)
+ 186a move.w arg8, d4
+ 186e moveq #$45, d3
+ 1870 moveq #$0, d5
+ 1872 move.w d4, g_eaa
+ 1878 tst.b g_6abe
+ 187e beq.w $1b00
+ 1882 tst.b g_617d
+ 1888 beq.w $1b00
+ 188c subq.w #$2, sp
+ 188e _CurResFile 
+ 1890 move.w (sp)+, d0
+ 1892 move.w d0, d6
+ 1894 tst.b g_7f22
+ 189a beq.b $18b0
+ 189c subq.w #$2, sp
+ 189e pea.l g_7f24
+ 18a4 _OpenResFile 
+ 18a6 move.w (sp)+, d0
+ 18a8 move.w d0, g_7f20
+ 18ae bra.b $18c8
+ 18b0 subq.w #$2, sp
+ 18b2 pea.l g_70d8
+ 18b8 move.b #$1, -(sp)
+ 18bc moveq #$d, d0
+ 18be _HighLevelFSDispatch 
+ 18c0 move.w (sp)+, d0
+ 18c2 move.w d0, g_7f20
+ 18c8 move.w g_7f20, -(sp)
+ 18ce _UseResFile 
+ 18d0 tst.b g_6ac0
+ 18d6 beq.w $1af4
+ 18da tst.b g_6ac1
+ 18e0 beq.w $1af4
+ 18e4 tst.b g_6abf
+ 18ea beq.w $1af4
+ 18ee tst.l g_6aca
+ 18f4 beq.w $1af4
+ 18f8 call ShutDownMusic()
+ 18fe call InitMusic()
+ 1904 tst.l g_6ac6
+ 190a beq.b $191a
+ 190c movea.l g_6ac6, a0
+ 1912 _DisposePtr 
+ 1914 clr.l g_6ac6
+ 191a tst.l g_6ac2
+ 1920 beq.b $1930
+ 1922 movea.l g_6ac2, a0
+ 1928 _DisposePtr 
+ 192a clr.l g_6ac2
+ 1930 cmpi.w #$ffff, d4
+ 1934 beq.w $1ae4
+ 1938 subq.w #$4, sp
+ 193a move.l #$54756e65, -(sp)
+ 1940 move.w d4, -(sp)
+ 1942 _GetResource 
+ 1944 movea.l (sp)+, a0
+ 1946 movea.l a0, a2
+ 1948 subq.w #$2, sp
+ 194a _ResError 
+ 194c move.w (sp)+, d0
+ 194e bne.w $1aee
+ 1952 move.l a2, d0
+ 1954 beq.w $1aee
+ 1958 subq.w #$4, sp
+ 195a move.l a2, -(sp)
+ 195c _SizeRsrc 
+ 195e move.l (sp)+, d0
+ 1960 move.l d0, d7
+ 1962 subq.w #$2, sp
+ 1964 _ResError 
+ 1966 move.w (sp)+, d0
+ 1968 beq.b $1984
+ 1972 call ReportError(d3, &g_e66)
+ 1978 clr.b g_6ac0
+ 197e addq.w #$6, sp
+ 1980 bra.w $1af4
+ 1984 movea.l a2, a0
+ 1986 _MoveHHi 
+ 1988 _HLock 
+ 198a movea.l a2, a0
+ 198c _HNoPurge 
+ 198e movea.l (a2), a0
+ 1990 lea.l loc4, a1
+ 1994 moveq #$4, d0
+ 1996 _BlockMove 
+ 1998 move.l loc4, d0
+ 199c _NewPtr 
+ 199e move.l a0, g_6ac6
+ 19a4 tst.l g_6ac6
+ 19aa bne.b $19c6
+ 19b4 call ReportError(d3, &g_e66)
+ 19ba clr.b g_6ac0
+ 19c0 addq.w #$6, sp
+ 19c2 bra.w $1af4
+ 19c6 movea.l (a2), a0
+ 19c8 movea.l g_6ac6, a1
+ 19ce move.l loc4, d0
+ 19d2 _BlockMove 
+ 19d4 subq.w #$4, sp
+ 19d6 move.l g_6aca, -(sp)
+ 19dc move.l g_6ac6, -(sp)
+ 19e2 move.l loc4, -(sp)
+ 19e6 move.l #$8001c, -(sp)
+ 19ec moveq #$0, d0
+ 19ee _ComponentDispatch 
+ 19f0 move.l (sp)+, d0
+ 19f2 move.w d0, d3
+ 19f4 move.w d3, d0
+ 19f8 beq.b $1a14
+ 1a02 call ReportError(d3, &g_e12)
+ 1a08 clr.b g_6ac0
+ 1a0e addq.w #$6, sp
+ 1a10 bra.w $1af4
+ 1a14 move.l d7, d5
+ 1a16 sub.l loc4, d5
+ 1a1a move.l d5, d0
+ 1a1c _NewPtr 
+ 1a1e move.l a0, g_6ac2
+ 1a24 tst.l g_6ac2
+ 1a2a bne.b $1a46
+ 1a34 call ReportError(d3, &g_e66)
+ 1a3a clr.b g_6ac0
+ 1a40 addq.w #$6, sp
+ 1a42 bra.w $1af4
+ 1a46 movea.l (a2), a0
+ 1a48 move.l loc4, d0
+ 1a4c lea.l (a0, d0.l), a0
+ 1a50 movea.l g_6ac2, a1
+ 1a56 move.l d5, d0
+ 1a58 _BlockMove 
+ 1a5a tst.b g_13c2e
+ 1a60 bne.b $1a78
+ 1a62 move.w g_6180, d0
+ 1a68 muls.w #$1c71, d0
+ 1a6e call SetMusicVolume(d0)
+ 1a76 bra.b $1a82
+ 1a7a call SetMusicVolume(0)
+ 1a82 tst.b g_6abf
+ 1a88 beq.b $1ada
+ 1a8a subq.w #$4, sp
+ 1a8c move.l g_6aca, -(sp)
+ 1a92 move.l g_6ac2, -(sp)
+ 1a98 move.l #$10000, -(sp)
+ 1a9e clr.l -(sp)
+ 1aa0 move.l #$7fffffff, -(sp)
+ 1aa6 pea.l $16.w
+ 1aaa clr.l -(sp)
+ 1aac clr.l -(sp)
+ 1aae move.l #$1c000a, -(sp)
+ 1ab4 moveq #$0, d0
+ 1ab6 _ComponentDispatch 
+ 1ab8 move.l (sp)+, d0
+ 1aba move.w d0, d3
+ 1abc move.w d3, d0
+ 1ac0 beq.b $1ada
+ 1aca call ReportError(d3, &g_e12)
+ 1ad0 clr.b g_6ac0
+ 1ad6 addq.w #$6, sp
+ 1ad8 bra.b $1af4
+ 1ada movea.l a2, a0
+ 1adc _HUnlock 
+ 1ade move.l a2, -(sp)
+ 1ae0 _ReleaseResource 
+ 1ae2 bra.b $1aee
+ 1ae6 call SetMusicVolume(0)
+ 1aee move.w d4, g_eaa
+ 1af4 move.w d6, -(sp)
+ 1af6 _UseResFile 
+ 1af8 move.w g_7f20, -(sp)
+ 1afe _CloseResFile 
+ 1b00 movem.l (sp)+, d3-d7/a2
+ 1b04 unlk a6
+ 1b06 rts 
+
+; SetMusicVolume   (seg 6 +001b14, 96 bytes)
+ 1b14 link.w a6, #$fffc
+ 1b18 move.l d3, -(sp)
+ 1b1a move.l arg8, d3
+ 1b1e tst.b g_6ac0
+ 1b24 beq.b $1b6e
+ 1b26 tst.l g_6aca
+ 1b2c beq.b $1b6e
+ 1b2e tst.b g_6abf
+ 1b34 beq.b $1b6e
+ 1b36 tst.b g_6ac1
+ 1b3c beq.b $1b6e
+ 1b3e move.l d3, d0
+ 1b40 addi.l #$fffff448, d0
+ 1b46 tst.l d0
+ 1b48 bge.b $1b4e
+ 1b4a moveq #$0, d3
+ 1b4c bra.b $1b54
+ 1b4e addi.l #$fffff448, d3
+ 1b54 subq.w #$4, sp
+ 1b56 move.l g_6aca, -(sp)
+ 1b5c move.l d3, -(sp)
+ 1b5e move.l #$40010, -(sp)
+ 1b64 moveq #$0, d0
+ 1b66 _ComponentDispatch 
+ 1b68 move.l (sp)+, d0
+ 1b6a move.l d0, loc4
+ 1b6e move.l (sp)+, d3
+ 1b70 unlk a6
+ 1b72 rts 
+
+; MusicIdle   (seg 6 +001b86, 78 bytes)
+ 1b86 link.w a6, #$fffe
+ 1b8a clr.w loc2
+ 1b8e tst.b g_6ac0
+ 1b94 beq.b $1bd0
+ 1b96 tst.b g_6abf
+ 1b9c beq.b $1bd0
+ 1b9e tst.l g_6aca
+ 1ba4 beq.b $1bd0
+ 1ba6 addq.w #$1, g_6ace
+ 1bac cmpi.w #$28, g_6ace
+ 1bb4 blt.b $1bd0
+ 1bb6 subq.w #$4, sp
+ 1bb8 move.l g_6aca, -(sp)
+ 1bbe move.l #$19, -(sp)
+ 1bc4 moveq #$0, d0
+ 1bc6 _ComponentDispatch 
+ 1bc8 move.l (sp)+, d0
+ 1bca clr.w g_6ace
+ 1bd0 unlk a6
+ 1bd2 rts 
+
+; ShutDownMusic   (seg 6 +001be0, 160 bytes)
+ 1be0 link.w a6, #$0
+ 1be4 clr.b g_6abe
+ 1bea tst.b g_6ac0
+ 1bf0 beq.w $1c7c
+ 1bf4 tst.b g_6ac1
+ 1bfa beq.w $1c7c
+ 1bfe tst.b g_6abf
+ 1c04 beq.b $1c7c
+ 1c06 tst.l g_6aca
+ 1c0c beq.b $1c38
+ 1c0e subq.w #$4, sp
+ 1c10 move.l g_6aca, -(sp)
+ 1c16 clr.l -(sp)
+ 1c18 move.l #$4000d, -(sp)
+ 1c1e moveq #$0, d0
+ 1c20 _ComponentDispatch 
+ 1c22 move.l (sp)+, d0
+ 1c24 subq.w #$2, sp
+ 1c26 move.l g_6aca, -(sp)
+ 1c2c moveq #$8, d0
+ 1c2e _ComponentDispatch 
+ 1c30 move.w (sp)+, d0
+ 1c32 clr.l g_6aca
+ 1c38 tst.l g_6ac6
+ 1c3e beq.b $1c4e
+ 1c40 movea.l g_6ac6, a0
+ 1c46 _DisposePtr 
+ 1c48 clr.l g_6ac6
+ 1c4e tst.l g_6ac2
+ 1c54 beq.b $1c64
+ 1c56 movea.l g_6ac2, a0
+ 1c5c _DisposePtr 
+ 1c5e clr.l g_6ac2
+ 1c64 tst.b g_6ac1
+ 1c6a beq.b $1c76
+ 1c6c moveq #$2, d0
+ 1c6e _trap_aaaa 
+ 1c70 clr.b g_6ac1
+ 1c76 clr.b g_6abf
+ 1c7c unlk a6
+ 1c7e rts 
+
+; ImportMovie   (seg 6 +001c90, 772 bytes)
+ 1c90 link.w a6, #$fe8a
+ 1c94 movem.l d3-d7/a2-a4, -(sp)
+ 1c98 clr.l loc6c
+ 1c9c suba.l a3, a3
+ 1c9e clr.l loc64
+ 1ca2 moveq #$0, d3
+ 1ca4 call ShowCursorSafe()
+ 1caa move.l #$4d6f6f56, loc176
+ 1cb2 clr.l -(sp)
+ 1cb4 move.w #$1, -(sp)
+ 1cb8 pea.l loc176
+ 1cbc pea.l loc60
+ 1cc0 moveq #$43, d0
+ 1cc2 _trap_aaa3 
+ 1cc4 tst.b loc60
+ 1cc8 bne.b $1cd6
+ 1cce call FatalError(0x7)
+ 1cd6 call HideCursorSafe()
+ 1ce6 call seg4+a50(&loc172, 0x4012c)
+ 1cec bra.b $1cfa
+ 1cf2 call FatalError(0x12)
+ 1cfa pea.l loc172
+ 1cfe pea.l loc54
+ 1d02 clr.l -(sp)
+ 1d04 clr.l -(sp)
+ 1d06 _ParamText 
+ 1d08 clr.w loc72
+ 1d0c subq.w #$2, sp
+ 1d0e pea.l loc5a
+ 1d12 pea.l loc72
+ 1d16 move.b #$1, -(sp)
+ 1d1a move.w #$192, d0
+ 1d1e _trap_aaaa 
+ 1d20 move.w (sp)+, d0
+ 1d22 move.w d0, d5
+ 1d24 tst.w d5
+ 1d26 beq.b $1d34
+ 1d2c call FatalError(0x8)
+ 1d34 clr.l loc6c
+ 1d38 subq.w #$2, sp
+ 1d3a pea.l loc6c
+ 1d3e move.w loc72, -(sp)
+ 1d42 clr.l -(sp)
+ 1d44 clr.l -(sp)
+ 1d46 clr.w -(sp)
+ 1d48 clr.l -(sp)
+ 1d4a move.w #$f0, d0
+ 1d4e _trap_aaaa 
+ 1d50 move.w (sp)+, d0
+ 1d52 move.w d0, d5
+ 1d54 tst.w d5
+ 1d56 beq.b $1d64
+ 1d5c call FatalError(0x9)
+ 1d64 subq.w #$4, sp
+ 1d66 move.l loc6c, -(sp)
+ 1d6a moveq #$3f, d0
+ 1d6c _trap_aaaa 
+ 1d6e move.l (sp)+, d0
+ 1d70 move.l d0, loc70
+ 1d74 subq.w #$2, sp
+ 1d76 moveq #$3, d0
+ 1d78 _trap_aaaa 
+ 1d7a move.w (sp)+, d0
+ 1d7c move.w d0, d5
+ 1d7e tst.w d5
+ 1d80 beq.b $1d8e
+ 1d86 call FatalError(0xa)
+ 1d8e moveq #$1, d7
+ 1d90 bra.w $1f84
+ 1d94 subq.w #$4, sp
+ 1d96 move.l loc6c, -(sp)
+ 1d9a move.l d7, -(sp)
+ 1d9c move.w #$117, d0
+ 1da0 _trap_aaaa 
+ 1da2 movea.l (sp)+, a0
+ 1da4 movea.l a0, a2
+ 1da6 subq.w #$2, sp
+ 1da8 moveq #$3, d0
+ 1daa _trap_aaaa 
+ 1dac move.w (sp)+, d0
+ 1dae move.w d0, d5
+ 1db0 tst.w d5
+ 1db2 beq.b $1dc0
+ 1db8 call FatalError(0xa)
+ 1dc6 call GetTrackType(&loc68, a2)
+ 1dcc move.w d0, d5
+ 1dce tst.w d5
+ 1dd0 addq.w #$8, sp
+ 1dd2 beq.b $1de0
+ 1dd8 call FatalError(0xb)
+ 1de0 tst.l loc64
+ 1de4 bne.w $1f82
+ 1de8 cmpi.l #$6d757369, loc68
+ 1df0 bne.w $1f82
+ 1df4 suba.l a3, a3
+ 1df6 move.l d7, loc64
+ 1dfa movea.l a2, a3
+ 1dfc subq.w #$4, sp
+ 1dfe move.l a2, -(sp)
+ 1e00 moveq #$62, d0
+ 1e02 _trap_aaaa 
+ 1e04 movea.l (sp)+, a0
+ 1e06 movea.l a0, a3
+ 1e08 move.l a3, d0
+ 1e0a bne.b $1e18
+ 1e10 call FatalError(0xc)
+ 1e18 suba.l a4, a4
+ 1e1a suba.l a2, a2
+ 1e1c moveq #$2, d0
+ 1e1e _NewHandle 
+ 1e20 movea.l a0, a4
+ 1e22 move.l a3, -(sp)
+ 1e24 move.l loc64, -(sp)
+ 1e28 move.l a4, -(sp)
+ 1e2a moveq #$78, d0
+ 1e2c _trap_aaaa 
+ 1e2e movea.l a4, a0
+ 1e30 _MoveHHi 
+ 1e32 _HLock 
+ 1e34 subq.w #$4, sp
+ 1e36 move.l #$54756e65, -(sp)
+ 1e3c move.w #$1af4, -(sp)
+ 1e40 _GetResource 
+ 1e42 movea.l (sp)+, a0
+ 1e44 movea.l a0, a2
+ 1e46 move.l a2, d0
+ 1e48 bne.b $1e56
+ 1e4e call FatalError(0xf)
+ 1e56 subq.w #$4, sp
+ 1e5a call seg4+6a2(a4)
+ 1e60 move.l (sp)+, d0
+ 1e62 move.l d0, d5
+ 1e64 move.l a2, -(sp)
+ 1e66 move.l d5, -(sp)
+ 1e68 moveq #$3, d0
+ 1e6a _ResourceDispatch 
+ 1e6c move.l a2, -(sp)
+ 1e6e move.w #$1af4, -(sp)
+ 1e72 pea.l loc54
+ 1e76 _SetResInfo 
+ 1e78 movea.l a2, a0
+ 1e7a _MoveHHi 
+ 1e7c _HLock 
+ 1e7e move.l a2, -(sp)
+ 1e80 clr.l -(sp)
+ 1e82 move.l (a4), -(sp)
+ 1e84 move.l d5, -(sp)
+ 1e86 moveq #$2, d0
+ 1e88 _ResourceDispatch 
+ 1e8a movea.l a2, a0
+ 1e8c _HUnlock 
+ 1e8e subq.w #$2, sp
+ 1e90 _CurResFile 
+ 1e92 move.w (sp)+, d0
+ 1e94 move.w d0, -(sp)
+ 1e96 _UpdateResFile 
+ 1e98 move.l a2, -(sp)
+ 1e9a _ReleaseResource 
+ 1e9c movea.l a4, a0
+ 1e9e _HUnlock 
+ 1ea0 movea.l a4, a0
+ 1ea2 _DisposeHandle 
+ 1ea4 moveq #$1, d4
+ 1ea6 move.l d5, d3
+ 1ea8 moveq #$2, d0
+ 1eaa _NewHandle 
+ 1eac movea.l a0, a4
+ 1eae subq.w #$4, sp
+ 1eb0 move.l a3, -(sp)
+ 1eb2 moveq #$79, d0
+ 1eb4 _trap_aaaa 
+ 1eb6 move.l (sp)+, d0
+ 1eb8 move.l d0, d6
+ 1eba bra.w $1f74
+ 1ebe move.l a3, -(sp)
+ 1ec0 move.l d4, -(sp)
+ 1ec2 pea.l loc8
+ 1ec6 clr.l -(sp)
+ 1ec8 moveq #$7a, d0
+ 1eca _trap_aaaa 
+ 1ecc subq.w #$2, sp
+ 1ece move.l a3, -(sp)
+ 1ed0 move.l a4, -(sp)
+ 1ed2 clr.l -(sp)
+ 1ed4 pea.l loc4
+ 1ed8 move.l loc8, -(sp)
+ 1edc clr.l -(sp)
+ 1ede clr.l -(sp)
+ 1ee0 clr.l -(sp)
+ 1ee2 clr.l -(sp)
+ 1ee4 pea.l $1.w
+ 1ee8 clr.l -(sp)
+ 1eea clr.l -(sp)
+ 1eec moveq #$7e, d0
+ 1eee _trap_aaaa 
+ 1ef0 move.w (sp)+, d0
+ 1ef2 move.w d0, d5
+ 1ef4 move.w d5, d0
+ 1ef8 beq.b $1f06
+ 1efe call FatalError(0xd)
+ 1f06 cmp.l d6, d4
+ 1f08 beq.b $1f14
+ 1f0a move.l loc4, d0
+ 1f0e subq.l #$4, d0
+ 1f10 move.l d0, loc4
+ 1f14 suba.l a2, a2
+ 1f16 subq.w #$4, sp
+ 1f18 move.l #$54756e65, -(sp)
+ 1f1e move.w #$1af4, -(sp)
+ 1f22 _GetResource 
+ 1f24 movea.l (sp)+, a0
+ 1f26 movea.l a0, a2
+ 1f28 move.l a2, d0
+ 1f2a bne.b $1f38
+ 1f30 call FatalError(0xe)
+ 1f38 add.l loc4, d3
+ 1f3c move.l a2, -(sp)
+ 1f3e move.l d3, -(sp)
+ 1f40 moveq #$3, d0
+ 1f42 _ResourceDispatch 
+ 1f44 move.l a2, -(sp)
+ 1f46 move.w #$1af4, -(sp)
+ 1f4a pea.l loc54
+ 1f4e _SetResInfo 
+ 1f50 movea.l a2, a0
+ 1f52 _MoveHHi 
+ 1f54 _HLock 
+ 1f56 move.l a2, -(sp)
+ 1f58 move.l d3, d0
+ 1f5a sub.l loc4, d0
+ 1f5e move.l d0, -(sp)
+ 1f60 move.l (a4), -(sp)
+ 1f62 move.l loc4, -(sp)
+ 1f66 moveq #$2, d0
+ 1f68 _ResourceDispatch 
+ 1f6a movea.l a2, a0
+ 1f6c _HUnlock 
+ 1f6e move.l a2, -(sp)
+ 1f70 _ReleaseResource 
+ 1f72 addq.l #$1, d4
+ 1f74 move.l d6, d0
+ 1f76 addq.l #$1, d0
+ 1f78 cmp.l d0, d4
+ 1f7a blt.w $1ebe
+ 1f7e movea.l a4, a0
+ 1f80 _DisposeHandle 
+ 1f82 addq.l #$1, d7
+ 1f84 cmp.l loc70, d7
+ 1f88 ble.w $1d94
+ 1f8c movem.l (sp)+, d3-d7/a2-a4
+ 1f90 unlk a6
+ 1f92 rts 
+
+; GetTrackType   (seg 6 +001fa2, 78 bytes)
+ 1fa2 link.w a6, #$fff8
+ 1fa6 clr.l loc4
+ 1faa subq.w #$4, sp
+ 1fac move.l arg8, -(sp)
+ 1fb0 moveq #$62, d0
+ 1fb2 _trap_aaaa 
+ 1fb4 movea.l (sp)+, a0
+ 1fb6 move.l a0, loc8
+ 1fba subq.w #$2, sp
+ 1fbc moveq #$3, d0
+ 1fbe _trap_aaaa 
+ 1fc0 move.w (sp)+, d0
+ 1fc4 bne.b $1fd6
+ 1fc6 move.l loc8, -(sp)
+ 1fca pea.l loc4
+ 1fce clr.l -(sp)
+ 1fd0 clr.l -(sp)
+ 1fd2 moveq #$6f, d0
+ 1fd4 _trap_aaaa 
+ 1fd6 subq.w #$2, sp
+ 1fd8 moveq #$3, d0
+ 1fda _trap_aaaa 
+ 1fdc move.w (sp)+, d0
+ 1fe0 bne.b $1fea
+ 1fe2 movea.l argc, a0
+ 1fe6 move.l loc4, (a0)
+ 1fea moveq #$0, d0
+ 1fec unlk a6
+ 1fee rts 
+
+; IsQuickTimeInstalled   (seg 6 +002000, 98 bytes)
+ 2000 link.w a6, #$fffc
+ 2004 move.l d3, -(sp)
+ 2006 subq.w #$2, sp
+ 2012 call seg4+494(0x7174696d, &loc4)
+ 2018 move.w (sp)+, d0
+ 201a move.w d0, d3
+ 201c move.w d3, d0
+ 2020 bne.b $202c
+ 2022 cmpi.l #$2000000, loc4
+ 202a bge.b $2030
+ 202c moveq #$0, d0
+ 202e bra.b $205c
+ 2030 subq.w #$2, sp
+ 203c call seg4+494(0x7174696d, &loc4)
+ 2042 move.w (sp)+, d0
+ 2044 move.w d0, d3
+ 2046 move.w d3, d0
+ 204a bne.b $2056
+ 204c cmpi.l #$2500000, loc4
+ 2054 bge.b $205a
+ 2056 moveq #$0, d0
+ 2058 bra.b $205c
+ 205a moveq #$1, d0
+ 205c move.l (sp)+, d3
+ 205e unlk a6
+ 2060 rts 
+
+; IsOneGammaAvailable   (seg 6 +00207a, 98 bytes)
+ 207a link.w a6, #$fffc
+ 207e subq.w #$4, sp
+ 2088 call seg4+6b0(0xa89f, 0x1)
+ 208e movea.l (sp)+, a0
+ 2090 move.l a0, loc4
+ 2094 subq.w #$4, sp
+ 209e call seg4+6b0(0xaa29, 0x1)
+ 20a4 movea.l (sp)+, a0
+ 20a6 cmpa.l loc4, a0
+ 20aa bne.b $20b0
+ 20ac moveq #$0, d0
+ 20ae bra.b $20d8
+ 20b0 subq.w #$2, sp
+ 20b2 move.l arg8, -(sp)
+ 20b6 move.w #$d, -(sp)
+ 20ba _TestDeviceAttribute 
+ 20bc move.b (sp)+, d0
+ 20be beq.b $20d4
+ 20c0 subq.w #$2, sp
+ 20c2 move.l arg8, -(sp)
+ 20c6 move.w #$e, -(sp)
+ 20ca _TestDeviceAttribute 
+ 20cc move.b (sp)+, d0
+ 20ce beq.b $20d4
+ 20d0 moveq #$0, d0
+ 20d2 bra.b $20d8
+ 20d4 move.b #$ff, d0
+ 20d8 unlk a6
+ 20da rts 
+
+; SetupGammaTools   (seg 6 +0020f2, 318 bytes)
+ 20f2 link.w a6, #$fffc
+ 20f6 movem.l d3/a2-a3, -(sp)
+ 20fa moveq #$0, d3
+ 20fc cmpi.l #$47414d41, g_6ab6
+ 2106 bne.b $210e
+ 2108 moveq #$ff, d0
+ 210a bra.w $2228
+ 210e clr.l g_6aba
+ 2114 move.l #$47414d41, g_6ab6
+ 211e subq.w #$4, sp
+ 2120 _GetDeviceList 
+ 2122 movea.l (sp)+, a0
+ 2124 movea.l a0, a3
+ 2126 bra.w $2220
+ 2130 call GetDevGammaTable(&loc4, a3)
+ 2136 move.w d0, d3
+ 2138 addq.w #$8, sp
+ 213a beq.b $2142
+ 213c move.w d3, d0
+ 213e bra.w $2228
+ 2142 moveq #$14, d0
+ 2144 _NewHandle 
+ 2146 movea.l a0, a2
+ 2148 move.l a2, d0
+ 214a bne.b $215a
+ 214c subq.w #$2, sp
+ 214e move.w $220.w, (sp)
+ 2152 move.w (sp)+, d0
+ 2154 move.w d0, d3
+ 2156 bra.w $2228
+ 215a movea.l loc4, a0
+ 215e movea.l loc4, a1
+ 2162 move.w $6(a1), d0
+ 2166 muls.w $8(a0), d0
+ 216a movea.l loc4, a0
+ 216e move.w $a(a0), d1
+ 2174 muls.l d0, d1
+ 2178 move.l d1, d0
+ 217a asr.l #$2, d0
+ 217c lsr.l #$8, d0
+ 217e lsr.l #$8, d0
+ 2180 lsr.l #$8, d0
+ 2182 lsr.l #$5, d0
+ 2184 add.l d1, d0
+ 2186 asr.l #$3, d0
+ 2188 movea.l loc4, a0
+ 218c move.w $4(a0), d1
+ 2192 moveq #$e, d2
+ 2194 add.l d2, d1
+ 2196 add.l d0, d1
+ 2198 movea.l (a2), a0
+ 219a move.w d1, (a0)
+ 219c movea.l loc4, a0
+ 21a0 movea.l (a2), a1
+ 21a2 move.w $4(a0), $2(a1)
+ 21a8 movea.l (a2), a0
+ 21aa move.l a3, $c(a0)
+ 21ae movea.l (a2), a0
+ 21b0 movea.w (a0), a1
+ 21b2 move.l a1, d0
+ 21b4 _NewHandle 
+ 21b6 movea.l (a2), a1
+ 21b8 move.l a0, $4(a1)
+ 21bc movea.l (a2), a0
+ 21be tst.l $4(a0)
+ 21c2 bne.b $21d0
+ 21c4 subq.w #$2, sp
+ 21c6 move.w $220.w, (sp)
+ 21ca move.w (sp)+, d0
+ 21cc move.w d0, d3
+ 21ce bra.b $2228
+ 21d0 movea.l (a2), a0
+ 21d2 movea.w (a0), a1
+ 21d4 move.l a1, d0
+ 21d6 _NewHandle 
+ 21d8 movea.l (a2), a1
+ 21da move.l a0, $8(a1)
+ 21de movea.l (a2), a0
+ 21e0 tst.l $8(a0)
+ 21e4 bne.b $21f2
+ 21e6 subq.w #$2, sp
+ 21e8 move.w $220.w, (sp)
+ 21ec move.w (sp)+, d0
+ 21ee move.w d0, d3
+ 21f0 bra.b $2228
+ 21f2 movea.l (a2), a0
+ 21f4 movea.w (a0), a1
+ 21f6 move.l a1, d0
+ 21f8 movea.l loc4, a0
+ 21fc movea.l (a2), a1
+ 21fe movea.l $4(a1), a1
+ 2202 movea.l (a1), a1
+ 2204 _BlockMove 
+ 2206 movea.l (a2), a0
+ 2208 move.l g_6aba, $10(a0)
+ 2210 move.l a2, g_6aba
+ 2216 subq.w #$4, sp
+ 2218 move.l a3, -(sp)
+ 221a _GetNextDevice 
+ 221c movea.l (sp)+, a0
+ 221e movea.l a0, a3
+ 2220 move.l a3, d0
+ 2222 bne.w $212a
+ 2226 moveq #$0, d0
+ 2228 movem.l (sp)+, d3/a2-a3
+ 222c unlk a6
+ 222e rts 
+
+; DisposeGammaTools   (seg 6 +002242, 80 bytes)
+ 2242 link.w a6, #$0
+ 2246 movem.l a2-a3, -(sp)
+ 224a cmpi.l #$47414d41, g_6ab6
+ 2254 beq.b $225a
+ 2256 moveq #$ff, d0
+ 2258 bra.b $228a
+ 225a movea.l g_6aba, a2
+ 2260 bra.b $227e
+ 2262 movea.l (a2), a0
+ 2264 movea.l $10(a0), a3
+ 2268 movea.l (a2), a0
+ 226a movea.l $4(a0), a0
+ 226e _DisposeHandle 
+ 2270 movea.l (a2), a0
+ 2272 movea.l $8(a0), a0
+ 2276 _DisposeHandle 
+ 2278 movea.l a2, a0
+ 227a _DisposeHandle 
+ 227c movea.l a3, a2
+ 227e move.l a2, d0
+ 2280 bne.b $2262
+ 2282 clr.l g_6ab6
+ 2288 moveq #$0, d0
+ 228a movem.l (sp)+, a2-a3
+ 228e unlk a6
+ 2290 rts 
+
+; GetDevGammaTable   (seg 6 +0022a6, 94 bytes)
+ 22a6 link.w a6, #$0
+ 22aa movem.l d3/a2-a4, -(sp)
+ 22ae movea.l arg8, a4
+ 22b2 movea.l argc, a3
+ 22b6 moveq #$0, d3
+ 22b8 clr.l (a3)
+ 22bc call IsOneGammaAvailable(a4)
+ 22c2 tst.b d0
+ 22c4 addq.w #$4, sp
+ 22c6 bne.b $22cc
+ 22c8 moveq #$ff, d0
+ 22ca bra.b $22fc
+ 22cc moveq #$32, d0
+ 22ce _NewPtr 
+ 22d0 movea.l a0, a2
+ 22d2 move.l a0, d0
+ 22d4 bne.b $22e0
+ 22d6 subq.w #$2, sp
+ 22d8 move.w $220.w, (sp)
+ 22dc move.w (sp)+, d0
+ 22de bra.b $22fc
+ 22e0 move.w #$8, $1a(a2)
+ 22e6 movea.l (a4), a0
+ 22e8 move.w (a0), $18(a2)
+ 22ec move.l a3, $1c(a2)
+ 22f0 movea.l a2, a0
+ 22f2 _Status 
+ 22f4 move.w d0, d3
+ 22f6 movea.l a2, a0
+ 22f8 _DisposePtr 
+ 22fa move.w d3, d0
+ 22fc movem.l (sp)+, d3/a2-a4
+ 2300 unlk a6
+ 2302 rts 
+
+; SetPrefFile   (seg 6 +002318, 218 bytes)
+ 2318 link.w a6, #$ffb4
+ 231c movem.l d3-d6/a2, -(sp)
+ 2320 move.l argc, d6
+ 2324 move.l arg10, d5
+ 2328 movea.l arg18, a2
+ 232c moveq #$0, d4
+ 232e subq.w #$2, sp
+ 2330 _CurResFile 
+ 2332 move.w (sp)+, d0
+ 2334 movea.l arg14, a0
+ 2338 move.w d0, (a0)
+ 233a clr.w (a2)
+ 233c subq.w #$2, sp
+ 2354 call seg4+c28(0x8000, 0x70726566, 0x1, &loc4c, &loc4a)
+ 235a move.w (sp)+, d0
+ 235c move.w d0, d3
+ 235e subq.w #$2, sp
+ 2360 move.w loc4c, -(sp)
+ 2364 move.l loc4a, -(sp)
+ 2368 move.l arg8, -(sp)
+ 236c pea.l loc46
+ 2370 moveq #$1, d0
+ 2372 _HighLevelFSDispatch 
+ 2374 move.w (sp)+, d0
+ 2376 move.w d0, d3
+ 2378 subq.w #$2, sp
+ 237a pea.l loc46
+ 237e move.b #$3, -(sp)
+ 2382 moveq #$d, d0
+ 2384 _HighLevelFSDispatch 
+ 2386 move.w (sp)+, d0
+ 2388 move.w d0, (a2)
+ 238a subq.w #$2, sp
+ 238c _ResError 
+ 238e move.w (sp)+, d0
+ 2392 beq.b $23e8
+ 2394 clr.w (a2)
+ 2396 subq.w #$2, sp
+ 2398 pea.l loc46
+ 239c move.l d6, -(sp)
+ 239e move.l d5, -(sp)
+ 23a0 clr.w -(sp)
+ 23a2 moveq #$4, d0
+ 23a4 _HighLevelFSDispatch 
+ 23a6 move.w (sp)+, d0
+ 23a8 move.w d0, d3
+ 23aa move.w d3, d0
+ 23ae bne.b $23e8
+ 23b0 pea.l loc46
+ 23b4 move.l d6, -(sp)
+ 23b6 move.l d5, -(sp)
+ 23b8 clr.w -(sp)
+ 23ba moveq #$e, d0
+ 23bc _HighLevelFSDispatch 
+ 23be subq.w #$2, sp
+ 23c0 _ResError 
+ 23c2 move.w (sp)+, d0
+ 23c6 bne.b $23da
+ 23c8 subq.w #$2, sp
+ 23ca pea.l loc46
+ 23ce move.b #$3, -(sp)
+ 23d2 moveq #$d, d0
+ 23d4 _HighLevelFSDispatch 
+ 23d6 move.w (sp)+, d0
+ 23d8 move.w d0, (a2)
+ 23da subq.w #$2, sp
+ 23dc _ResError 
+ 23de move.w (sp)+, d0
+ 23e2 bne.b $23e8
+ 23e4 moveq #$1, d0
+ 23e6 bra.b $23ea
+ 23e8 move.b d4, d0
+ 23ea movem.l (sp)+, d3-d6/a2
+ 23ee unlk a6
+ 23f0 rts 
+
+; RectSeparate   (seg 6 +002400, 320 bytes)
+ 2400 link.w a6, #$ffe4
+ 2404 movem.l d3-d5/a2-a3, -(sp)
+ 2408 movea.l arg8, a2
+ 240c movea.l argc, a3
+ 2410 move.l $6(a2), loc10
+ 2416 move.l $a(a2), locc
+ 241c pea.l loc10
+ 2420 move.w $4(a2), -(sp)
+ 2424 move.w $2(a2), -(sp)
+ 2428 _OffsetRect 
+ 242a move.l $6(a3), loc18
+ 2430 move.l $a(a3), loc14
+ 2436 pea.l loc18
+ 243a move.w $4(a3), -(sp)
+ 243e move.w $2(a3), -(sp)
+ 2442 _OffsetRect 
+ 2444 move.w locc, d0
+ 244a move.w loc18, d1
+ 2450 sub.l d0, d1
+ 2452 move.w d1, loc8
+ 2456 move.w loc10, d0
+ 245c move.w loc14, d1
+ 2462 sub.l d0, d1
+ 2464 move.w d1, loc6
+ 2468 move.w loce, d0
+ 246e move.w loc12, d1
+ 2474 sub.l d0, d1
+ 2476 move.w d1, loc4
+ 247a move.w loca, d0
+ 2480 move.w loc16, d1
+ 2486 sub.l d0, d1
+ 2488 move.w d1, loc2
+ 248c moveq #$0, d5
+ 248e tst.w loc8
+ 2492 ble.b $249c
+ 2494 move.w loc8, d0
+ 249a bra.b $24a4
+ 249c move.w loc8, d0
+ 24a2 neg.l d0
+ 24a4 move.w d0, d4
+ 24a6 moveq #$1, d3
+ 24a8 bra.b $2502
+ 24aa move.w d4, d0
+ 24ae move.l d0, loc1c
+ 24b2 lea.l loc8, a0
+ 24b6 tst.w (a0, d3.w * 2)
+ 24ba ble.b $24c8
+ 24bc lea.l loc8, a0
+ 24c0 move.w (a0, d3.w * 2), d0
+ 24c6 bra.b $24d4
+ 24c8 lea.l loc8, a0
+ 24cc move.w (a0, d3.w * 2), d0
+ 24d2 neg.l d0
+ 24d4 cmp.l loc1c, d0
+ 24d8 bge.b $2500
+ 24da move.w d3, d5
+ 24dc lea.l loc8, a0
+ 24e0 tst.w (a0, d3.w * 2)
+ 24e4 ble.b $24f2
+ 24e6 lea.l loc8, a0
+ 24ea move.w (a0, d3.w * 2), d0
+ 24f0 bra.b $24fe
+ 24f2 lea.l loc8, a0
+ 24f6 move.w (a0, d3.w * 2), d0
+ 24fc neg.l d0
+ 24fe move.w d0, d4
+ 2500 addq.w #$1, d3
+ 2502 cmpi.w #$4, d3
+ 2506 blt.b $24aa
+ 2508 move.w d5, d0
+ 250c beq.b $251c
+ 250e subq.l #$1, d0
+ 2510 beq.b $251c
+ 2512 subq.l #$1, d0
+ 2514 beq.b $252a
+ 2516 subq.l #$1, d0
+ 2518 beq.b $252a
+ 251a bra.b $2536
+ 251c lea.l loc8, a0
+ 2520 move.w (a0, d5.w * 2), d0
+ 2524 add.w d0, $2(a2)
+ 2528 bra.b $2536
+ 252a lea.l loc8, a0
+ 252e move.w (a0, d5.w * 2), d0
+ 2532 add.w d0, $4(a2)
+ 2536 move.w d5, d0
+ 2538 movem.l (sp)+, d3-d5/a2-a3
+ 253c unlk a6
+ 253e rts 
+
+; Sgn0   (seg 6 +002550, 42 bytes)
+ 2550 link.w a6, #$0
+ 2554 tst.w argc
+ 2558 ble.b $2562
+ 255a move.w #$1, arge
+ 2560 bra.b $2574
+ 2562 tst.w argc
+ 2566 bge.b $2570
+ 2568 move.w #$ffff, arge
+ 256e bra.b $2574
+ 2570 clr.w arge
+ 2574 unlk a6
+ 2576 rtd #$6
+
+; REGIONSEPARATE   (seg 6 +002582, 410 bytes)
+ 2582 link.w a6, #$fff8
+ 2586 movem.l d3-d7/a2-a4, -(sp)
+ 258a movea.l arg18, a2
+ 258e movea.l arg10, a3
+ 2592 move.l arg8, d4
+ 2596 subq.w #$4, sp
+ 2598 _NewRgn 
+ 259a movea.l (sp)+, a0
+ 259c movea.l a0, a4
+ 259e moveq #$0, d3
+ 25a0 move.w $4(a2), d0
+ 25a4 sub.w arg16, d0
+ 25a8 move.w d0, loc6
+ 25ac move.w $2(a2), d0
+ 25b0 sub.w arg14, d0
+ 25b4 move.w d0, loc8
+ 25b8 movea.l (a3), a0
+ 25ba movea.l (a3), a1
+ 25bc move.w $8(a1), d0
+ 25c0 add.w $4(a0), d0
+ 25c6 move.l d0, d1
+ 25c8 lsr.l #$8, d1
+ 25ca lsr.l #$8, d1
+ 25cc lsr.l #$8, d1
+ 25ce lsr.l #$7, d1
+ 25d0 add.l d0, d1
+ 25d2 asr.l #$1, d1
+ 25d4 movea.l d4, a0
+ 25d6 movea.l (a0), a0
+ 25d8 movea.l d4, a1
+ 25da movea.l (a1), a1
+ 25dc move.w $8(a1), d0
+ 25e0 add.w $4(a0), d0
+ 25e6 move.l d0, d2
+ 25e8 lsr.l #$8, d2
+ 25ea lsr.l #$8, d2
+ 25ec lsr.l #$8, d2
+ 25ee lsr.l #$7, d2
+ 25f0 add.l d0, d2
+ 25f2 asr.l #$1, d2
+ 25f4 neg.l d2
+ 25f6 add.l d1, d2
+ 25f8 move.w d2, loc6
+ 25fc movea.l (a3), a0
+ 25fe movea.l (a3), a1
+ 2600 move.w $6(a1), d0
+ 2604 add.w $2(a0), d0
+ 260a move.l d0, d1
+ 260c lsr.l #$8, d1
+ 260e lsr.l #$8, d1
+ 2610 lsr.l #$8, d1
+ 2612 lsr.l #$7, d1
+ 2614 add.l d0, d1
+ 2616 asr.l #$1, d1
+ 2618 movea.l d4, a0
+ 261a movea.l (a0), a0
+ 261c movea.l d4, a1
+ 261e movea.l (a1), a1
+ 2620 move.w $6(a1), d0
+ 2624 add.w $2(a0), d0
+ 262a move.l d0, d2
+ 262c lsr.l #$8, d2
+ 262e lsr.l #$8, d2
+ 2630 lsr.l #$8, d2
+ 2632 lsr.l #$7, d2
+ 2634 add.l d0, d2
+ 2636 asr.l #$1, d2
+ 2638 neg.l d2
+ 263a add.l d1, d2
+ 263c move.w d2, loc8
+ 2640 move.w loc6, d5
+ 2644 move.w loc8, d4
+ 2648 tst.w d5
+ 264a bge.b $264e
+ 264c neg.w d5
+ 264e tst.w d4
+ 2650 bge.b $2654
+ 2652 neg.w d4
+ 2654 subq.w #$2, sp
+ 265c call Sgn0(loc6, a6)
+ 2662 move.w (sp)+, d0
+ 2664 move.w d0, d7
+ 2666 subq.w #$2, sp
+ 266e call Sgn0(loc8, a6)
+ 2674 move.w (sp)+, d0
+ 2676 move.w d0, d6
+ 2678 tst.w d7
+ 267a bne.b $2682
+ 267c tst.w d6
+ 267e bne.b $2682
+ 2680 moveq #$1, d6
+ 2682 cmp.w d4, d5
+ 2684 ble.b $26b4
+ 2686 move.w $4(a2), d0
+ 268a add.w d7, d0
+ 268c move.w d0, $4(a2)
+ 2690 move.l a3, -(sp)
+ 2692 move.w d7, -(sp)
+ 2694 clr.w -(sp)
+ 2696 _OffsetRgn 
+ 2698 add.w d4, d3
+ 269a cmp.w d5, d3
+ 269c ble.b $26e0
+ 269e move.w $2(a2), d0
+ 26a2 add.w d6, d0
+ 26a4 move.w d0, $2(a2)
+ 26a8 move.l a3, -(sp)
+ 26aa clr.w -(sp)
+ 26ac move.w d6, -(sp)
+ 26ae _OffsetRgn 
+ 26b0 sub.w d5, d3
+ 26b2 bra.b $26e0
+ 26b4 move.w $2(a2), d0
+ 26b8 add.w d6, d0
+ 26ba move.w d0, $2(a2)
+ 26be move.l a3, -(sp)
+ 26c0 clr.w -(sp)
+ 26c2 move.w d6, -(sp)
+ 26c4 _OffsetRgn 
+ 26c6 add.w d5, d3
+ 26c8 cmp.w d4, d3
+ 26ca ble.b $26e0
+ 26cc move.w $4(a2), d0
+ 26d0 add.w d7, d0
+ 26d2 move.w d0, $4(a2)
+ 26d6 move.l a3, -(sp)
+ 26d8 move.w d7, -(sp)
+ 26da clr.w -(sp)
+ 26dc _OffsetRgn 
+ 26de sub.w d4, d3
+ 26e0 move.w $4(a2), d0
+ 26e4 sub.w arg16, d0
+ 26e8 move.w d0, loc2
+ 26ec move.w $2(a2), d0
+ 26f0 sub.w arg14, d0
+ 26f4 move.w d0, loc4
+ 26f8 move.l a3, -(sp)
+ 26fa move.l argc, -(sp)
+ 26fe move.l a4, -(sp)
+ 2700 _SectRgn 
+ 2702 subq.w #$2, sp
+ 2704 move.l a4, -(sp)
+ 2706 _EmptyRgn 
+ 2708 move.b (sp)+, d0
+ 270a beq.w $2682
+ 270e move.l a4, -(sp)
+ 2710 _DisposeRgn 
+ 2712 movem.l (sp)+, d3-d7/a2-a4
+ 2716 unlk a6
+ 2718 rtd #$14
+
+; REGIONBOUNCE   (seg 6 +00272e, 318 bytes)
+ 272e link.w a6, #$fff8
+ 2732 movem.l d3-d5/a2-a4, -(sp)
+ 2736 move.l arg16, d3
+ 273a move.l argc, d5
+ 273e move.l arg8, d4
+ 2742 movea.w arg10, a0
+ 2746 move.l a0, loc8
+ 274a clr.b arg1a
+ 274e tst.l d4
+ 2750 seq.b d0
+ 2752 neg.b d0
+ 2754 tst.l d5
+ 2756 seq.b d1
+ 2758 neg.b d1
+ 275a or.b d0, d1
+ 275c beq.b $276e
+ 2764 call SATREPORTSTR(&g_dfa)
+ 276a bra.w $2862
+ 276e subq.w #$4, sp
+ 2770 _NewRgn 
+ 2772 movea.l (sp)+, a0
+ 2774 movea.l a0, a2
+ 2776 subq.w #$4, sp
+ 2778 _NewRgn 
+ 277a movea.l (sp)+, a0
+ 277c movea.l a0, a4
+ 277e subq.w #$4, sp
+ 2780 _NewRgn 
+ 2782 movea.l (sp)+, a0
+ 2784 movea.l a0, a3
+ 2786 move.l d5, -(sp)
+ 2788 move.l a2, -(sp)
+ 278a _CopyRgn 
+ 278c move.l d4, -(sp)
+ 278e move.l a4, -(sp)
+ 2790 _CopyRgn 
+ 2792 move.l a2, -(sp)
+ 2794 movea.l d3, a0
+ 2796 move.w $4(a0), -(sp)
+ 279a movea.l d3, a0
+ 279c move.w $2(a0), -(sp)
+ 27a0 _OffsetRgn 
+ 27a2 move.l a4, -(sp)
+ 27a4 move.w arg14, -(sp)
+ 27a8 move.w arg12, -(sp)
+ 27ac _OffsetRgn 
+ 27ae move.l a2, -(sp)
+ 27b0 move.l a4, -(sp)
+ 27b2 move.l a3, -(sp)
+ 27b4 _SectRgn 
+ 27b6 subq.w #$2, sp
+ 27b8 move.l a3, -(sp)
+ 27ba _EmptyRgn 
+ 27bc move.b (sp)+, d0
+ 27be bne.w $2856
+ 27c2 movea.l (a2), a0
+ 27c4 movea.l (a2), a1
+ 27c6 move.w $8(a1), d0
+ 27ca add.w $4(a0), d0
+ 27d0 move.l d0, d1
+ 27d2 lsr.l #$8, d1
+ 27d4 lsr.l #$8, d1
+ 27d6 lsr.l #$8, d1
+ 27d8 lsr.l #$7, d1
+ 27da add.l d0, d1
+ 27dc asr.l #$1, d1
+ 27de movea.l (a3), a0
+ 27e0 movea.l (a3), a1
+ 27e2 move.w $8(a1), d0
+ 27e6 add.w $4(a0), d0
+ 27ec move.l d0, d2
+ 27ee lsr.l #$8, d2
+ 27f0 lsr.l #$8, d2
+ 27f2 lsr.l #$8, d2
+ 27f4 lsr.l #$7, d2
+ 27f6 add.l d0, d2
+ 27f8 asr.l #$1, d2
+ 27fa sub.l d1, d2
+ 27fc move.w d2, loc2
+ 2800 movea.l (a2), a0
+ 2802 movea.l (a2), a1
+ 2804 move.w $6(a1), d0
+ 2808 add.w $2(a0), d0
+ 280e move.l d0, d1
+ 2810 lsr.l #$8, d1
+ 2812 lsr.l #$8, d1
+ 2814 lsr.l #$8, d1
+ 2816 lsr.l #$7, d1
+ 2818 add.l d0, d1
+ 281a asr.l #$1, d1
+ 281c movea.l (a3), a0
+ 281e movea.l (a3), a1
+ 2820 move.w $6(a1), d0
+ 2824 add.w $2(a0), d0
+ 282a move.l d0, d2
+ 282c lsr.l #$8, d2
+ 282e lsr.l #$8, d2
+ 2830 lsr.l #$8, d2
+ 2832 lsr.l #$7, d2
+ 2834 add.l d0, d2
+ 2836 asr.l #$1, d2
+ 2838 sub.l d1, d2
+ 283a move.w d2, loc4
+ 284a call REGIONSEPARATE(d3, arg12, a2, a4, a3)
+ 2850 move.b #$1, arg1a
+ 2856 move.l a2, -(sp)
+ 2858 _DisposeRgn 
+ 285a move.l a4, -(sp)
+ 285c _DisposeRgn 
+ 285e move.l a3, -(sp)
+ 2860 _DisposeRgn 
+ 2862 movem.l (sp)+, d3-d5/a2-a4
+ 2866 unlk a6
+ 2868 rtd #$12
+
+; WRAPCOPY   (seg 6 +00287c, 878 bytes)
+ 287c link.w a6, #$ffcc
+ 2880 movem.l d3-d7, -(sp)
+ 2884 cmpi.b #$1, g_6ab4
+ 288c bne.b $2896
+ 288e clr.b g_6ab4
+ 2894 bra.b $289e
+ 2896 move.b #$1, g_6ab4
+ 289e clr.b loc33
+ 28a2 movea.w arg12, a0
+ 28a6 move.l a0, d0
+ 28a8 divsl.l #$1e0, d1:d0
+ 28b0 move.w d1, d4
+ 28b2 move.w d4, d6
+ 28b4 subi.w #$20, d6
+ 28b8 movea.w arg14, a0
+ 28bc move.l a0, d0
+ 28be divsl.l #$1e0, d1:d0
+ 28c6 move.w d1, d3
+ 28c8 move.w d3, d5
+ 28ca subi.w #$20, d5
+ 28ce move.w #$1e0, d0
+ 28d2 sub.w d3, d0
+ 28d4 add.w arg10, d0
+ 28d8 move.w d0, loc32
+ 28dc move.w #$1e0, d7
+ 28e0 sub.w d4, d7
+ 28e2 add.w arge, d7
+ 28e6 clr.w loc28
+ 28ea move.w d6, loc24
+ 28ee clr.w loc26
+ 28f2 move.w d5, loc22
+ 28f6 clr.w loc18
+ 28fa move.w d6, loc14
+ 28fe move.w d3, loc16
+ 2902 move.w #$1e0, loc12
+ 2908 move.w d4, loc20
+ 290c move.w #$1e0, loc1c
+ 2912 clr.w loc1e
+ 2916 move.w d5, loc1a
+ 291a move.w d4, loc10
+ 291e move.w #$1e0, locc
+ 2924 move.w d3, loce
+ 2928 move.w #$1e0, loca
+ 292e tst.w d6
+ 2930 bgt.b $294e
+ 2932 move.w #$1e0, d0
+ 2936 add.w d4, d0
+ 2938 subi.w #$20, d0
+ 293c move.w d0, locc
+ 2940 move.w #$1e0, d0
+ 2944 add.w d4, d0
+ 2946 subi.w #$20, d0
+ 294a move.w d0, loc1c
+ 294e tst.w d5
+ 2950 bgt.b $296e
+ 2952 move.w #$1e0, d0
+ 2956 add.w d3, d0
+ 2958 subi.w #$20, d0
+ 295c move.w d0, loca
+ 2960 move.w #$1e0, d0
+ 2964 add.w d3, d0
+ 2966 subi.w #$20, d0
+ 296a move.w d0, loc12
+ 296e cmpi.b #$1, argc
+ 2974 bne.w $2a56
+ 2978 tst.w d5
+ 297a sgt.b d0
+ 297c neg.b d0
+ 297e cmpi.w #$8, g_-17a0
+ 2986 seq.b d1
+ 2988 neg.b d1
+ 298a and.b d0, d1
+ 298c beq.w $2a4e
+ 2990 move.l loc10, loc8
+ 2996 move.l locc, loc4
+ 299c pea.l loc8
+ 29a0 move.w d3, d0
+ 29a2 neg.w d0
+ 29a4 add.w arg10, d0
+ 29a8 move.w d0, -(sp)
+ 29aa move.w d4, d0
+ 29ac neg.w d0
+ 29ae add.w arge, d0
+ 29b2 move.w d0, -(sp)
+ 29b4 _OffsetRect 
+ 29b6 move.l loc20, loc30
+ 29bc move.l loc1c, loc2c
+ 29c2 pea.l loc30
+ 29c6 move.w loc32, -(sp)
+ 29ca move.w d4, d0
+ 29cc neg.w d0
+ 29ce add.w arge, d0
+ 29d2 move.w d0, -(sp)
+ 29d4 _OffsetRect 
+ 29ee call DOUBLEBLITUNIVERSAL(&loc10, &loc20, &loc8, &loc30, arga, arg8)
+ 29f4 tst.w d6
+ 29f6 ble.b $2a5c
+ 29f8 move.l loc18, loc8
+ 29fe move.l loc14, loc4
+ 2a04 pea.l loc8
+ 2a08 move.w d3, d0
+ 2a0a neg.w d0
+ 2a0c add.w arg10, d0
+ 2a10 move.w d0, -(sp)
+ 2a12 move.w d7, -(sp)
+ 2a14 _OffsetRect 
+ 2a16 move.l loc28, loc30
+ 2a1c move.l loc24, loc2c
+ 2a22 pea.l loc30
+ 2a26 move.w loc32, -(sp)
+ 2a2a move.w d7, -(sp)
+ 2a2c _OffsetRect 
+ 2a46 call DOUBLEBLITUNIVERSAL(&loc18, &loc28, &loc8, &loc30, arga, arg8)
+ 2a4c bra.b $2a5c
+ 2a4e move.b #$1, loc33
+ 2a54 bra.b $2a5c
+ 2a56 move.b #$1, loc33
+ 2a5c cmpi.b #$1, loc33
+ 2a62 bne.w $2be0
+ 2a66 call SATSETPORTSCREEN()
+ 2a6c move.l loc10, loc8
+ 2a72 move.l locc, loc4
+ 2a78 pea.l loc8
+ 2a7c move.w d3, d0
+ 2a7e neg.w d0
+ 2a80 add.w arg10, d0
+ 2a84 move.w d0, -(sp)
+ 2a86 move.w d4, d0
+ 2a88 neg.w d0
+ 2a8a add.w arge, d0
+ 2a8e move.w d0, -(sp)
+ 2a90 _OffsetRect 
+ 2a92 tst.b argc
+ 2a96 bne.b $2abe
+ 2a98 movea.l g_-17f4, a0
+ 2a9e pea.l $2(a0)
+ 2aa2 movea.l g_-1812, a0
+ 2aa8 pea.l $2(a0)
+ 2aac pea.l loc10
+ 2ab0 pea.l loc8
+ 2ab4 clr.w -(sp)
+ 2ab6 pea.l $0.w
+ 2aba _CopyBits 
+ 2abc bra.b $2adc
+ 2ad6 call DOUBLEBLITUNIVERSAL(&loc10, &$0.w, &loc8, &$0.w, arga, arg8)
+ 2adc tst.w d5
+ 2ade ble.b $2b2a
+ 2ae0 move.l loc20, loc8
+ 2ae6 move.l loc1c, loc4
+ 2aec pea.l loc8
+ 2af0 move.w loc32, -(sp)
+ 2af4 move.w d4, d0
+ 2af6 neg.w d0
+ 2af8 add.w arge, d0
+ 2afc move.w d0, -(sp)
+ 2afe _OffsetRect 
+ 2b00 tst.b argc
+ 2b04 bne.b $2b2a
+ 2b06 movea.l g_-17f4, a0
+ 2b0c pea.l $2(a0)
+ 2b10 movea.l g_-1812, a0
+ 2b16 pea.l $2(a0)
+ 2b1a pea.l loc20
+ 2b1e pea.l loc8
+ 2b22 clr.w -(sp)
+ 2b24 pea.l $0.w
+ 2b28 _CopyBits 
+ 2b2a tst.w d6
+ 2b2c ble.b $2b96
+ 2b2e move.l loc18, loc8
+ 2b34 move.l loc14, loc4
+ 2b3a pea.l loc8
+ 2b3e move.w d3, d0
+ 2b40 neg.w d0
+ 2b42 add.w arg10, d0
+ 2b46 move.w d0, -(sp)
+ 2b48 move.w d7, -(sp)
+ 2b4a _OffsetRect 
+ 2b4c tst.b argc
+ 2b50 bne.b $2b78
+ 2b52 movea.l g_-17f4, a0
+ 2b58 pea.l $2(a0)
+ 2b5c movea.l g_-1812, a0
+ 2b62 pea.l $2(a0)
+ 2b66 pea.l loc18
+ 2b6a pea.l loc8
+ 2b6e clr.w -(sp)
+ 2b70 pea.l $0.w
+ 2b74 _CopyBits 
+ 2b76 bra.b $2b96
+ 2b90 call DOUBLEBLITUNIVERSAL(&loc18, &$0.w, &loc8, &$0.w, arga, arg8)
+ 2b96 tst.w d6
+ 2b98 ble.b $2be0
+ 2b9a tst.w d5
+ 2b9c ble.b $2be0
+ 2b9e move.l loc28, loc8
+ 2ba4 move.l loc24, loc4
+ 2baa pea.l loc8
+ 2bae move.w loc32, -(sp)
+ 2bb2 move.w d7, -(sp)
+ 2bb4 _OffsetRect 
+ 2bb6 tst.b argc
+ 2bba bne.b $2be0
+ 2bbc movea.l g_-17f4, a0
+ 2bc2 pea.l $2(a0)
+ 2bc6 movea.l g_-1812, a0
+ 2bcc pea.l $2(a0)
+ 2bd0 pea.l loc28
+ 2bd4 pea.l loc8
+ 2bd8 clr.w -(sp)
+ 2bda pea.l $0.w
+ 2bde _CopyBits 
+ 2be0 movem.l (sp)+, d3-d7
+ 2be4 unlk a6
+ 2be6 rtd #$e
+
+; TILESCROLLSYNCH   (seg 6 +002bf6, 16 bytes)
+ 2bf6 link.w a6, #$0
+ 2bfa move.b #$1, arg8
+ 2c00 unlk a6
+ 2c02 movea.l (sp)+, a0
+ 2c04 jmp (a0)
+
+; WRAPDRAWENCTILEPROC   (seg 6 +002c18, 334 bytes)
+ 2c18 link.w a6, #$0
+ 2c1c movem.l d3-d4/a2-a4, -(sp)
+ 2c20 movea.l arg1c, a4
+ 2c24 movea.l arg18, a3
+ 2c28 movea.l arg14, a2
+ 2c2c move.w arga, d4
+ 2c30 move.w arg8, d3
+ 2c34 moveq #$20, d0
+ 2c36 add.w arge, d0
+ 2c3a cmp.w g_6aae, d0
+ 2c40 blt.w $2d5c
+ 2c44 moveq #$20, d0
+ 2c46 add.w argc, d0
+ 2c4a cmp.w g_6aac, d0
+ 2c50 blt.w $2d5c
+ 2c54 move.w #$1e0, d0
+ 2c58 add.w g_6aae, d0
+ 2c5e subi.w #$20, d0
+ 2c62 cmp.w arge, d0
+ 2c66 blt.w $2d5c
+ 2c6a move.w #$1e0, d0
+ 2c6e add.w g_6aac, d0
+ 2c74 subi.w #$20, d0
+ 2c78 cmp.w argc, d0
+ 2c7c blt.w $2d5c
+ 2c80 movea.w arge, a0
+ 2c84 move.l a0, d0
+ 2c86 divsl.l #$1e0, d1:d0
+ 2c8e move.w d1, arge
+ 2c92 movea.w argc, a0
+ 2c96 move.l a0, d0
+ 2c98 divsl.l #$1e0, d1:d0
+ 2ca0 move.w d1, argc
+ 2cb6 call BLITENCFACEPROC(a4, a3, a2, arg10, argc, d4, d3)
+ 2cbc move.w argc, d0
+ 2cc0 subi.w #$1e0, d0
+ 2cc4 move.w d0, argc
+ 2cc8 move.w argc, d0
+ 2ccc add.w d3, d0
+ 2cce tst.w d0
+ 2cd0 ble.b $2cea
+ 2ce4 call BLITENCFACEPROC(a4, a3, a2, arg10, argc, d4, d3)
+ 2cea move.w #$1e0, d0
+ 2cee add.w argc, d0
+ 2cf2 move.w d0, argc
+ 2cf6 move.w arge, d0
+ 2cfa subi.w #$1e0, d0
+ 2cfe move.w d0, arge
+ 2d02 move.w arge, d0
+ 2d06 add.w d4, d0
+ 2d08 tst.w d0
+ 2d0a ble.b $2d24
+ 2d1e call BLITENCFACEPROC(a4, a3, a2, arg10, argc, d4, d3)
+ 2d24 move.w argc, d0
+ 2d28 subi.w #$1e0, d0
+ 2d2c move.w d0, argc
+ 2d30 move.w arge, d0
+ 2d34 add.w d4, d0
+ 2d36 tst.w d0
+ 2d38 ble.b $2d5c
+ 2d3a move.w argc, d0
+ 2d3e add.w d3, d0
+ 2d40 tst.w d0
+ 2d42 ble.b $2d5c
+ 2d56 call BLITENCFACEPROC(a4, a3, a2, arg10, argc, d4, d3)
+ 2d5c movem.l (sp)+, d3-d4/a2-a4
+ 2d60 unlk a6
+ 2d62 rtd #$18
+
+; SAFEWRAPRECTBLIT   (seg 6 +002d7c, 304 bytes)
+ 2d7c link.w a6, #$ffde
+ 2d80 movem.l a2-a4, -(sp)
+ 2d84 movea.l arg10, a4
+ 2d88 movea.l argc, a3
+ 2d8c movea.l arg8, a2
+ 2d90 move.w $6(a2), d0
+ 2d94 cmp.w g_6ab2, d0
+ 2d9a blt.w $2ea2
+ 2d9e move.w $4(a2), d0
+ 2da2 cmp.w g_6ab0, d0
+ 2da8 blt.w $2ea2
+ 2dac move.w #$1e0, d0
+ 2db0 add.w g_6ab2, d0
+ 2db6 cmp.w $2(a2), d0
+ 2dba blt.w $2ea2
+ 2dbe move.w #$1e0, d0
+ 2dc2 add.w g_6ab0, d0
+ 2dc8 cmp.w (a2), d0
+ 2dca blt.w $2ea2
+ 2dd2 call SATGETPORT(&loc22)
+ 2dda call SATSETPORT(a3)
+ 2de0 movea.w (a2), a0
+ 2de2 move.l a0, d0
+ 2de4 divsl.l #$1e0, d1:d0
+ 2dec move.w d1, loc8
+ 2df0 movea.w $2(a2), a0
+ 2df4 move.l a0, d0
+ 2df6 divsl.l #$1e0, d1:d0
+ 2dfe move.w d1, loc6
+ 2e02 move.w loc8, d0
+ 2e06 add.w $4(a2), d0
+ 2e0a sub.w (a2), d0
+ 2e0c move.w d0, loc4
+ 2e10 move.w loc6, d0
+ 2e14 add.w $6(a2), d0
+ 2e18 sub.w $2(a2), d0
+ 2e1c move.w d0, loc2
+ 2e20 move.l a4, -(sp)
+ 2e22 move.l a3, -(sp)
+ 2e24 pea.l loc8
+ 2e28 move.l g_6aa4, -(sp)
+ 2e2e movea.l (sp)+, a0
+ 2e30 call (a0)()
+ 2e32 pea.l loc8
+ 2e36 move.l #$fe200000, -(sp)
+ 2e3c _OffsetRect 
+ 2e3e move.l a4, -(sp)
+ 2e40 move.l a3, -(sp)
+ 2e42 pea.l loc8
+ 2e46 move.l g_6aa4, -(sp)
+ 2e4c movea.l (sp)+, a0
+ 2e4e call (a0)()
+ 2e50 pea.l loc8
+ 2e54 move.l #$1e00000, -(sp)
+ 2e5a _OffsetRect 
+ 2e5c pea.l loc8
+ 2e60 move.l #$fe20, -(sp)
+ 2e66 _OffsetRect 
+ 2e68 move.l a4, -(sp)
+ 2e6a move.l a3, -(sp)
+ 2e6c pea.l loc8
+ 2e70 move.l g_6aa4, -(sp)
+ 2e76 movea.l (sp)+, a0
+ 2e78 call (a0)()
+ 2e7a pea.l loc8
+ 2e7e move.l #$fe200000, -(sp)
+ 2e84 _OffsetRect 
+ 2e86 move.l a4, -(sp)
+ 2e88 move.l a3, -(sp)
+ 2e8a pea.l loc8
+ 2e8e move.l g_6aa4, -(sp)
+ 2e94 movea.l (sp)+, a0
+ 2e96 call (a0)()
+ 2e9c call SATGETPORT(&loc22)
+ 2ea2 movem.l (sp)+, a2-a4
+ 2ea6 unlk a6
+ 2ea8 rtd #$c
+
+; SAFEWRAPRECTBLIT2   (seg 6 +002ec0, 304 bytes)
+ 2ec0 link.w a6, #$ffde
+ 2ec4 movem.l a2-a4, -(sp)
+ 2ec8 movea.l arg10, a4
+ 2ecc movea.l argc, a3
+ 2ed0 movea.l arg8, a2
+ 2ed4 move.w $6(a2), d0
+ 2ed8 cmp.w g_6aae, d0
+ 2ede blt.w $2fe6
+ 2ee2 move.w $4(a2), d0
+ 2ee6 cmp.w g_6aac, d0
+ 2eec blt.w $2fe6
+ 2ef0 move.w #$1e0, d0
+ 2ef4 add.w g_6aae, d0
+ 2efa cmp.w $2(a2), d0
+ 2efe blt.w $2fe6
+ 2f02 move.w #$1e0, d0
+ 2f06 add.w g_6aac, d0
+ 2f0c cmp.w (a2), d0
+ 2f0e blt.w $2fe6
+ 2f16 call SATGETPORT(&loc22)
+ 2f1e call SATSETPORT(a3)
+ 2f24 movea.w (a2), a0
+ 2f26 move.l a0, d0
+ 2f28 divsl.l #$1e0, d1:d0
+ 2f30 move.w d1, loc8
+ 2f34 movea.w $2(a2), a0
+ 2f38 move.l a0, d0
+ 2f3a divsl.l #$1e0, d1:d0
+ 2f42 move.w d1, loc6
+ 2f46 move.w loc8, d0
+ 2f4a add.w $4(a2), d0
+ 2f4e sub.w (a2), d0
+ 2f50 move.w d0, loc4
+ 2f54 move.w loc6, d0
+ 2f58 add.w $6(a2), d0
+ 2f5c sub.w $2(a2), d0
+ 2f60 move.w d0, loc2
+ 2f64 move.l a4, -(sp)
+ 2f66 move.l a3, -(sp)
+ 2f68 pea.l loc8
+ 2f6c move.l g_6aa4, -(sp)
+ 2f72 movea.l (sp)+, a0
+ 2f74 call (a0)()
+ 2f76 pea.l loc8
+ 2f7a move.l #$fe200000, -(sp)
+ 2f80 _OffsetRect 
+ 2f82 move.l a4, -(sp)
+ 2f84 move.l a3, -(sp)
+ 2f86 pea.l loc8
+ 2f8a move.l g_6aa4, -(sp)
+ 2f90 movea.l (sp)+, a0
+ 2f92 call (a0)()
+ 2f94 pea.l loc8
+ 2f98 move.l #$1e00000, -(sp)
+ 2f9e _OffsetRect 
+ 2fa0 pea.l loc8
+ 2fa4 move.l #$fe20, -(sp)
+ 2faa _OffsetRect 
+ 2fac move.l a4, -(sp)
+ 2fae move.l a3, -(sp)
+ 2fb0 pea.l loc8
+ 2fb4 move.l g_6aa4, -(sp)
+ 2fba movea.l (sp)+, a0
+ 2fbc call (a0)()
+ 2fbe pea.l loc8
+ 2fc2 move.l #$fe200000, -(sp)
+ 2fc8 _OffsetRect 
+ 2fca move.l a4, -(sp)
+ 2fcc move.l a3, -(sp)
+ 2fce pea.l loc8
+ 2fd2 move.l g_6aa4, -(sp)
+ 2fd8 movea.l (sp)+, a0
+ 2fda call (a0)()
+ 2fe0 call SATGETPORT(&loc22)
+ 2fe6 movem.l (sp)+, a2-a4
+ 2fea unlk a6
+ 2fec rtd #$c
+
+; SCROLLTO   (seg 6 +003004, 550 bytes)
+ 3004 link.w a6, #$fff0
+ 3008 movem.l d3-d4, -(sp)
+ 300c move.w arga, d4
+ 3010 move.w arg8, d3
+ 3014 tst.w d4
+ 3016 bge.b $301a
+ 3018 moveq #$0, d4
+ 301a tst.w d3
+ 301c bge.b $3020
+ 301e moveq #$0, d3
+ 3020 move.w #$1e0, d0
+ 3024 add.w d4, d0
+ 3028 move.l d0, d1
+ 302a asr.l #$4, d1
+ 302c lsr.l #$8, d1
+ 302e lsr.l #$8, d1
+ 3030 lsr.l #$8, d1
+ 3032 lsr.l #$3, d1
+ 3034 add.l d0, d1
+ 3036 asr.l #$5, d1
+ 3038 cmpi.l #$80, d1
+ 303e ble.b $3044
+ 3040 move.w #$e40, d4
+ 3044 move.w #$1e0, d0
+ 3048 add.w d3, d0
+ 304c move.l d0, d1
+ 304e asr.l #$4, d1
+ 3050 lsr.l #$8, d1
+ 3052 lsr.l #$8, d1
+ 3054 lsr.l #$8, d1
+ 3056 lsr.l #$3, d1
+ 3058 add.l d0, d1
+ 305a asr.l #$5, d1
+ 305c cmpi.l #$80, d1
+ 3062 ble.b $3068
+ 3064 move.w #$e40, d3
+ 3068 pea.l loc10
+ 306c clr.l -(sp)
+ 306e pea.l $ffff.w
+ 3072 _SetRect 
+ 3074 pea.l loc8
+ 3078 clr.l -(sp)
+ 307a pea.l $ffff.w
+ 307e _SetRect 
+ 3080 cmp.w g_6aac, d3
+ 3086 beq.w $3138
+ 308a movea.w g_6aae, a0
+ 3090 move.l a0, d0
+ 3092 asr.l #$4, d0
+ 3094 lsr.l #$8, d0
+ 3096 lsr.l #$8, d0
+ 3098 lsr.l #$8, d0
+ 309a lsr.l #$3, d0
+ 309c add.l a0, d0
+ 309e asr.l #$5, d0
+ 30a0 move.w d0, loce
+ 30a4 movea.w g_6aae, a0
+ 30aa move.l a0, d0
+ 30ac asr.l #$4, d0
+ 30ae lsr.l #$8, d0
+ 30b0 lsr.l #$8, d0
+ 30b2 lsr.l #$8, d0
+ 30b4 lsr.l #$3, d0
+ 30b6 add.l a0, d0
+ 30b8 asr.l #$5, d0
+ 30ba addq.l #$8, d0
+ 30bc addq.l #$7, d0
+ 30be move.w d0, loca
+ 30c2 cmp.w g_6aac, d3
+ 30c8 ble.b $3106
+ 30ca movea.w g_6aac, a0
+ 30d0 move.l a0, d0
+ 30d2 asr.l #$4, d0
+ 30d4 lsr.l #$8, d0
+ 30d6 lsr.l #$8, d0
+ 30d8 lsr.l #$8, d0
+ 30da lsr.l #$3, d0
+ 30dc add.l a0, d0
+ 30de asr.l #$5, d0
+ 30e0 addq.l #$8, d0
+ 30e2 addq.l #$7, d0
+ 30e4 move.w d0, loc10
+ 30e8 movea.w d3, a0
+ 30ea move.l a0, d0
+ 30ec asr.l #$4, d0
+ 30ee lsr.l #$8, d0
+ 30f0 lsr.l #$8, d0
+ 30f2 lsr.l #$8, d0
+ 30f4 lsr.l #$3, d0
+ 30f6 add.l a0, d0
+ 30f8 asr.l #$5, d0
+ 30fa addq.l #$8, d0
+ 30fc addq.l #$7, d0
+ 30fe subq.l #$1, d0
+ 3100 move.w d0, locc
+ 3104 bra.b $3138
+ 3106 movea.w d3, a0
+ 3108 move.l a0, d0
+ 310a asr.l #$4, d0
+ 310c lsr.l #$8, d0
+ 310e lsr.l #$8, d0
+ 3110 lsr.l #$8, d0
+ 3112 lsr.l #$3, d0
+ 3114 add.l a0, d0
+ 3116 asr.l #$5, d0
+ 3118 move.w d0, loc10
+ 311c movea.w g_6aac, a0
+ 3122 move.l a0, d0
+ 3124 asr.l #$4, d0
+ 3126 lsr.l #$8, d0
+ 3128 lsr.l #$8, d0
+ 312a lsr.l #$8, d0
+ 312c lsr.l #$3, d0
+ 312e add.l a0, d0
+ 3130 asr.l #$5, d0
+ 3132 subq.l #$1, d0
+ 3134 move.w d0, locc
+ 3138 cmp.w g_6aae, d4
+ 313e beq.w $31ec
+ 3142 movea.w g_6aac, a0
+ 3148 move.l a0, d0
+ 314a asr.l #$4, d0
+ 314c lsr.l #$8, d0
+ 314e lsr.l #$8, d0
+ 3150 lsr.l #$8, d0
+ 3152 lsr.l #$3, d0
+ 3154 add.l a0, d0
+ 3156 asr.l #$5, d0
+ 3158 move.w d0, loc8
+ 315c movea.w g_6aac, a0
+ 3162 move.l a0, d0
+ 3164 asr.l #$4, d0
+ 3166 lsr.l #$8, d0
+ 3168 lsr.l #$8, d0
+ 316a lsr.l #$8, d0
+ 316c lsr.l #$3, d0
+ 316e add.l a0, d0
+ 3170 asr.l #$5, d0
+ 3172 addq.l #$8, d0
+ 3174 addq.l #$7, d0
+ 3176 move.w d0, loc4
+ 317a cmp.w g_6aae, d4
+ 3180 ble.b $31bc
+ 3182 movea.w g_6aae, a0
+ 3188 move.l a0, d0
+ 318a asr.l #$4, d0
+ 318c lsr.l #$8, d0
+ 318e lsr.l #$8, d0
+ 3190 lsr.l #$8, d0
+ 3192 lsr.l #$3, d0
+ 3194 add.l a0, d0
+ 3196 asr.l #$5, d0
+ 3198 addq.l #$8, d0
+ 319a addq.l #$7, d0
+ 319c move.w d0, loc6
+ 31a0 movea.w d4, a0
+ 31a2 move.l a0, d0
+ 31a4 asr.l #$4, d0
+ 31a6 lsr.l #$8, d0
+ 31a8 lsr.l #$8, d0
+ 31aa lsr.l #$8, d0
+ 31ac lsr.l #$3, d0
+ 31ae add.l a0, d0
+ 31b0 asr.l #$5, d0
+ 31b2 addq.l #$8, d0
+ 31b4 addq.l #$7, d0
+ 31b6 move.w d0, loc2
+ 31ba bra.b $31ec
+ 31bc movea.w d4, a0
+ 31be move.l a0, d0
+ 31c0 asr.l #$4, d0
+ 31c2 lsr.l #$8, d0
+ 31c4 lsr.l #$8, d0
+ 31c6 lsr.l #$8, d0
+ 31c8 lsr.l #$3, d0
+ 31ca add.l a0, d0
+ 31cc asr.l #$5, d0
+ 31ce move.w d0, loc6
+ 31d2 movea.w g_6aae, a0
+ 31d8 move.l a0, d0
+ 31da asr.l #$4, d0
+ 31dc lsr.l #$8, d0
+ 31de lsr.l #$8, d0
+ 31e0 lsr.l #$8, d0
+ 31e2 lsr.l #$3, d0
+ 31e4 add.l a0, d0
+ 31e6 asr.l #$5, d0
+ 31e8 move.w d0, loc2
+ 31ec move.w d4, g_6aae
+ 31f2 move.w d3, g_6aac
+ 31f8 move.w loc10, d0
+ 31fc cmp.w locc, d0
+ 3200 bgt.b $320c
+ 3206 call REDRAWGRID(&loc10)
+ 320c move.w loc6, d0
+ 3210 cmp.w loc2, d0
+ 3214 bgt.b $3220
+ 321a call REDRAWGRID(&loc8)
+ 3220 movem.l (sp)+, d3-d4
+ 3224 unlk a6
+ 3226 rtd #$4
+
+; INITTILESCROLL   (seg 6 +003236, 30 bytes)
+ 3236 link.w a6, #$0
+ 3240 call SATINSTALLSYNCH(&TILESCROLLSYNCH)
+ 3246 move.l g_-171a, g_6aa4
+ 3250 unlk a6
+ 3252 rts 
+
+; KILLTILESCROLL   (seg 6 +003266, 28 bytes)
+ 3266 link.w a6, #$0
+ 326e call SATINSTALLSYNCH(&$0.w)
+ 3274 move.l g_6aa4, g_-171a
+ 327e unlk a6
+ 3280 rts 
+
+; SETTILESCROLLDRAWPOINT   (seg 6 +003294, 26 bytes)
+ 3294 link.w a6, #$0
+ 3298 move.w arga, g_6aaa
+ 32a0 move.w arg8, g_6aa8
+ 32a8 unlk a6
+ 32aa rtd #$4
+
+; REDRAWWHOLEGRID   (seg 6 +0032c8, 128 bytes)
+ 32c8 link.w a6, #$fff8
+ 32cc pea.l loc8
+ 32d0 movea.w g_6aae, a0
+ 32d6 move.l a0, d0
+ 32d8 asr.l #$4, d0
+ 32da lsr.l #$8, d0
+ 32dc lsr.l #$8, d0
+ 32de lsr.l #$8, d0
+ 32e0 lsr.l #$3, d0
+ 32e2 add.l a0, d0
+ 32e4 asr.l #$5, d0
+ 32e6 move.w d0, -(sp)
+ 32e8 movea.w g_6aac, a0
+ 32ee move.l a0, d0
+ 32f0 asr.l #$4, d0
+ 32f2 lsr.l #$8, d0
+ 32f4 lsr.l #$8, d0
+ 32f6 lsr.l #$8, d0
+ 32f8 lsr.l #$3, d0
+ 32fa add.l a0, d0
+ 32fc asr.l #$5, d0
+ 32fe move.w d0, -(sp)
+ 3300 movea.w g_6aae, a0
+ 3306 move.l a0, d0
+ 3308 asr.l #$4, d0
+ 330a lsr.l #$8, d0
+ 330c lsr.l #$8, d0
+ 330e lsr.l #$8, d0
+ 3310 lsr.l #$3, d0
+ 3312 add.l a0, d0
+ 3314 asr.l #$5, d0
+ 3316 addq.l #$8, d0
+ 3318 addq.l #$7, d0
+ 331a move.w d0, -(sp)
+ 331c movea.w g_6aac, a0
+ 3322 move.l a0, d0
+ 3324 asr.l #$4, d0
+ 3326 lsr.l #$8, d0
+ 3328 lsr.l #$8, d0
+ 332a lsr.l #$8, d0
+ 332c lsr.l #$3, d0
+ 332e add.l a0, d0
+ 3330 asr.l #$5, d0
+ 3332 addq.l #$8, d0
+ 3334 addq.l #$7, d0
+ 3336 move.w d0, -(sp)
+ 3338 _SetRect 
+ 333e call REDRAWGRID(&loc8)
+ 3344 unlk a6
+ 3346 rts 
+
+; Randomize   (seg 6 +00335a, 18 bytes)
+ 335a link.w a6, #$0
+ 335e lea.l g_-18c6, a0
+ 3364 move.l $20c.w, (a0)
+ 3368 unlk a6
+ 336a rts 
+
+; DRAWGREYOUTLINE   (seg 6 +003378, 162 bytes)
+ 3378 link.w a6, #$ffe2
+ 337c move.l a2, -(sp)
+ 337e movea.l arga, a2
+ 3382 pea.l loc18
+ 3386 _GetPort 
+ 3388 move.l a2, -(sp)
+ 338a _SetPort 
+ 338c move.l a2, -(sp)
+ 338e move.w arg8, -(sp)
+ 3392 pea.l loc14
+ 3396 pea.l loc12
+ 339a pea.l loce
+ 339e _GetDialogItem 
+ 33a0 pea.l loc1e
+ 33a4 _GetForeColor 
+ 33a6 move.w #$ffff, loc6
+ 33ac move.w #$ffff, loc4
+ 33b2 move.w #$ffff, loc2
+ 33b8 pea.l loc6
+ 33bc _RGBForeColor 
+ 33be pea.l loce
+ 33c2 _FrameRect 
+ 33c4 move.w #$5000, loc6
+ 33ca move.w #$5000, loc4
+ 33d0 move.w #$5000, loc2
+ 33d6 pea.l loc6
+ 33da _RGBForeColor 
+ 33dc pea.l loce
+ 33e0 pea.l $ffff.w
+ 33e4 _OffsetRect 
+ 33e6 pea.l loce
+ 33ea _FrameRect 
+ 33ec pea.l loc1e
+ 33f0 _RGBForeColor 
+ 33f2 move.l loc18, -(sp)
+ 33f6 _SetPort 
+ 33f8 move.l a2, -(sp)
+ 33fa move.w #$3, -(sp)
+ 33fe pea.l loc14
+ 3402 pea.l loc12
+ 3406 pea.l loce
+ 340a _GetDialogItem 
+ 340c move.l loc12, -(sp)
+ 3410 _trap_a96d 
+ 3412 movea.l (sp)+, a2
+ 3414 unlk a6
+ 3416 rtd #$6
+
+; AlreadyUsingKey   (seg 6 +00342c, 54 bytes)
+ 342c link.w a6, #$0
+ 3430 move.l d6, -(sp)
+ 3432 move.w arg8, d6
+ 3436 move.w arga, d2
+ 343a moveq #$0, d1
+ 343c moveq #$0, d0
+ 343e bra.b $3454
+ 3440 lea.l g_5842, a0
+ 3446 cmp.w $10(a0, d0.w * 2), d6
+ 344a bne.b $3452
+ 344c cmp.w d2, d0
+ 344e beq.b $3452
+ 3450 moveq #$1, d1
+ 3452 addq.w #$1, d0
+ 3454 cmpi.w #$8, d0
+ 3458 blt.b $3440
+ 345a move.b d1, d0
+ 345c move.l (sp)+, d6
+ 345e unlk a6
+ 3460 rts 
+
+; PREFDIALOGFILTER   (seg 6 +003474, 1152 bytes)
+ 3474 link.w a6, #$ffe0
+ 3478 movem.l d3-d4/a2-a4, -(sp)
+ 347c movea.l arg10, a2
+ 3480 movea.l argc, a4
+ 3484 movea.l arg8, a3
+ 3488 moveq #$0, d0
+ 348a move.w (a4), d0
+ 348c subq.l #$1, d0
+ 348e beq.w $35da
+ 3492 subq.l #$2, d0
+ 3494 beq.b $34a8
+ 3496 subq.l #$2, d0
+ 3498 beq.b $349e
+ 349a bra.w $36ba
+ 349e move.b #$1, $48(sp)
+ 34a4 bra.w $38ea
+ 34a8 cmpi.w #$2, g_df8
+ 34b0 beq.w $353a
+ 34b4 move.l $2(a4), d3
+ 34b8 andi.l #$ff, d3
+ 34be move.w $e(a4), d0
+ 34c2 andi.l #$100, d0
+ 34c8 beq.b $34d0
+ 34ca cmpi.b #$2e, d3
+ 34ce beq.b $34d6
+ 34d0 cmpi.b #$1b, d3
+ 34d4 bne.b $3502
+ 34d6 move.w #$2, (a3)
+ 34da move.l a2, -(sp)
+ 34dc move.w #$2, -(sp)
+ 34e0 pea.l loc18
+ 34e4 pea.l loc16
+ 34e8 pea.l loc20
+ 34ec _GetDialogItem 
+ 34ee move.l loc16, -(sp)
+ 34f2 move.w #$1, -(sp)
+ 34f6 _HiliteControl 
+ 34f8 move.b #$1, $48(sp)
+ 34fe bra.w $38ea
+ 3502 cmpi.b #$d, d3
+ 3506 beq.b $350e
+ 3508 cmpi.b #$3, d3
+ 350c bne.b $353a
+ 350e move.w #$1, (a3)
+ 3512 move.l a2, -(sp)
+ 3514 move.w #$1, -(sp)
+ 3518 pea.l loc18
+ 351c pea.l loc16
+ 3520 pea.l loc20
+ 3524 _GetDialogItem 
+ 3526 move.l loc16, -(sp)
+ 352a move.w #$1, -(sp)
+ 352e _HiliteControl 
+ 3530 move.b #$1, $48(sp)
+ 3536 bra.w $38ea
+ 353a tst.w $a4(a2)
+ 353e bge.b $3544
+ 3540 moveq #$ff, d0
+ 3542 bra.b $354c
+ 3544 move.w $a4(a2), d0
+ 354a addq.l #$1, d0
+ 354c move.l d0, d3
+ 354e tst.l d3
+ 3550 ble.w $35d2
+ 3554 move.l d3, d0
+ 3556 subq.l #$7, d0
+ 3558 move.w d0, -(sp)
+ 355a move.l $2(a4), d0
+ 355e andi.l #$ff00, d0
+ 3564 lsr.l #$8, d0
+ 3568 call AlreadyUsingKey(d0)
+ 356e tst.b d0
+ 3570 addq.w #$4, sp
+ 3572 bne.b $35c2
+ 3574 move.l $2(a4), d0
+ 3578 andi.l #$ff00, d0
+ 357e lsr.l #$8, d0
+ 3580 move.l d3, d1
+ 3582 subq.l #$7, d1
+ 3584 lea.l g_5842, a0
+ 358a move.w d0, $10(a0, d1.l * 2)
+ 358e move.w d3, -(sp)
+ 3590 move.l a2, -(sp)
+ 3592 move.l d3, d0
+ 3594 subq.l #$7, d0
+ 3596 lea.l g_5842, a0
+ 35a0 call ConvertKeyName($10(a0, d0.l * 2))
+ 35a6 moveq #$e, d0
+ 35a8 cmp.l d0, d3
+ 35aa addq.w #$8, sp
+ 35ac bge.b $35b2
+ 35ae addq.l #$1, d3
+ 35b0 bra.b $35b4
+ 35b2 moveq #$7, d3
+ 35b4 move.l a2, -(sp)
+ 35b6 move.w d3, -(sp)
+ 35b8 move.l #$7fff0000, -(sp)
+ 35be _SelectDialogItemText 
+ 35c0 bra.b $35c8
+ 35c2 move.w #$19, -(sp)
+ 35c6 _SysBeep 
+ 35c8 move.b #$1, $48(sp)
+ 35ce bra.w $38ea
+ 35d2 clr.b $48(sp)
+ 35d6 bra.w $38ea
+ 35da move.l $a(a4), loc4
+ 35e0 pea.l loc4
+ 35e4 _GlobalToLocal 
+ 35e6 subq.w #$2, sp
+ 35ea call seg4+304(a2)
+ 35f0 move.w (sp)+, d0
+ 35f2 move.w d0, d4
+ 35f4 move.w d4, d3
+ 35f6 bra.w $36ac
+ 35fa move.l a2, -(sp)
+ 35fc move.w d3, -(sp)
+ 35fe pea.l loc12
+ 3602 pea.l loc8
+ 3606 pea.l loc10
+ 360a _GetDialogItem 
+ 360c subq.w #$2, sp
+ 360e move.l loc4, -(sp)
+ 3612 pea.l loc10
+ 3616 _PtInRect 
+ 3618 move.b (sp)+, d0
+ 361a beq.w $36aa
+ 361e move.w loc12, d0
+ 3624 subq.l #$5, d0
+ 3626 beq.b $364e
+ 3628 subq.l #$1, d0
+ 362a beq.b $366c
+ 362c subq.l #$1, d0
+ 362e beq.b $368a
+ 3630 subq.l #$8, d0
+ 3632 subq.l #$1, d0
+ 3634 beq.b $3638
+ 3636 bra.b $36aa
+ 3638 move.l a2, -(sp)
+ 363a move.w d3, -(sp)
+ 363c move.l #$7fff0000, -(sp)
+ 3642 _SelectDialogItemText 
+ 3644 move.b #$1, $48(sp)
+ 364a bra.w $38ea
+ 364e subq.w #$2, sp
+ 3650 move.l loc8, -(sp)
+ 3654 move.l loc4, -(sp)
+ 3658 clr.l -(sp)
+ 365a _TrackControl 
+ 365c move.w (sp)+, d0
+ 365e beq.b $3662
+ 3660 move.w d3, (a3)
+ 3662 move.b #$1, $48(sp)
+ 3668 bra.w $38ea
+ 366c subq.w #$2, sp
+ 366e move.l loc8, -(sp)
+ 3672 move.l loc4, -(sp)
+ 3676 clr.l -(sp)
+ 3678 _TrackControl 
+ 367a move.w (sp)+, d0
+ 367c beq.b $3680
+ 367e move.w d3, (a3)
+ 3680 move.b #$1, $48(sp)
+ 3686 bra.w $38ea
+ 368a subq.w #$2, sp
+ 368c move.l loc8, -(sp)
+ 3690 move.l loc4, -(sp)
+ 3694 pea.l $ffff.w
+ 3698 _TrackControl 
+ 369a move.w (sp)+, d0
+ 369c beq.b $36a0
+ 369e move.w d3, (a3)
+ 36a0 move.b #$1, $48(sp)
+ 36a6 bra.w $38ea
+ 36aa subq.w #$1, d3
+ 36ac tst.w d3
+ 36ae bge.w $35fa
+ 36b2 clr.b $48(sp)
+ 36b6 bra.w $38ea
+ 36ba moveq #$0, d4
+ 36bc move.w $e(a4), d4
+ 36c0 andi.l #$ff00, d4
+ 36c6 tst.l d4
+ 36c8 beq.w $38e0
+ 36cc tst.w $a4(a2)
+ 36d0 bge.b $36d6
+ 36d2 moveq #$ff, d0
+ 36d4 bra.b $36de
+ 36d6 move.w $a4(a2), d0
+ 36dc addq.l #$1, d0
+ 36de move.l d0, d3
+ 36e0 tst.l d3
+ 36e2 ble.w $38da
+ 36e6 move.l d4, d0
+ 36e8 andi.l #$100, d0
+ 36ee beq.b $3762
+ 36f0 cmpi.w #$37, g_6aa2
+ 36f8 beq.w $38d4
+ 36fc move.l d3, d0
+ 36fe subq.l #$7, d0
+ 3706 call AlreadyUsingKey(d0, 0x37)
+ 370c tst.b d0
+ 370e addq.w #$4, sp
+ 3710 bne.w $38d4
+ 3714 move.l d3, d0
+ 3716 subq.l #$7, d0
+ 3718 lea.l g_5842, a0
+ 371e move.w #$37, $10(a0, d0.l * 2)
+ 3724 move.w #$37, g_6aa2
+ 372c move.w d3, -(sp)
+ 372e move.l a2, -(sp)
+ 3730 move.l d3, d0
+ 3732 subq.l #$7, d0
+ 3734 lea.l g_5842, a0
+ 373e call ConvertKeyName($10(a0, d0.l * 2))
+ 3744 moveq #$e, d0
+ 3746 cmp.l d0, d3
+ 3748 addq.w #$8, sp
+ 374a bge.b $3750
+ 374c addq.l #$1, d3
+ 374e bra.b $3752
+ 3750 moveq #$7, d3
+ 3752 move.l a2, -(sp)
+ 3754 move.w d3, -(sp)
+ 3756 move.l #$7fff0000, -(sp)
+ 375c _SelectDialogItemText 
+ 375e bra.w $38d4
+ 3762 move.l d4, d0
+ 3764 andi.l #$200, d0
+ 376a beq.b $37de
+ 376c cmpi.w #$38, g_6aa2
+ 3774 beq.w $38d4
+ 3778 move.l d3, d0
+ 377a subq.l #$7, d0
+ 3782 call AlreadyUsingKey(d0, 0x38)
+ 3788 tst.b d0
+ 378a addq.w #$4, sp
+ 378c bne.w $38d4
+ 3790 move.l d3, d0
+ 3792 subq.l #$7, d0
+ 3794 lea.l g_5842, a0
+ 379a move.w #$38, $10(a0, d0.l * 2)
+ 37a0 move.w #$38, g_6aa2
+ 37a8 move.w d3, -(sp)
+ 37aa move.l a2, -(sp)
+ 37ac move.l d3, d0
+ 37ae subq.l #$7, d0
+ 37b0 lea.l g_5842, a0
+ 37ba call ConvertKeyName($10(a0, d0.l * 2))
+ 37c0 moveq #$e, d0
+ 37c2 cmp.l d0, d3
+ 37c4 addq.w #$8, sp
+ 37c6 bge.b $37cc
+ 37c8 addq.l #$1, d3
+ 37ca bra.b $37ce
+ 37cc moveq #$7, d3
+ 37ce move.l a2, -(sp)
+ 37d0 move.w d3, -(sp)
+ 37d2 move.l #$7fff0000, -(sp)
+ 37d8 _SelectDialogItemText 
+ 37da bra.w $38d4
+ 37de move.l d4, d0
+ 37e0 andi.l #$800, d0
+ 37e6 beq.b $3858
+ 37e8 cmpi.w #$3a, g_6aa2
+ 37f0 beq.w $38d4
+ 37f4 move.l d3, d0
+ 37f6 subq.l #$7, d0
+ 37fe call AlreadyUsingKey(d0, 0x3a)
+ 3804 tst.b d0
+ 3806 addq.w #$4, sp
+ 3808 bne.w $38d4
+ 380c move.l d3, d0
+ 380e subq.l #$7, d0
+ 3810 lea.l g_5842, a0
+ 3816 move.w #$3a, $10(a0, d0.l * 2)
+ 381c move.w #$3a, g_6aa2
+ 3824 move.w d3, -(sp)
+ 3826 move.l a2, -(sp)
+ 3828 move.l d3, d0
+ 382a subq.l #$7, d0
+ 382c lea.l g_5842, a0
+ 3836 call ConvertKeyName($10(a0, d0.l * 2))
+ 383c moveq #$e, d0
+ 383e cmp.l d0, d3
+ 3840 addq.w #$8, sp
+ 3842 bge.b $3848
+ 3844 addq.l #$1, d3
+ 3846 bra.b $384a
+ 3848 moveq #$7, d3
+ 384a move.l a2, -(sp)
+ 384c move.w d3, -(sp)
+ 384e move.l #$7fff0000, -(sp)
+ 3854 _SelectDialogItemText 
+ 3856 bra.b $38d4
+ 3858 move.l d4, d0
+ 385a andi.l #$1000, d0
+ 3860 beq.b $38ce
+ 3862 cmpi.w #$3b, g_6aa2
+ 386a beq.b $38d4
+ 386c move.l d3, d0
+ 386e subq.l #$7, d0
+ 3876 call AlreadyUsingKey(d0, 0x3b)
+ 387c tst.b d0
+ 387e addq.w #$4, sp
+ 3880 bne.b $38d4
+ 3882 move.l d3, d0
+ 3884 subq.l #$7, d0
+ 3886 lea.l g_5842, a0
+ 388c move.w #$3b, $10(a0, d0.l * 2)
+ 3892 move.w #$3b, g_6aa2
+ 389a move.w d3, -(sp)
+ 389c move.l a2, -(sp)
+ 389e move.l d3, d0
+ 38a0 subq.l #$7, d0
+ 38a2 lea.l g_5842, a0
+ 38ac call ConvertKeyName($10(a0, d0.l * 2))
+ 38b2 moveq #$e, d0
+ 38b4 cmp.l d0, d3
+ 38b6 addq.w #$8, sp
+ 38b8 bge.b $38be
+ 38ba addq.l #$1, d3
+ 38bc bra.b $38c0
+ 38be moveq #$7, d3
+ 38c0 move.l a2, -(sp)
+ 38c2 move.w d3, -(sp)
+ 38c4 move.l #$7fff0000, -(sp)
+ 38ca _SelectDialogItemText 
+ 38cc bra.b $38d4
+ 38ce clr.w g_6aa2
+ 38d4 clr.b $48(sp)
+ 38d8 bra.b $38ea
+ 38da clr.b $48(sp)
+ 38de bra.b $38ea
+ 38e0 clr.w g_6aa2
+ 38e6 clr.b $48(sp)
+ 38ea movem.l (sp)+, d3-d4/a2-a4
+ 38ee unlk a6
+ 38f0 rtd #$c
+
+; UpdateDisabledItems   (seg 6 +003908, 280 bytes)
+ 3908 link.w a6, #$fff0
+ 390c move.l a2, -(sp)
+ 390e movea.l arg8, a2
+ 3912 move.w #$ffff, loc10
+ 3918 tst.b g_5846
+ 391e beq.b $3984
+ 3920 move.l a2, -(sp)
+ 3922 move.w #$9, -(sp)
+ 3926 pea.l loce
+ 392a pea.l loc4
+ 392e pea.l locc
+ 3932 _GetDialogItem 
+ 3934 move.l a2, -(sp)
+ 3936 move.l #$850009, -(sp)
+ 393c move.l loc4, -(sp)
+ 3940 pea.l locc
+ 3944 _SetDialogItem 
+ 3946 move.l loc4, -(sp)
+ 394a move.w #$ff, -(sp)
+ 394e _HiliteControl 
+ 3950 move.l a2, -(sp)
+ 3952 move.w #$a, -(sp)
+ 3956 pea.l loce
+ 395a pea.l loc4
+ 395e pea.l locc
+ 3962 _GetDialogItem 
+ 3964 move.l a2, -(sp)
+ 3966 move.l #$85000a, -(sp)
+ 396c move.l loc4, -(sp)
+ 3970 pea.l locc
+ 3974 _SetDialogItem 
+ 3976 move.l loc4, -(sp)
+ 397a move.w #$ff, -(sp)
+ 397e _HiliteControl 
+ 3980 bra.w $3a1a
+ 3984 move.l a2, -(sp)
+ 3986 move.w #$9, -(sp)
+ 398a pea.l loce
+ 398e pea.l loc4
+ 3992 pea.l locc
+ 3996 _GetDialogItem 
+ 3998 move.l a2, -(sp)
+ 399a move.l #$50009, -(sp)
+ 39a0 move.l loc4, -(sp)
+ 39a4 pea.l locc
+ 39a8 _SetDialogItem 
+ 39aa move.l loc4, -(sp)
+ 39ae clr.w -(sp)
+ 39b0 _HiliteControl 
+ 39b2 tst.b g_5844
+ 39b8 beq.b $39ea
+ 39ba move.l a2, -(sp)
+ 39bc move.w #$a, -(sp)
+ 39c0 pea.l loce
+ 39c4 pea.l loc4
+ 39c8 pea.l locc
+ 39cc _GetDialogItem 
+ 39ce move.l a2, -(sp)
+ 39d0 move.l #$5000a, -(sp)
+ 39d6 move.l loc4, -(sp)
+ 39da pea.l locc
+ 39de _SetDialogItem 
+ 39e0 move.l loc4, -(sp)
+ 39e4 clr.w -(sp)
+ 39e6 _HiliteControl 
+ 39e8 bra.b $3a1a
+ 39ea move.l a2, -(sp)
+ 39ec move.w #$a, -(sp)
+ 39f0 pea.l loce
+ 39f4 pea.l loc4
+ 39f8 pea.l locc
+ 39fc _GetDialogItem 
+ 39fe move.l a2, -(sp)
+ 3a00 move.l #$85000a, -(sp)
+ 3a06 move.l loc4, -(sp)
+ 3a0a pea.l locc
+ 3a0e _SetDialogItem 
+ 3a10 move.l loc4, -(sp)
+ 3a14 move.w #$ff, -(sp)
+ 3a18 _HiliteControl 
+ 3a1a movea.l (sp)+, a2
+ 3a1c unlk a6
+ 3a1e rts 
+
+; PreferencesDialog   (seg 6 +003a36, 2146 bytes)
+ 3a36 link.w a6, #$ffec
+ 3a3a movem.l d3/a2-a3, -(sp)
+ 3a3e move.w #$ffff, loc10
+ 3a44 moveq #$1, d3
+ 3a46 lea.l PREFDIALOGFILTER, a2
+ 3a4c lea.l PREFDIALOGFILTER, a3
+ 3a52 movea.l g_583e, a0
+ 3a58 movea.l (a0), a0
+ 3a5a lea.l g_5842, a1
+ 3a60 move.l #$930, d0
+ 3a66 _BlockMove 
+ 3a68 pea.l loc14
+ 3a6c _GetPort 
+ 3a6e subq.w #$4, sp
+ 3a70 move.w #$1af4, -(sp)
+ 3a74 clr.l -(sp)
+ 3a76 pea.l $ffff.w
+ 3a7a _GetNewDialog 
+ 3a7c movea.l (sp)+, a0
+ 3a7e movea.l a0, a2
+ 3a80 move.l a2, d0
+ 3a82 bne.b $3a86
+ 3a84 _ExitToShell 
+ 3a86 move.l a2, -(sp)
+ 3a88 _SetPort 
+ 3a8a subq.w #$2, sp
+ 3a8e call seg4+304(a2)
+ 3a94 move.w (sp)+, d0
+ 3a96 move.w d0, d3
+ 3a98 move.l a2, -(sp)
+ 3a9a move.w #$5, -(sp)
+ 3a9e pea.l loce
+ 3aa2 pea.l loc4
+ 3aa6 pea.l locc
+ 3aaa _GetDialogItem 
+ 3aac move.l a2, -(sp)
+ 3aae move.w #$5, -(sp)
+ 3ab2 move.w loce, -(sp)
+ 3ab6 pea.l DRAWGREYOUTLINE
+ 3abc pea.l locc
+ 3ac0 _SetDialogItem 
+ 3ac8 call SwitchPrefsPanel(0x1, a2)
+ 3ace move.l a2, -(sp)
+ 3ad0 _SetPort 
+ 3ad2 move.l a2, -(sp)
+ 3ad4 _BeginUpdate 
+ 3ad6 move.l a2, -(sp)
+ 3ad8 move.w #$1, -(sp)
+ 3adc pea.l loce
+ 3ae0 pea.l loc4
+ 3ae4 pea.l locc
+ 3ae8 _GetDialogItem 
+ 3aea pea.l locc
+ 3aee move.l #$fffcfffc, -(sp)
+ 3af4 _InsetRect 
+ 3af6 move.l #$30003, -(sp)
+ 3afc _PenSize 
+ 3afe pea.l locc
+ 3b02 move.l #$f000f, -(sp)
+ 3b08 _FrameRoundRect 
+ 3b0a move.l #$10001, -(sp)
+ 3b10 _PenSize 
+ 3b12 move.l a2, -(sp)
+ 3b14 _EndUpdate 
+ 3b16 move.l a2, -(sp)
+ 3b18 _DrawDialog 
+ 3b1a call ShowCursorSafe()
+ 3b20 move.l a2, -(sp)
+ 3b22 _ShowWindow 
+ 3b24 addq.w #$6, sp
+ 3b26 bra.w $424a
+ 3b2a move.l a3, -(sp)
+ 3b2c pea.l loc10
+ 3b30 _ModalDialog 
+ 3b32 move.l a2, -(sp)
+ 3b34 move.w #$3, -(sp)
+ 3b38 pea.l loce
+ 3b3c pea.l loc4
+ 3b40 pea.l locc
+ 3b44 _GetDialogItem 
+ 3b46 subq.w #$2, sp
+ 3b48 move.l loc4, -(sp)
+ 3b4c _GetControlValue 
+ 3b4e move.w (sp)+, d0
+ 3b50 move.w d0, d3
+ 3b52 move.l a2, -(sp)
+ 3b54 move.w loc10, -(sp)
+ 3b58 pea.l loce
+ 3b5c pea.l loc4
+ 3b60 pea.l locc
+ 3b64 _GetDialogItem 
+ 3b66 cmpi.w #$3, loc10
+ 3b6c bne.b $3b88
+ 3b6e subq.w #$2, sp
+ 3b70 move.l loc4, -(sp)
+ 3b74 _GetControlValue 
+ 3b76 move.w (sp)+, d0
+ 3b7c call SwitchPrefsPanel(d0, a2)
+ 3b84 bra.w $424a
+ 3b88 cmpi.w #$4, loc10
+ 3b8e bne.w $3c8a
+ 3b92 move.w d3, d0
+ 3b96 subq.l #$1, d0
+ 3b98 beq.b $3ba8
+ 3b9a subq.l #$1, d0
+ 3b9c beq.b $3c06
+ 3b9e subq.l #$1, d0
+ 3ba0 beq.w $3c58
+ 3ba4 bra.w $424a
+ 3ba8 clr.b g_5842
+ 3bae clr.b g_5843
+ 3bb4 clr.b g_5844
+ 3bba clr.b g_5845
+ 3bc0 clr.b g_5846
+ 3bc6 move.w #$1, g_584a
+ 3bce movea.l g_583e, a0
+ 3bd4 movea.l (a0), a0
+ 3bd6 move.w #$3, $8(a0)
+ 3bdc moveq #$0, d3
+ 3bde bra.b $3bee
+ 3be0 movea.l g_583e, a0
+ 3be6 movea.l (a0), a1
+ 3be8 clr.w $20(a1, d3.w * 2)
+ 3bec addq.w #$1, d3
+ 3bee cmpi.w #$8, d3
+ 3bf2 blt.b $3be0
+ 3bfa call UpdatePrefsPanel(0x1, a2)
+ 3c02 bra.w $424a
+ 3c06 move.w #$7b, g_5852
+ 3c0e move.w #$7c, g_5854
+ 3c16 move.w #$7d, g_5856
+ 3c1e move.w #$7e, g_5858
+ 3c26 move.w #$31, g_585a
+ 3c2e move.w #$3b, g_585c
+ 3c36 move.w #$3a, g_585e
+ 3c3e move.w #$30, g_5860
+ 3c4c call UpdatePrefsPanel(0x2, a2)
+ 3c54 bra.w $424a
+ 3c58 move.b #$1, g_584c
+ 3c60 move.b #$1, g_584d
+ 3c68 move.w #$9, g_584e
+ 3c70 move.w #$7, g_5850
+ 3c7e call UpdatePrefsPanel(0x3, a2)
+ 3c86 bra.w $424a
+ 3c8a cmpi.w #$6, loc10
+ 3c90 ble.w $424a
+ 3c94 move.w d3, d0
+ 3c98 subq.l #$1, d0
+ 3c9a beq.b $3cac
+ 3c9c subq.l #$1, d0
+ 3c9e beq.w $424a
+ 3ca2 subq.l #$1, d0
+ 3ca4 beq.w $4082
+ 3ca8 bra.w $424a
+ 3cac cmpi.w #$7, loc10
+ 3cb2 bne.b $3cee
+ 3cb4 move.b g_5842, d0
+ 3cba seq.b d0
+ 3cbc neg.b d0
+ 3cc0 move.b d0, g_5842
+ 3cc6 move.l a2, -(sp)
+ 3cc8 move.w #$7, -(sp)
+ 3ccc pea.l loce
+ 3cd0 pea.l loc4
+ 3cd4 pea.l locc
+ 3cd8 _GetDialogItem 
+ 3cda move.l loc4, -(sp)
+ 3cde moveq #$0, d0
+ 3ce0 move.b g_5842, d0
+ 3ce6 move.w d0, -(sp)
+ 3ce8 _SetControlValue 
+ 3cea bra.w $424a
+ 3cee cmpi.w #$8, loc10
+ 3cf4 bne.b $3d30
+ 3cf6 move.b g_5843, d0
+ 3cfc seq.b d0
+ 3cfe neg.b d0
+ 3d02 move.b d0, g_5843
+ 3d08 move.l a2, -(sp)
+ 3d0a move.w #$8, -(sp)
+ 3d0e pea.l loce
+ 3d12 pea.l loc4
+ 3d16 pea.l locc
+ 3d1a _GetDialogItem 
+ 3d1c move.l loc4, -(sp)
+ 3d20 moveq #$0, d0
+ 3d22 move.b g_5843, d0
+ 3d28 move.w d0, -(sp)
+ 3d2a _SetControlValue 
+ 3d2c bra.w $424a
+ 3d30 cmpi.w #$9, loc10
+ 3d36 bne.b $3d7c
+ 3d38 move.b g_5844, d0
+ 3d3e seq.b d0
+ 3d40 neg.b d0
+ 3d44 move.b d0, g_5844
+ 3d4a move.l a2, -(sp)
+ 3d4c move.w #$9, -(sp)
+ 3d50 pea.l loce
+ 3d54 pea.l loc4
+ 3d58 pea.l locc
+ 3d5c _GetDialogItem 
+ 3d5e move.l loc4, -(sp)
+ 3d62 moveq #$0, d0
+ 3d64 move.b g_5844, d0
+ 3d6a move.w d0, -(sp)
+ 3d6c _SetControlValue 
+ 3d70 call UpdateDisabledItems(a2)
+ 3d78 bra.w $424a
+ 3d7c cmpi.w #$a, loc10
+ 3d82 bne.b $3dbe
+ 3d84 move.b g_5845, d0
+ 3d8a seq.b d0
+ 3d8c neg.b d0
+ 3d90 move.b d0, g_5845
+ 3d96 move.l a2, -(sp)
+ 3d98 move.w #$a, -(sp)
+ 3d9c pea.l loce
+ 3da0 pea.l loc4
+ 3da4 pea.l locc
+ 3da8 _GetDialogItem 
+ 3daa move.l loc4, -(sp)
+ 3dae moveq #$0, d0
+ 3db0 move.b g_5845, d0
+ 3db6 move.w d0, -(sp)
+ 3db8 _SetControlValue 
+ 3dba bra.w $424a
+ 3dbe cmpi.w #$b, loc10
+ 3dc4 bne.b $3e0a
+ 3dc6 move.b g_5846, d0
+ 3dcc seq.b d0
+ 3dce neg.b d0
+ 3dd2 move.b d0, g_5846
+ 3dd8 move.l a2, -(sp)
+ 3dda move.w #$b, -(sp)
+ 3dde pea.l loce
+ 3de2 pea.l loc4
+ 3de6 pea.l locc
+ 3dea _GetDialogItem 
+ 3dec move.l loc4, -(sp)
+ 3df0 moveq #$0, d0
+ 3df2 move.b g_5846, d0
+ 3df8 move.w d0, -(sp)
+ 3dfa _SetControlValue 
+ 3dfe call UpdateDisabledItems(a2)
+ 3e06 bra.w $424a
+ 3e0a cmpi.w #$10, loc10
+ 3e10 bne.b $3e56
+ 3e12 move.b g_5847, d0
+ 3e18 seq.b d0
+ 3e1a neg.b d0
+ 3e1e move.b d0, g_5847
+ 3e24 move.l a2, -(sp)
+ 3e26 move.w #$10, -(sp)
+ 3e2a pea.l loce
+ 3e2e pea.l loc4
+ 3e32 pea.l locc
+ 3e36 _GetDialogItem 
+ 3e38 move.l loc4, -(sp)
+ 3e3c moveq #$0, d0
+ 3e3e move.b g_5847, d0
+ 3e44 move.w d0, -(sp)
+ 3e46 _SetControlValue 
+ 3e4a call UpdateDisabledItems(a2)
+ 3e52 bra.w $424a
+ 3e56 cmpi.w #$c, loc10
+ 3e5c bne.w $3ede
+ 3e60 move.w #$1, g_584a
+ 3e68 move.l a2, -(sp)
+ 3e6a move.w #$c, -(sp)
+ 3e6e pea.l loce
+ 3e72 pea.l loc4
+ 3e76 pea.l locc
+ 3e7a _GetDialogItem 
+ 3e7c move.l loc4, -(sp)
+ 3e80 move.w #$1, -(sp)
+ 3e84 _SetControlValue 
+ 3e86 move.l a2, -(sp)
+ 3e88 move.w #$f, -(sp)
+ 3e8c pea.l loce
+ 3e90 pea.l loc4
+ 3e94 pea.l locc
+ 3e98 _GetDialogItem 
+ 3e9a move.l loc4, -(sp)
+ 3e9e clr.w -(sp)
+ 3ea0 _SetControlValue 
+ 3ea2 move.l a2, -(sp)
+ 3ea4 move.w #$d, -(sp)
+ 3ea8 pea.l loce
+ 3eac pea.l loc4
+ 3eb0 pea.l locc
+ 3eb4 _GetDialogItem 
+ 3eb6 move.l loc4, -(sp)
+ 3eba clr.w -(sp)
+ 3ebc _SetControlValue 
+ 3ebe move.l a2, -(sp)
+ 3ec0 move.w #$11, -(sp)
+ 3ec4 pea.l loce
+ 3ec8 pea.l loc4
+ 3ecc pea.l locc
+ 3ed0 _GetDialogItem 
+ 3ed2 move.l loc4, -(sp)
+ 3ed6 clr.w -(sp)
+ 3ed8 _SetControlValue 
+ 3eda bra.w $424a
+ 3ede cmpi.w #$f, loc10
+ 3ee4 bne.w $3f66
+ 3ee8 move.w #$2, g_584a
+ 3ef0 move.l a2, -(sp)
+ 3ef2 move.w #$c, -(sp)
+ 3ef6 pea.l loce
+ 3efa pea.l loc4
+ 3efe pea.l locc
+ 3f02 _GetDialogItem 
+ 3f04 move.l loc4, -(sp)
+ 3f08 clr.w -(sp)
+ 3f0a _SetControlValue 
+ 3f0c move.l a2, -(sp)
+ 3f0e move.w #$f, -(sp)
+ 3f12 pea.l loce
+ 3f16 pea.l loc4
+ 3f1a pea.l locc
+ 3f1e _GetDialogItem 
+ 3f20 move.l loc4, -(sp)
+ 3f24 move.w #$1, -(sp)
+ 3f28 _SetControlValue 
+ 3f2a move.l a2, -(sp)
+ 3f2c move.w #$d, -(sp)
+ 3f30 pea.l loce
+ 3f34 pea.l loc4
+ 3f38 pea.l locc
+ 3f3c _GetDialogItem 
+ 3f3e move.l loc4, -(sp)
+ 3f42 clr.w -(sp)
+ 3f44 _SetControlValue 
+ 3f46 move.l a2, -(sp)
+ 3f48 move.w #$11, -(sp)
+ 3f4c pea.l loce
+ 3f50 pea.l loc4
+ 3f54 pea.l locc
+ 3f58 _GetDialogItem 
+ 3f5a move.l loc4, -(sp)
+ 3f5e clr.w -(sp)
+ 3f60 _SetControlValue 
+ 3f62 bra.w $424a
+ 3f66 cmpi.w #$d, loc10
+ 3f6c bne.w $3fee
+ 3f70 move.w #$3, g_584a
+ 3f78 move.l a2, -(sp)
+ 3f7a move.w #$c, -(sp)
+ 3f7e pea.l loce
+ 3f82 pea.l loc4
+ 3f86 pea.l locc
+ 3f8a _GetDialogItem 
+ 3f8c move.l loc4, -(sp)
+ 3f90 clr.w -(sp)
+ 3f92 _SetControlValue 
+ 3f94 move.l a2, -(sp)
+ 3f96 move.w #$f, -(sp)
+ 3f9a pea.l loce
+ 3f9e pea.l loc4
+ 3fa2 pea.l locc
+ 3fa6 _GetDialogItem 
+ 3fa8 move.l loc4, -(sp)
+ 3fac clr.w -(sp)
+ 3fae _SetControlValue 
+ 3fb0 move.l a2, -(sp)
+ 3fb2 move.w #$d, -(sp)
+ 3fb6 pea.l loce
+ 3fba pea.l loc4
+ 3fbe pea.l locc
+ 3fc2 _GetDialogItem 
+ 3fc4 move.l loc4, -(sp)
+ 3fc8 move.w #$1, -(sp)
+ 3fcc _SetControlValue 
+ 3fce move.l a2, -(sp)
+ 3fd0 move.w #$11, -(sp)
+ 3fd4 pea.l loce
+ 3fd8 pea.l loc4
+ 3fdc pea.l locc
+ 3fe0 _GetDialogItem 
+ 3fe2 move.l loc4, -(sp)
+ 3fe6 clr.w -(sp)
+ 3fe8 _SetControlValue 
+ 3fea bra.w $424a
+ 3fee cmpi.w #$11, loc10
+ 3ff4 bne.w $4076
+ 3ff8 move.w #$4, g_584a
+ 4000 move.l a2, -(sp)
+ 4002 move.w #$c, -(sp)
+ 4006 pea.l loce
+ 400a pea.l loc4
+ 400e pea.l locc
+ 4012 _GetDialogItem 
+ 4014 move.l loc4, -(sp)
+ 4018 clr.w -(sp)
+ 401a _SetControlValue 
+ 401c move.l a2, -(sp)
+ 401e move.w #$f, -(sp)
+ 4022 pea.l loce
+ 4026 pea.l loc4
+ 402a pea.l locc
+ 402e _GetDialogItem 
+ 4030 move.l loc4, -(sp)
+ 4034 clr.w -(sp)
+ 4036 _SetControlValue 
+ 4038 move.l a2, -(sp)
+ 403a move.w #$d, -(sp)
+ 403e pea.l loce
+ 4042 pea.l loc4
+ 4046 pea.l locc
+ 404a _GetDialogItem 
+ 404c move.l loc4, -(sp)
+ 4050 clr.w -(sp)
+ 4052 _SetControlValue 
+ 4054 move.l a2, -(sp)
+ 4056 move.w #$11, -(sp)
+ 405a pea.l loce
+ 405e pea.l loc4
+ 4062 pea.l locc
+ 4066 _GetDialogItem 
+ 4068 move.l loc4, -(sp)
+ 406c move.w #$1, -(sp)
+ 4070 _SetControlValue 
+ 4072 bra.w $424a
+ 4076 move.w #$1, g_584a
+ 407e bra.w $424a
+ 4082 cmpi.w #$7, loc10
+ 4088 bne.b $40c4
+ 408a move.b g_584c, d0
+ 4090 seq.b d0
+ 4092 neg.b d0
+ 4096 move.b d0, g_584c
+ 409c move.l a2, -(sp)
+ 409e move.w #$7, -(sp)
+ 40a2 pea.l loce
+ 40a6 pea.l loc4
+ 40aa pea.l locc
+ 40ae _GetDialogItem 
+ 40b0 move.l loc4, -(sp)
+ 40b4 moveq #$0, d0
+ 40b6 move.b g_584c, d0
+ 40bc move.w d0, -(sp)
+ 40be _SetControlValue 
+ 40c0 bra.w $424a
+ 40c4 cmpi.w #$8, loc10
+ 40ca bne.w $4188
+ 40ce move.b g_584d, d0
+ 40d4 seq.b d0
+ 40d6 neg.b d0
+ 40da move.b d0, g_584d
+ 40e0 move.b g_584d, g_617d
+ 40ea tst.b g_584d
+ 40f0 beq.b $4150
+ 40f2 call IsQuickTimeInstalled()
+ 40f8 tst.b d0
+ 40fa bne.b $4112
+ 40fc clr.b g_584d
+ 4108 call ReportDialog(&g_db6)
+ 4110 bra.b $4160
+ 4112 call SetWatchCursor()
+ 4118 call InitMusic()
+ 411e move.w g_5850, g_6180
+ 4128 move.w g_5850, d0
+ 412e muls.w #$1c71, d0
+ 4134 call SetMusicVolume(d0)
+ 4140 call SetMusic(g_eaa)
+ 4146 call ResetCursor()
+ 414e bra.b $4160
+ 4152 call SetMusicVolume(0)
+ 4158 call ShutDownMusic()
+ 4160 move.l a2, -(sp)
+ 4162 move.w #$8, -(sp)
+ 4166 pea.l loce
+ 416a pea.l loc4
+ 416e pea.l locc
+ 4172 _GetDialogItem 
+ 4174 move.l loc4, -(sp)
+ 4178 moveq #$0, d0
+ 417a move.b g_584d, d0
+ 4180 move.w d0, -(sp)
+ 4182 _SetControlValue 
+ 4184 bra.w $424a
+ 4188 cmpi.w #$9, loc10
+ 418e bne.b $41f0
+ 4190 move.l a2, -(sp)
+ 4192 move.w #$9, -(sp)
+ 4196 pea.l loce
+ 419a pea.l loc4
+ 419e pea.l locc
+ 41a2 _GetDialogItem 
+ 41a4 subq.w #$2, sp
+ 41a6 move.l loc4, -(sp)
+ 41aa _GetControlValue 
+ 41ac move.w (sp)+, d0
+ 41b0 moveq #$a, d1
+ 41b2 sub.l d0, d1
+ 41b4 move.w d1, g_584e
+ 41ba tst.b g_584c
+ 41c0 beq.w $424a
+ 41c4 move.b #$1, g_617c
+ 41cc moveq #$1c, d0
+ 41ce muls.w g_584e, d0
+ 41d4 move.l d0, g_46c8
+ 41e6 call STPlayRegSound(0x640100, snd206_Harry)
+ 41ee bra.b $424a
+ 41f0 cmpi.w #$a, loc10
+ 41f6 bne.b $424a
+ 41f8 move.l a2, -(sp)
+ 41fa move.w #$a, -(sp)
+ 41fe pea.l loce
+ 4202 pea.l loc4
+ 4206 pea.l locc
+ 420a _GetDialogItem 
+ 420c subq.w #$2, sp
+ 420e move.l loc4, -(sp)
+ 4212 _GetControlValue 
+ 4214 move.w (sp)+, d0
+ 4218 moveq #$a, d1
+ 421a sub.l d0, d1
+ 421c move.w d1, g_5850
+ 4222 tst.b g_584d
+ 4228 beq.b $4240
+ 422a move.w g_5850, d0
+ 4230 muls.w #$1c71, d0
+ 4236 call SetMusicVolume(d0)
+ 423e bra.b $424a
+ 4242 call SetMusicVolume(0)
+ 424a cmpi.w #$1, loc10
+ 4250 beq.b $425c
+ 4252 cmpi.w #$2, loc10
+ 4258 bne.w $3b2a
+ 425c cmpi.w #$1, loc10
+ 4262 bne.b $427a
+ 4264 lea.l g_5842, a0
+ 426a movea.l g_583e, a1
+ 4270 movea.l (a1), a1
+ 4272 move.l #$930, d0
+ 4278 _BlockMove 
+ 427a move.w #$ffff, g_df8
+ 4282 move.l a2, -(sp)
+ 4284 _HideWindow 
+ 4286 move.l loc14, -(sp)
+ 428a _SetPort 
+ 428c move.l a2, -(sp)
+ 428e _DisposeDialog 
+ 4290 movem.l (sp)+, d3/a2-a3
+ 4294 unlk a6
+ 4296 rts 
+
+; SwitchPrefsPanel   (seg 6 +0042ac, 124 bytes)
+ 42ac link.w a6, #$0
+ 42b0 movem.l d3/a2-a3, -(sp)
+ 42b4 movea.l arg8, a3
+ 42b8 move.w argc, d3
+ 42bc cmp.w g_df8, d3
+ 42c2 beq.b $4320
+ 42c4 move.w d3, g_df8
+ 42ca move.l a3, -(sp)
+ 42cc subq.w #$2, sp
+ 42d0 call seg4+304(a3)
+ 42d6 move.w (sp)+, d0
+ 42da subq.l #$6, d0
+ 42de call seg4+318(d0)
+ 42e4 subq.w #$4, sp
+ 42e6 move.l #$4449544c, -(sp)
+ 42ec move.w d3, d0
+ 42f0 addi.l #$1af4, d0
+ 42f6 move.w d0, -(sp)
+ 42f8 _GetResource 
+ 42fa movea.l (sp)+, a0
+ 42fc movea.l a0, a2
+ 42fe move.l a2, d0
+ 4300 bne.b $4304
+ 4302 _ExitToShell 
+ 430a call seg4+2f0(a3, a2, 0)
+ 4310 move.l a2, -(sp)
+ 4312 _ReleaseResource 
+ 4318 call UpdatePrefsPanel(d3, a3)
+ 4320 movem.l (sp)+, d3/a2-a3
+ 4324 unlk a6
+ 4326 rts 
+
+; UpdatePrefsPanel   (seg 6 +00433c, 1134 bytes)
+ 433c link.w a6, #$fff2
+ 4340 move.l a2, -(sp)
+ 4342 movea.l arg8, a2
+ 4346 move.w argc, d0
+ 434c subq.l #$1, d0
+ 434e beq.b $4360
+ 4350 subq.l #$1, d0
+ 4352 beq.w $4620
+ 4356 subq.l #$1, d0
+ 4358 beq.w $46c4
+ 435c bra.w $47a4
+ 4360 move.l a2, -(sp)
+ 4362 move.w #$7, -(sp)
+ 4366 pea.l loce
+ 436a pea.l loc4
+ 436e pea.l locc
+ 4372 _GetDialogItem 
+ 4374 move.l loc4, -(sp)
+ 4378 moveq #$0, d0
+ 437a move.b g_5842, d0
+ 4380 move.w d0, -(sp)
+ 4382 _SetControlValue 
+ 4384 move.l a2, -(sp)
+ 4386 move.w #$8, -(sp)
+ 438a pea.l loce
+ 438e pea.l loc4
+ 4392 pea.l locc
+ 4396 _GetDialogItem 
+ 4398 move.l loc4, -(sp)
+ 439c moveq #$0, d0
+ 439e move.b g_5843, d0
+ 43a4 move.w d0, -(sp)
+ 43a6 _SetControlValue 
+ 43a8 move.l a2, -(sp)
+ 43aa move.w #$9, -(sp)
+ 43ae pea.l loce
+ 43b2 pea.l loc4
+ 43b6 pea.l locc
+ 43ba _GetDialogItem 
+ 43bc move.l loc4, -(sp)
+ 43c0 moveq #$0, d0
+ 43c2 move.b g_5844, d0
+ 43c8 move.w d0, -(sp)
+ 43ca _SetControlValue 
+ 43cc move.l a2, -(sp)
+ 43ce move.w #$a, -(sp)
+ 43d2 pea.l loce
+ 43d6 pea.l loc4
+ 43da pea.l locc
+ 43de _GetDialogItem 
+ 43e0 move.l loc4, -(sp)
+ 43e4 moveq #$0, d0
+ 43e6 move.b g_5845, d0
+ 43ec move.w d0, -(sp)
+ 43ee _SetControlValue 
+ 43f0 move.l a2, -(sp)
+ 43f2 move.w #$b, -(sp)
+ 43f6 pea.l loce
+ 43fa pea.l loc4
+ 43fe pea.l locc
+ 4402 _GetDialogItem 
+ 4404 move.l loc4, -(sp)
+ 4408 moveq #$0, d0
+ 440a move.b g_5846, d0
+ 4410 move.w d0, -(sp)
+ 4412 _SetControlValue 
+ 4414 move.l a2, -(sp)
+ 4416 move.w #$10, -(sp)
+ 441a pea.l loce
+ 441e pea.l loc4
+ 4422 pea.l locc
+ 4426 _GetDialogItem 
+ 4428 move.l loc4, -(sp)
+ 442c moveq #$0, d0
+ 442e move.b g_5847, d0
+ 4434 move.w d0, -(sp)
+ 4436 _SetControlValue 
+ 4438 move.w g_584a, d0
+ 4440 subq.l #$2, d0
+ 4442 beq.b $4454
+ 4444 subq.l #$1, d0
+ 4446 beq.w $44ca
+ 444a subq.l #$1, d0
+ 444c beq.w $4540
+ 4450 bra.w $45b4
+ 4454 move.l a2, -(sp)
+ 4456 move.w #$c, -(sp)
+ 445a pea.l loce
+ 445e pea.l loc4
+ 4462 pea.l locc
+ 4466 _GetDialogItem 
+ 4468 move.l loc4, -(sp)
+ 446c clr.w -(sp)
+ 446e _SetControlValue 
+ 4470 move.l a2, -(sp)
+ 4472 move.w #$f, -(sp)
+ 4476 pea.l loce
+ 447a pea.l loc4
+ 447e pea.l locc
+ 4482 _GetDialogItem 
+ 4484 move.l loc4, -(sp)
+ 4488 move.w #$1, -(sp)
+ 448c _SetControlValue 
+ 448e move.l a2, -(sp)
+ 4490 move.w #$d, -(sp)
+ 4494 pea.l loce
+ 4498 pea.l loc4
+ 449c pea.l locc
+ 44a0 _GetDialogItem 
+ 44a2 move.l loc4, -(sp)
+ 44a6 clr.w -(sp)
+ 44a8 _SetControlValue 
+ 44aa move.l a2, -(sp)
+ 44ac move.w #$11, -(sp)
+ 44b0 pea.l loce
+ 44b4 pea.l loc4
+ 44b8 pea.l locc
+ 44bc _GetDialogItem 
+ 44be move.l loc4, -(sp)
+ 44c2 clr.w -(sp)
+ 44c4 _SetControlValue 
+ 44c6 bra.w $4612
+ 44ca move.l a2, -(sp)
+ 44cc move.w #$c, -(sp)
+ 44d0 pea.l loce
+ 44d4 pea.l loc4
+ 44d8 pea.l locc
+ 44dc _GetDialogItem 
+ 44de move.l loc4, -(sp)
+ 44e2 clr.w -(sp)
+ 44e4 _SetControlValue 
+ 44e6 move.l a2, -(sp)
+ 44e8 move.w #$f, -(sp)
+ 44ec pea.l loce
+ 44f0 pea.l loc4
+ 44f4 pea.l locc
+ 44f8 _GetDialogItem 
+ 44fa move.l loc4, -(sp)
+ 44fe clr.w -(sp)
+ 4500 _SetControlValue 
+ 4502 move.l a2, -(sp)
+ 4504 move.w #$d, -(sp)
+ 4508 pea.l loce
+ 450c pea.l loc4
+ 4510 pea.l locc
+ 4514 _GetDialogItem 
+ 4516 move.l loc4, -(sp)
+ 451a move.w #$1, -(sp)
+ 451e _SetControlValue 
+ 4520 move.l a2, -(sp)
+ 4522 move.w #$11, -(sp)
+ 4526 pea.l loce
+ 452a pea.l loc4
+ 452e pea.l locc
+ 4532 _GetDialogItem 
+ 4534 move.l loc4, -(sp)
+ 4538 clr.w -(sp)
+ 453a _SetControlValue 
+ 453c bra.w $4612
+ 4540 move.l a2, -(sp)
+ 4542 move.w #$c, -(sp)
+ 4546 pea.l loce
+ 454a pea.l loc4
+ 454e pea.l locc
+ 4552 _GetDialogItem 
+ 4554 move.l loc4, -(sp)
+ 4558 clr.w -(sp)
+ 455a _SetControlValue 
+ 455c move.l a2, -(sp)
+ 455e move.w #$f, -(sp)
+ 4562 pea.l loce
+ 4566 pea.l loc4
+ 456a pea.l locc
+ 456e _GetDialogItem 
+ 4570 move.l loc4, -(sp)
+ 4574 clr.w -(sp)
+ 4576 _SetControlValue 
+ 4578 move.l a2, -(sp)
+ 457a move.w #$d, -(sp)
+ 457e pea.l loce
+ 4582 pea.l loc4
+ 4586 pea.l locc
+ 458a _GetDialogItem 
+ 458c move.l loc4, -(sp)
+ 4590 clr.w -(sp)
+ 4592 _SetControlValue 
+ 4594 move.l a2, -(sp)
+ 4596 move.w #$11, -(sp)
+ 459a pea.l loce
+ 459e pea.l loc4
+ 45a2 pea.l locc
+ 45a6 _GetDialogItem 
+ 45a8 move.l loc4, -(sp)
+ 45ac move.w #$1, -(sp)
+ 45b0 _SetControlValue 
+ 45b2 bra.b $4612
+ 45b4 move.w #$1, g_584a
+ 45bc move.l a2, -(sp)
+ 45be move.w #$c, -(sp)
+ 45c2 pea.l loce
+ 45c6 pea.l loc4
+ 45ca pea.l locc
+ 45ce _GetDialogItem 
+ 45d0 move.l loc4, -(sp)
+ 45d4 move.w #$1, -(sp)
+ 45d8 _SetControlValue 
+ 45da move.l a2, -(sp)
+ 45dc move.w #$f, -(sp)
+ 45e0 pea.l loce
+ 45e4 pea.l loc4
+ 45e8 pea.l locc
+ 45ec _GetDialogItem 
+ 45ee move.l loc4, -(sp)
+ 45f2 clr.w -(sp)
+ 45f4 _SetControlValue 
+ 45f6 move.l a2, -(sp)
+ 45f8 move.w #$d, -(sp)
+ 45fc pea.l loce
+ 4600 pea.l loc4
+ 4604 pea.l locc
+ 4608 _GetDialogItem 
+ 460a move.l loc4, -(sp)
+ 460e clr.w -(sp)
+ 4610 _SetControlValue 
+ 4614 call UpdateDisabledItems(a2)
+ 461c bra.w $47a4
+ 462c call ConvertKeyName(0xe, a2, g_5860)
+ 463e call ConvertKeyName(0xd, a2, g_585e)
+ 4650 call ConvertKeyName(0xc, a2, g_585c)
+ 4662 call ConvertKeyName(0xb, a2, g_585a)
+ 4674 call ConvertKeyName(0xa, a2, g_5858)
+ 4686 call ConvertKeyName(0x9, a2, g_5856)
+ 4698 call ConvertKeyName(0x8, a2, g_5854)
+ 46aa call ConvertKeyName(0x7, a2, g_5852)
+ 46b0 move.l a2, -(sp)
+ 46b2 pea.l $7.w
+ 46b6 move.w #$7fff, -(sp)
+ 46ba _SelectDialogItemText 
+ 46bc lea.l $40(sp), sp
+ 46c0 bra.w $47a4
+ 46c4 tst.b g_6ac0
+ 46ca bne.b $4704
+ 46cc clr.b g_584d
+ 46d2 move.l a2, -(sp)
+ 46d4 move.w #$8, -(sp)
+ 46d8 pea.l loce
+ 46dc pea.l loc4
+ 46e0 pea.l locc
+ 46e4 _GetDialogItem 
+ 46e6 move.l a2, -(sp)
+ 46e8 move.l #$850008, -(sp)
+ 46ee move.l loc4, -(sp)
+ 46f2 pea.l locc
+ 46f6 _SetDialogItem 
+ 46f8 move.l loc4, -(sp)
+ 46fc move.w #$ff, -(sp)
+ 4700 _HiliteControl 
+ 4702 bra.b $470c
+ 4704 move.l a2, -(sp)
+ 4706 move.w #$d, -(sp)
+ 470a _HideDialogItem 
+ 470c move.l a2, -(sp)
+ 470e move.w #$7, -(sp)
+ 4712 pea.l loce
+ 4716 pea.l loc4
+ 471a pea.l locc
+ 471e _GetDialogItem 
+ 4720 move.l loc4, -(sp)
+ 4724 moveq #$0, d0
+ 4726 move.b g_584c, d0
+ 472c move.w d0, -(sp)
+ 472e _SetControlValue 
+ 4730 move.l a2, -(sp)
+ 4732 move.w #$8, -(sp)
+ 4736 pea.l loce
+ 473a pea.l loc4
+ 473e pea.l locc
+ 4742 _GetDialogItem 
+ 4744 move.l loc4, -(sp)
+ 4748 moveq #$0, d0
+ 474a move.b g_584d, d0
+ 4750 move.w d0, -(sp)
+ 4752 _SetControlValue 
+ 4754 move.l a2, -(sp)
+ 4756 move.w #$9, -(sp)
+ 475a pea.l loce
+ 475e pea.l loc4
+ 4762 pea.l locc
+ 4766 _GetDialogItem 
+ 4768 move.l loc4, -(sp)
+ 476c move.w g_584e, d0
+ 4774 moveq #$a, d1
+ 4776 sub.l d0, d1
+ 4778 move.w d1, -(sp)
+ 477a _SetControlValue 
+ 477c move.l a2, -(sp)
+ 477e move.w #$a, -(sp)
+ 4782 pea.l loce
+ 4786 pea.l loc4
+ 478a pea.l locc
+ 478e _GetDialogItem 
+ 4790 move.l loc4, -(sp)
+ 4794 move.w g_5850, d0
+ 479c moveq #$a, d1
+ 479e sub.l d0, d1
+ 47a0 move.w d1, -(sp)
+ 47a2 _SetControlValue 
+ 47a4 movea.l (sp)+, a2
+ 47a6 unlk a6
+ 47a8 rts 
+
+; ConvertKeyName   (seg 6 +0047be, 972 bytes)
+ 47be link.w a6, #$fef2
+ 47c2 movem.l d3-d4/a2-a3, -(sp)
+ 47c6 movea.l arga, a2
+ 47ca move.w arge, d4
+ 47ce move.l a2, -(sp)
+ 47d0 move.w d4, -(sp)
+ 47d2 pea.l loc10e
+ 47d6 pea.l loc4
+ 47da pea.l loc10c
+ 47de _GetDialogItem 
+ 47e0 move.w arg8, d0
+ 47e6 subi.l #$24, d0
+ 47ec beq.w $48cc
+ 47f0 subq.l #$8, d0
+ 47f2 subq.l #$4, d0
+ 47f4 beq.w $48ec
+ 47f8 subq.l #$1, d0
+ 47fa beq.w $497c
+ 47fe subq.l #$1, d0
+ 4800 beq.w $4b0a
+ 4804 subq.l #$1, d0
+ 4806 beq.w $498c
+ 480a subq.l #$2, d0
+ 480c beq.w $48dc
+ 4810 subq.l #$2, d0
+ 4812 beq.w $493c
+ 4816 subq.l #$1, d0
+ 4818 beq.w $494c
+ 481c subq.l #$2, d0
+ 481e beq.w $495c
+ 4822 subq.l #$1, d0
+ 4824 beq.w $496c
+ 4828 subq.l #$8, d0
+ 482a subq.l #$4, d0
+ 482c beq.w $499c
+ 4830 subq.l #$5, d0
+ 4832 beq.w $49ac
+ 4836 subi.l #$14, d0
+ 483c beq.w $4a5c
+ 4840 subq.l #$1, d0
+ 4842 beq.w $4a6c
+ 4846 subq.l #$1, d0
+ 4848 beq.w $4a7c
+ 484c subq.l #$1, d0
+ 484e beq.w $4a3c
+ 4852 subq.l #$1, d0
+ 4854 beq.w $4a8c
+ 4858 subq.l #$1, d0
+ 485a beq.w $4a9c
+ 485e subq.l #$2, d0
+ 4860 beq.w $4abc
+ 4864 subq.l #$2, d0
+ 4866 beq.w $4adc
+ 486a subq.l #$2, d0
+ 486c beq.w $4aec
+ 4870 subq.l #$2, d0
+ 4872 beq.w $4aac
+ 4876 subq.l #$2, d0
+ 4878 beq.w $4acc
+ 487c subq.l #$2, d0
+ 487e beq.w $4afc
+ 4882 subq.l #$1, d0
+ 4884 beq.w $49bc
+ 4888 subq.l #$1, d0
+ 488a beq.w $49cc
+ 488e subq.l #$1, d0
+ 4890 beq.w $49dc
+ 4894 subq.l #$1, d0
+ 4896 beq.w $49ec
+ 489a subq.l #$1, d0
+ 489c beq.w $4a4c
+ 48a0 subq.l #$1, d0
+ 48a2 beq.w $49fc
+ 48a6 subq.l #$1, d0
+ 48a8 beq.w $4a2c
+ 48ac subq.l #$1, d0
+ 48ae beq.w $4a0c
+ 48b2 subq.l #$1, d0
+ 48b4 beq.w $4a1c
+ 48b8 subq.l #$1, d0
+ 48ba beq.b $492c
+ 48bc subq.l #$1, d0
+ 48be beq.b $491c
+ 48c0 subq.l #$1, d0
+ 48c2 beq.b $490c
+ 48c4 subq.l #$1, d0
+ 48c6 beq.b $48fc
+ 48c8 bra.w $4b18
+ 48cc move.l loc4, -(sp)
+ 48d0 pea.l g_dae
+ 48d6 _SetDialogItemText 
+ 48d8 bra.w $4b82
+ 48dc move.l loc4, -(sp)
+ 48e0 pea.l g_daa
+ 48e6 _SetDialogItemText 
+ 48e8 bra.w $4b82
+ 48ec move.l loc4, -(sp)
+ 48f0 pea.l g_da6
+ 48f6 _SetDialogItemText 
+ 48f8 bra.w $4b82
+ 48fc move.l loc4, -(sp)
+ 4900 pea.l g_d9d
+ 4906 _SetDialogItemText 
+ 4908 bra.w $4b82
+ 490c move.l loc4, -(sp)
+ 4910 pea.l g_d92
+ 4916 _SetDialogItemText 
+ 4918 bra.w $4b82
+ 491c move.l loc4, -(sp)
+ 4920 pea.l g_d86
+ 4926 _SetDialogItemText 
+ 4928 bra.w $4b82
+ 492c move.l loc4, -(sp)
+ 4930 pea.l g_d7a
+ 4936 _SetDialogItemText 
+ 4938 bra.w $4b82
+ 493c move.l loc4, -(sp)
+ 4940 pea.l g_d72
+ 4946 _SetDialogItemText 
+ 4948 bra.w $4b82
+ 494c move.l loc4, -(sp)
+ 4950 pea.l g_d6c
+ 4956 _SetDialogItemText 
+ 4958 bra.w $4b82
+ 495c move.l loc4, -(sp)
+ 4960 pea.l g_d64
+ 4966 _SetDialogItemText 
+ 4968 bra.w $4b82
+ 496c move.l loc4, -(sp)
+ 4970 pea.l g_d5c
+ 4976 _SetDialogItemText 
+ 4978 bra.w $4b82
+ 497c move.l loc4, -(sp)
+ 4980 pea.l g_d52
+ 4986 _SetDialogItemText 
+ 4988 bra.w $4b82
+ 498c move.l loc4, -(sp)
+ 4990 pea.l g_d4a
+ 4996 _SetDialogItemText 
+ 4998 bra.w $4b82
+ 499c move.l loc4, -(sp)
+ 49a0 pea.l g_d44
+ 49a6 _SetDialogItemText 
+ 49a8 bra.w $4b82
+ 49ac move.l loc4, -(sp)
+ 49b0 pea.l g_d3e
+ 49b6 _SetDialogItemText 
+ 49b8 bra.w $4b82
+ 49bc move.l loc4, -(sp)
+ 49c0 pea.l g_d39
+ 49c6 _SetDialogItemText 
+ 49c8 bra.w $4b82
+ 49cc move.l loc4, -(sp)
+ 49d0 pea.l g_d34
+ 49d6 _SetDialogItemText 
+ 49d8 bra.w $4b82
+ 49dc move.l loc4, -(sp)
+ 49e0 pea.l g_d2c
+ 49e6 _SetDialogItemText 
+ 49e8 bra.w $4b82
+ 49ec move.l loc4, -(sp)
+ 49f0 pea.l g_d28
+ 49f6 _SetDialogItemText 
+ 49f8 bra.w $4b82
+ 49fc move.l loc4, -(sp)
+ 4a00 pea.l g_d24
+ 4a06 _SetDialogItemText 
+ 4a08 bra.w $4b82
+ 4a0c move.l loc4, -(sp)
+ 4a10 pea.l g_d1a
+ 4a16 _SetDialogItemText 
+ 4a18 bra.w $4b82
+ 4a1c move.l loc4, -(sp)
+ 4a20 pea.l g_d16
+ 4a26 _SetDialogItemText 
+ 4a28 bra.w $4b82
+ 4a2c move.l loc4, -(sp)
+ 4a30 pea.l g_d13
+ 4a36 _SetDialogItemText 
+ 4a38 bra.w $4b82
+ 4a3c move.l loc4, -(sp)
+ 4a40 pea.l g_d10
+ 4a46 _SetDialogItemText 
+ 4a48 bra.w $4b82
+ 4a4c move.l loc4, -(sp)
+ 4a50 pea.l g_d0d
+ 4a56 _SetDialogItemText 
+ 4a58 bra.w $4b82
+ 4a5c move.l loc4, -(sp)
+ 4a60 pea.l g_d0a
+ 4a66 _SetDialogItemText 
+ 4a68 bra.w $4b82
+ 4a6c move.l loc4, -(sp)
+ 4a70 pea.l g_d07
+ 4a76 _SetDialogItemText 
+ 4a78 bra.w $4b82
+ 4a7c move.l loc4, -(sp)
+ 4a80 pea.l g_d04
+ 4a86 _SetDialogItemText 
+ 4a88 bra.w $4b82
+ 4a8c move.l loc4, -(sp)
+ 4a90 pea.l g_d01
+ 4a96 _SetDialogItemText 
+ 4a98 bra.w $4b82
+ 4a9c move.l loc4, -(sp)
+ 4aa0 pea.l g_cfe
+ 4aa6 _SetDialogItemText 
+ 4aa8 bra.w $4b82
+ 4aac move.l loc4, -(sp)
+ 4ab0 pea.l g_cfa
+ 4ab6 _SetDialogItemText 
+ 4ab8 bra.w $4b82
+ 4abc move.l loc4, -(sp)
+ 4ac0 pea.l g_cf6
+ 4ac6 _SetDialogItemText 
+ 4ac8 bra.w $4b82
+ 4acc move.l loc4, -(sp)
+ 4ad0 pea.l g_cf2
+ 4ad6 _SetDialogItemText 
+ 4ad8 bra.w $4b82
+ 4adc move.l loc4, -(sp)
+ 4ae0 pea.l g_cee
+ 4ae6 _SetDialogItemText 
+ 4ae8 bra.w $4b82
+ 4aec move.l loc4, -(sp)
+ 4af0 pea.l g_cea
+ 4af6 _SetDialogItemText 
+ 4af8 bra.w $4b82
+ 4afc move.l loc4, -(sp)
+ 4b00 pea.l g_ce6
+ 4b06 _SetDialogItemText 
+ 4b08 bra.b $4b82
+ 4b0a move.l loc4, -(sp)
+ 4b0e pea.l g_ce4
+ 4b14 _SetDialogItemText 
+ 4b16 bra.b $4b82
+ 4b18 subq.w #$4, sp
+ 4b1a move.w #$26, -(sp)
+ 4b1e move.l #$84020008, -(sp)
+ 4b24 _trap_a8b5 
+ 4b26 move.l (sp)+, d0
+ 4b28 movea.l d0, a3
+ 4b2a pea.l arg8
+ 4b2e pea.l $8.w
+ 4b32 _BitSet 
+ 4b34 subq.w #$4, sp
+ 4b36 move.l a3, -(sp)
+ 4b38 move.w arg8, -(sp)
+ 4b3c clr.l -(sp)
+ 4b3e _KeyTranslate 
+ 4b40 move.l (sp)+, d0
+ 4b42 move.l d0, d3
+ 4b44 move.l a2, -(sp)
+ 4b46 move.w d4, -(sp)
+ 4b48 move.l #$7fff0000, -(sp)
+ 4b4e _SelectDialogItemText 
+ 4b50 move.l d3, d0
+ 4b52 andi.l #$ffff, d0
+ 4b58 move.w d0, -(sp)
+ 4b5a move.l $a0(a2), -(sp)
+ 4b5e _trap_a9dc 
+ 4b60 move.l loc4, -(sp)
+ 4b64 pea.l loc104
+ 4b68 _GetDialogItemText 
+ 4b72 call seg4+704(&loc104, 0x1)
+ 4b78 move.l loc4, -(sp)
+ 4b7c pea.l loc104
+ 4b80 _SetDialogItemText 
+ 4b82 movem.l (sp)+, d3-d4/a2-a3
+ 4b86 unlk a6
+ 4b88 rts 
+
+; BUILDFACEINOFFSCREEN   (seg 6 +004b9c, 794 bytes)
+ 4b9c link.w a6, #$0
+ 4ba0 movem.l d3/a2-a3, -(sp)
+ 4ba4 movea.l arg18, a2
+ 4ba8 move.b arg8, d3
+ 4bac movea.l argc, a0
+ 4bb0 movea.w $2(a0), a1
+ 4bb4 move.l a1, d0
+ 4bb6 asr.l #$2, d0
+ 4bb8 lsr.l #$8, d0
+ 4bba lsr.l #$8, d0
+ 4bbc lsr.l #$8, d0
+ 4bbe lsr.l #$5, d0
+ 4bc0 add.l a1, d0
+ 4bc2 asr.l #$3, d0
+ 4bc4 movea.l argc, a0
+ 4bc8 movea.l arg10, a1
+ 4bcc move.w $18(a1), d1
+ 4bd0 muls.w (a0), d1
+ 4bd2 movea.l arg10, a0
+ 4bd6 add.l $14(a0), d1
+ 4bda add.l d0, d1
+ 4bdc move.l d1, $6(a2)
+ 4be0 movea.l arg10, a0
+ 4be4 move.w $18(a0), $a(a2)
+ 4bea movea.l argc, a0
+ 4bee move.l (a0), $c(a2)
+ 4bf2 move.l $4(a0), $10(a2)
+ 4bf8 pea.l $c(a2)
+ 4bfc move.w $e(a2), d0
+ 4c00 neg.w d0
+ 4c02 move.w d0, -(sp)
+ 4c04 move.w $c(a2), d0
+ 4c08 neg.w d0
+ 4c0a move.w d0, -(sp)
+ 4c0c _OffsetRect 
+ 4c0e cmpi.w #$1, g_-17a0
+ 4c16 bne.w $4ca4
+ 4c1a subq.w #$4, sp
+ 4c1c pea.l $e.w
+ 4c20 move.l (sp)+, d0
+ 4c22 _NewPtr 
+ 4c24 move.l a0, (sp)
+ 4c26 movea.l (sp)+, a0
+ 4c28 move.l a0, (a2)
+ 4c2a tst.l (a2)
+ 4c2c beq.w $4e6a
+ 4c30 movea.l (a2), a0
+ 4c32 move.l $c(a2), $6(a0)
+ 4c38 move.l $10(a2), $a(a0)
+ 4c3e movea.l arg14, a0
+ 4c42 movea.l (a2), a1
+ 4c44 move.w $18(a0), $4(a1)
+ 4c4a movea.l argc, a0
+ 4c4e movea.w $2(a0), a1
+ 4c52 move.l a1, d0
+ 4c54 asr.l #$2, d0
+ 4c56 lsr.l #$8, d0
+ 4c58 lsr.l #$8, d0
+ 4c5a lsr.l #$8, d0
+ 4c5c lsr.l #$5, d0
+ 4c5e add.l a1, d0
+ 4c60 asr.l #$3, d0
+ 4c62 movea.l argc, a0
+ 4c66 movea.l arg14, a1
+ 4c6a move.w $18(a1), d1
+ 4c6e muls.w (a0), d1
+ 4c70 movea.l arg14, a0
+ 4c74 add.l $14(a0), d1
+ 4c78 add.l d0, d1
+ 4c7a movea.l (a2), a0
+ 4c7c move.l d1, (a0)
+ 4c7e tst.b d3
+ 4c80 beq.w $4e6a
+ 4c84 move.l argc, -(sp)
+ 4c88 movea.l (a2), a0
+ 4c8a move.l (a0), -(sp)
+ 4c8c movea.l (a2), a0
+ 4c9a call SATMAKEROWLIST($4(a0), &$1e(a2), 0x1)
+ 4ca0 bra.w $4e6a
+ 4ca4 cmpi.w #$4, g_-17a0
+ 4cac bne.w $4df4
+ 4cb0 subq.w #$4, sp
+ 4cb2 pea.l $28.w
+ 4cb6 move.l (sp)+, d0
+ 4cb8 _NewPtr 
+ 4cba move.l a0, (sp)
+ 4cbc movea.l (sp)+, a0
+ 4cbe move.l a0, (a2)
+ 4cc0 tst.l (a2)
+ 4cc2 beq.w $4e6a
+ 4cc6 movea.l (a2), a3
+ 4cc8 movea.l arg14, a0
+ 4ccc move.w $18(a0), $14(a2)
+ 4cd2 movea.l argc, a0
+ 4cd6 move.w $2(a0), d0
+ 4cda muls.w g_-17a0, d0
+ 4ce2 move.l d0, d1
+ 4ce4 asr.l #$2, d1
+ 4ce6 lsr.l #$8, d1
+ 4ce8 lsr.l #$8, d1
+ 4cea lsr.l #$8, d1
+ 4cec lsr.l #$5, d1
+ 4cee add.l d0, d1
+ 4cf0 asr.l #$3, d1
+ 4cf2 movea.l argc, a0
+ 4cf6 movea.l arg14, a1
+ 4cfa move.w $18(a1), d0
+ 4cfe muls.w (a0), d0
+ 4d00 movea.l arg14, a0
+ 4d04 add.l $14(a0), d0
+ 4d08 add.l d1, d0
+ 4d0a move.l d0, (a3)
+ 4d0c tst.b d3
+ 4d0e beq.b $4d28
+ 4d22 call SATMAKEROWLIST(argc, (a3), $14(a2), &$1e(a2), 0x4)
+ 4d28 movea.l arg14, a0
+ 4d2c move.w $18(a0), $16(a3)
+ 4d32 movea.l argc, a0
+ 4d36 move.w $2(a0), d0
+ 4d3a muls.w g_-17a0, d0
+ 4d42 move.l d0, d1
+ 4d44 asr.l #$2, d1
+ 4d46 lsr.l #$8, d1
+ 4d48 lsr.l #$8, d1
+ 4d4a lsr.l #$8, d1
+ 4d4c lsr.l #$5, d1
+ 4d4e add.l d0, d1
+ 4d50 asr.l #$3, d1
+ 4d52 movea.l argc, a0
+ 4d56 movea.l arg14, a1
+ 4d5a move.w $18(a1), d0
+ 4d5e muls.w (a0), d0
+ 4d60 movea.l arg14, a0
+ 4d64 add.l $14(a0), d0
+ 4d68 add.l d1, d0
+ 4d6a move.l d0, $4(a3)
+ 4d6e move.l $c(a2), $18(a3)
+ 4d74 move.l $10(a2), $1c(a3)
+ 4d7a tst.b d3
+ 4d7c beq.b $4d98
+ 4d92 call SATMAKEROWLIST(&$18(a3), $4(a3), $16(a3), &$20(a3), 0x4)
+ 4d98 pea.l $6(a2)
+ 4d9c pea.l $8(a3)
+ 4da0 pea.l $e.w
+ 4da4 move.l (sp)+, d0
+ 4da6 movea.l (sp)+, a1
+ 4da8 movea.l (sp)+, a0
+ 4daa _BlockMove 
+ 4dac clr.l $20(a3)
+ 4db0 clr.l $24(a3)
+ 4db4 tst.b d3
+ 4db6 beq.b $4dd2
+ 4dcc call SATMAKEROWLIST(&$e(a3), $8(a3), $c(a3), &$24(a3), 0x1)
+ 4dd2 tst.b d3
+ 4dd4 beq.w $4e6a
+ 4dec call SATMAKEROWLIST(&$c(a2), $6(a2), $a(a2), &$22(a2), 0x1)
+ 4df2 bra.b $4e6a
+ 4df4 movea.l argc, a0
+ 4df8 move.w $2(a0), d0
+ 4dfc muls.w g_-17a0, d0
+ 4e04 move.l d0, d1
+ 4e06 asr.l #$2, d1
+ 4e08 lsr.l #$8, d1
+ 4e0a lsr.l #$8, d1
+ 4e0c lsr.l #$8, d1
+ 4e0e lsr.l #$5, d1
+ 4e10 add.l d0, d1
+ 4e12 asr.l #$3, d1
+ 4e14 movea.l argc, a0
+ 4e18 movea.l arg14, a1
+ 4e1c move.w $18(a1), d0
+ 4e20 muls.w (a0), d0
+ 4e22 movea.l arg14, a0
+ 4e26 add.l $14(a0), d0
+ 4e2a add.l d1, d0
+ 4e2c move.l d0, (a2)
+ 4e2e tst.b d3
+ 4e30 beq.b $4e4c
+ 4e46 call SATMAKEROWLIST(argc, (a2), $14(a2), &$1e(a2), g_-17a0)
+ 4e4c tst.b d3
+ 4e4e beq.b $4e6a
+ 4e64 call SATMAKEROWLIST(&$c(a2), $6(a2), $a(a2), &$22(a2), 0x1)
+ 4e6a movea.l arg14, a0
+ 4e6e move.w $18(a0), $14(a2)
+ 4e74 clr.l $16(a2)
+ 4e78 tst.b arga
+ 4e7c beq.b $4e98
+ 4e7e subq.w #$4, sp
+ 4e80 _NewRgn 
+ 4e82 movea.l (sp)+, a0
+ 4e84 move.l a0, $1a(a2)
+ 4e88 subq.w #$2, sp
+ 4e8a move.l $1a(a2), -(sp)
+ 4e8e pea.l $6(a2)
+ 4e92 _BitMapToRegion 
+ 4e94 move.w (sp)+, d0
+ 4e96 bra.b $4e9c
+ 4e98 clr.l $1a(a2)
+ 4e9c clr.l $1e(a2)
+ 4ea0 clr.l $22(a2)
+ 4ea4 clr.l $26(a2)
+ 4ea8 clr.l $2a(a2)
+ 4eac movem.l (sp)+, d3/a2-a3
+ 4eb0 unlk a6
+ 4eb2 rtd #$14
+
+; CREATEBWOFFSCREEN   (seg 6 +004ece, 244 bytes)
+ 4ece link.w a6, #$fff4
+ 4ed2 move.l a2, -(sp)
+ 4ed4 movea.l argc, a2
+ 4ed8 movea.l arg8, a0
+ 4edc move.l (a0), loc8
+ 4ee0 move.l $4(a0), loc4
+ 4ee6 pea.l locc
+ 4eea _GetPort 
+ 4eec clr.l $4(a2)
+ 4ef0 subq.w #$4, sp
+ 4ef2 pea.l $6c.w
+ 4ef6 move.l (sp)+, d0
+ 4ef8 _NewPtr 
+ 4efa move.l a0, (sp)
+ 4efc movea.l (sp)+, a0
+ 4efe move.l a0, (a2)
+ 4f00 move.l (a2), -(sp)
+ 4f02 _OpenPort 
+ 4f04 movea.l (a2), a0
+ 4f06 move.l loc8, $10(a0)
+ 4f0c move.l loc4, $14(a0)
+ 4f12 movea.l (a2), a0
+ 4f14 movea.l (a2), a1
+ 4f16 move.l $10(a0), $8(a1)
+ 4f1c move.l $14(a0), $c(a1)
+ 4f22 movea.l (a2), a0
+ 4f24 move.l $18(a0), -(sp)
+ 4f28 pea.l loc8
+ 4f2c _RectRgn 
+ 4f2e pea.l loc8
+ 4f32 _ClipRect 
+ 4f34 movea.l (a2), a0
+ 4f36 movea.l (a2), a1
+ 4f38 move.w $16(a1), d0
+ 4f3c sub.w $12(a0), d0
+ 4f40 addi.w #$1f, d0
+ 4f46 move.l d0, d1
+ 4f48 asr.l #$4, d1
+ 4f4a lsr.l #$8, d1
+ 4f4c lsr.l #$8, d1
+ 4f4e lsr.l #$8, d1
+ 4f50 lsr.l #$3, d1
+ 4f52 add.l d0, d1
+ 4f54 asr.l #$5, d1
+ 4f56 muls.l #$4, d1
+ 4f5e movea.l (a2), a0
+ 4f60 move.w d1, $6(a0)
+ 4f64 subq.w #$4, sp
+ 4f66 movea.l (a2), a0
+ 4f68 movea.l (a2), a1
+ 4f6a move.w $6(a0), d0
+ 4f6e movea.l (a2), a0
+ 4f70 move.w $14(a0), d1
+ 4f74 sub.w $10(a1), d1
+ 4f78 muls.w d0, d1
+ 4f7a move.l d1, -(sp)
+ 4f7c move.l (sp)+, d0
+ 4f7e _NewPtr 
+ 4f80 move.l a0, (sp)
+ 4f82 movea.l (sp)+, a0
+ 4f84 movea.l (a2), a1
+ 4f86 move.l a0, $2(a1)
+ 4f8a move.l (a2), -(sp)
+ 4f8c _SetPort 
+ 4f8e movea.l (a2), a0
+ 4f90 pea.l $10(a0)
+ 4f94 _EraseRect 
+ 4f96 movea.l (a2), a0
+ 4f98 move.l $2(a0), $14(a2)
+ 4f9e movea.l (a2), a0
+ 4fa0 move.l $8(a0), $c(a2)
+ 4fa6 move.l $c(a0), $10(a2)
+ 4fac movea.l (a2), a0
+ 4fae move.w $6(a0), $18(a2)
+ 4fb4 move.l locc, -(sp)
+ 4fb8 _SetPort 
+ 4fba movea.l (sp)+, a2
+ 4fbc unlk a6
+ 4fbe rtd #$8
+
+; LOAD2DFACEARRAY   (seg 6 +004fd6, 404 bytes)
+ 4fd6 link.w a6, #$ffb4
+ 4fda movem.l d3-d7/a2-a4, -(sp)
+ 4fde move.w arg12, d3
+ 4fe2 move.w argc, d6
+ 4fe6 clr.l arg18
+ 4fea subq.w #$4, sp
+ 4fec movea.w d3, a0
+ 4fee moveq #$2e, d0
+ 4ff0 move.l a0, d1
+ 4ff2 muls.l d1, d0
+ 4ff6 move.l d0, -(sp)
+ 4ff8 move.l (sp)+, d0
+ 4ffa _NewPtr 
+ 4ffc move.l a0, (sp)
+ 4ffe movea.l (sp)+, a0
+ 5000 movea.l a0, a2
+ 5002 move.l a2, d0
+ 5004 beq.w $5160
+ 5008 subq.w #$4, sp
+ 500a move.w arg16, -(sp)
+ 500e _GetPicture 
+ 5010 movea.l (sp)+, a0
+ 5012 movea.l a0, a3
+ 5014 subq.w #$4, sp
+ 5016 move.w arg14, -(sp)
+ 501a _GetPicture 
+ 501c movea.l (sp)+, a0
+ 501e movea.l a0, a4
+ 5020 tst.l a4
+ 5022 seq.b d0
+ 5024 neg.b d0
+ 5026 tst.l a3
+ 5028 seq.b d1
+ 502a neg.b d1
+ 502c or.b d0, d1
+ 502e bne.w $5160
+ 5032 move.l a3, -(sp)
+ 5034 movea.l (sp)+, a0
+ 5036 _HLock 
+ 5038 move.l a4, -(sp)
+ 503a movea.l (sp)+, a0
+ 503c _HLock 
+ 503e movea.l (a3), a0
+ 5040 move.l $2(a0), loc4c
+ 5046 move.l $6(a0), loc48
+ 504c pea.l loc4c
+ 5050 move.w loc4a, d0
+ 5054 neg.w d0
+ 5056 move.w d0, -(sp)
+ 5058 move.w loc4c, d0
+ 505c neg.w d0
+ 505e move.w d0, -(sp)
+ 5060 _OffsetRect 
+ 506a call SATMAKEOFFSCREEN(&loc3c, &loc4c)
+ 5074 call SATSETPORT(&loc3c)
+ 507a move.l a3, -(sp)
+ 507c pea.l loc4c
+ 5080 _DrawPicture 
+ 5082 movea.l (a4), a0
+ 5084 move.l $2(a0), loc44
+ 508a move.l $6(a0), loc40
+ 5090 pea.l loc44
+ 5094 move.w loc42, d0
+ 5098 neg.w d0
+ 509a move.w d0, -(sp)
+ 509c move.w loc44, d0
+ 50a0 neg.w d0
+ 50a2 move.w d0, -(sp)
+ 50a4 _OffsetRect 
+ 50ae call CREATEBWOFFSCREEN(&loc22, &loc44)
+ 50b8 call SATSETPORT(&loc22)
+ 50be move.l a4, -(sp)
+ 50c0 pea.l loc44
+ 50c4 _DrawPicture 
+ 50c6 move.l a3, -(sp)
+ 50c8 movea.l (sp)+, a0
+ 50ca _HUnlock 
+ 50cc move.l a4, -(sp)
+ 50ce movea.l (sp)+, a0
+ 50d0 _HUnlock 
+ 50d2 cmpa.l a4, a3
+ 50d4 beq.b $50e0
+ 50d6 move.l a3, -(sp)
+ 50d8 _ReleaseResource 
+ 50da move.l a4, -(sp)
+ 50dc _ReleaseResource 
+ 50de bra.b $50e4
+ 50e0 move.l a3, -(sp)
+ 50e2 _ReleaseResource 
+ 50e4 move.w d3, d7
+ 50e6 subq.w #$1, d7
+ 50e8 moveq #$0, d3
+ 50ea bra.b $5158
+ 50ec movea.w d6, a0
+ 50ee movea.w d3, a1
+ 50f0 move.l a1, d0
+ 50f2 move.l a0, d2
+ 50f4 divsl.l d2, d1:d0
+ 50f8 move.w d1, d5
+ 50fa movea.w d6, a0
+ 50fc movea.w d3, a1
+ 50fe move.l a1, d4
+ 5100 move.l a0, d1
+ 5102 divs.l d1, d4
+ 5106 pea.l loc8
+ 510a moveq #$20, d0
+ 510c muls.w d5, d0
+ 510e move.w d0, -(sp)
+ 5110 moveq #$20, d0
+ 5112 muls.w d4, d0
+ 5114 move.w d0, -(sp)
+ 5116 moveq #$1, d0
+ 5118 add.w d5, d0
+ 511a muls.w #$20, d0
+ 511e move.w d0, -(sp)
+ 5120 moveq #$1, d0
+ 5122 add.w d4, d0
+ 5124 muls.w #$20, d0
+ 5128 move.w d0, -(sp)
+ 512a _SetRect 
+ 512c moveq #$2e, d0
+ 512e muls.w d3, d0
+ 5130 movea.l a2, a0
+ 5132 adda.l d0, a0
+ 514a call BUILDFACEINOFFSCREEN(&(a0), &loc3c, &loc22, &loc8, arga, arg8)
+ 5150 cmpi.w #$7fff, d3
+ 5154 beq.b $515c
+ 5156 addq.w #$1, d3
+ 5158 cmp.w d7, d3
+ 515a ble.b $50ec
+ 515c move.l a2, arg18
+ 5160 movem.l (sp)+, d3-d7/a2-a4
+ 5164 unlk a6
+ 5166 rtd #$10
+
+; _tail_517c   (seg 6 +00517c, 744 bytes)
+ 517c ori.b #$40, d0
+ 5180 _trap_a9fa 
+ 5182 dc.w $f9b8
+ 5184 fbf.l $b3859238
+ 518a adda.l (a5)+, a6
+ 518c adda.l (a5)+, a6
+ 518e addx.l -(a6), -(sp)
+ 5190 or.l -(a3), d7
+ 5192 _trap_a3a3 
+ 5194 _ResrvMem 
+ 5196 addq.l #$1, -$7a5a(a1)
+ 519a addx.l -(a6), -(sp)
+ 519c or.w d0, d7
+ 519e addq.w #$1, d0
+ 51a0 bls.b $5156
+ 51a2 clr.w -$2608(a2)
+ 51a6 dc.w $7dfe
+ 51a8 clr.w d1
+ 51aa dc.w $7fb8
+ 51ac dc.w $c47e
+ 51ae moveq #$fc, d3
+ 51b0 fbf.l $fd9c423f
+ 51b6 dc.w $f741
+ 51b8 bcc.b $5238
+ 51ba subx.w d1, d7
+ 51bc lea.l $7f3f(a1), a4
+ 51c0 muls.w #$f5fc, d4
+ 51c4 dc.w $f9fd
+ 51c6 lea.l arg7f5f, a0
+ 51ca moveq #$f2, d7
+ 51cc addx.w d1, d3
+ 51ce dc.w $d27e
+ 51d0 sf.b $410b(a4)
+ 51d4 moveq #$f8, d7
+ 51d6 dc.w $410b
+ 51d8 moveq #$f8, d7
+ 51da chk.w ([$f97f59fd, d7.l * 8], $e4fd), d0
+ 51e4 fbf.l $e4fe2cab
+ 51ea sub.w d1, d2
+ 51ec dc.w $c47f
+ 51ee dc.w $7df6
+ 51f0 dc.w $7fa2
+ 51f2 dc.w $f9f7
+ 51f4 bfffo -$4e(a5, a5.w * 2){6:12}, d7
+ 51fa dc.w $f9ea
+ 51fc chk.w $7e77(a5), d0
+ 5200 asr.w #$8, d0
+ 5202 divu.w -(a1), d0
+ 5204 dc.w $efe1
+ 5206 negx.w d5
+ 5208 dc.w $fdfe
+ 520a dc.w $fdfe
+ 520c dc.w $fddd
+ 520e dc.w $fdfe
+ 5210 dc.w $fdfe
+ 5212 dc.w $fd41
+ 5214 call $5295()
+ 5216 dc.w $3efd
+ 5218 negx.l -(a1)
+ 521a dc.w $7fba
+ 521c dc.w $7fb0
+ 521e dc.w $408e
+ 5220 dc.w $7f7a
+ 5222 dc.w $408b
+ 5224 fbf.l $fd8006c6
+ 522a dc.w $e9fd
+ 522c dc.w $fda1
+ 522e dc.w $f1fc
+ 5230 ftrapueq.b d0
+ 5234 dc.w $7140
+ 5236 dc.w $937f
+ 5238 dc.w $71b8
+ 523a suba.w -$73(sp, d4.w), a2
+ 523e dc.w $f9f2
+ 5240 fbf.w $d38
+ 5244 cmpa.w (sp)+, a0
+ 5246 dc.w $4049
+ 5248 ftrapolt.b d0
+ 524c dc.w $fdc3
+ 524e dc.w $efe5
+ 5250 move.w sr, arg40dd
+ 5254 negx.w (a6)+
+ 5256 dc.w $7fb7
+ 5258 negx.w d6
+ 525a dc.w $4048
+ 525c dc.w $f9ef
+ 525e ftrapoge.b d0
+ 5262 bfins d4, -$3(a0, sp.l * 2){1:1}
+ 5268 addx.w d1, d2
+ 526a _trap_abaf 
+ 526c negx.w (a2)
+ 526e asl.w #$7, d1
+ 5270 dc.w $207f
+ 5272 suba.w $52e4(pc, d4.w), a0
+ 5276 dc.w $e1fd
+ 5278 dc.w $fc7f
+ 527a cmp.w d0, d7
+ 527c bcc.b $527b
+ 527e adda.w -(a1), a4
+ 5280 fbf.l $fbb3427e
+ 5286 fbf.w $5084
+ 528a fbf.w $4a30
+ 528e dc.w $4151
+ 5290 moveq #$c2, d7
+ 5292 pack d0, d1, #$f57f
+ 5296 dc.w $1089
+ 5298 pack d1, d2, #$2d7e
+ 529c dc.w $e8fd
+ 529e dc.w $f385
+ 52a0 dc.w $410f
+ 52a2 dc.w $7fb5
+ 52a4 rol.w (a1)+
+ 52a6 dc.w $df7f
+ 52a8 _DrawText 
+ 52aa move.w sr, (a4)
+ 52ac dc.w $7f31
+ 52ae move.w sr, (a4)
+ 52b0 dc.w $7fa5
+ 52b2 dc.w $7f8c
+ 52b4 negx.w -$12(sp, sp.w * 8)
+ 52b8 dc.w $fd7f
+ 52ba cmpa.l #$fc40c7df, a5
+ 52c0 dc.w $eafd
+ 52c2 dc.w $7f86
+ 52c4 fbf.l $408b13a5
+ 52ca negx.l $7fb5(sp)
+ 52ce rol.w (a1)+
+ 52d0 addx.w d0, d7
+ 52d2 _IsDialogEvent 
+ 52d4 sub.l $4062(sp), d6
+ 52d8 suba.w -$7b7c(a0), a6
+ 52dc _DrawString 
+ 52de suba.l -$e(a3, a1.w * 8), a0
+ 52e2 fbf.w $ffffd624
+ 52e6 lea.l $1b28(pc), a1
+ 52ea dc.w $41c4
+ 52ec suba.w $48e9(pc), a5
+ 52f0 _trap_a1fc 
+ 52f2 fbf.w $4ff0
+ 52f6 _trap_ab41 
+ 52f8 move.w -(sp), sr
+ 52fa dc.w $7fa8
+ 52fc asl.w -(a4)
+ 52fe fbf.l $ebe936ee
+ 5304 dc.w $8488
+ 5306 dc.w $40ba
+ 5308 move.w sr, (a1, invalid.w)
+ 530c move.w $48(a5, d4.w), sr
+ 5310 dc.w $f440
+ 5312 divu.w #$7f83, d4
+ 5316 dc.w $40ba
+ 5318 asr.l #$3, d6
+ 531a dc.w $407d
+ 531c clr.b d5
+ 531e pack d0, d1, #$9afb
+ 5322 ftrapole.b d1
+ 5326 adda.w ([$cefbd29c], $41087fa3), a0
+ 5332 dc.w $7fb8
+ 5334 add.l #$40f9f19a, d2
+ 533a asr.w #$7, d0
+ 533c divu.w -(a4), d3
+ 533e lsl.w $407d(a1)
+ 5342 fbf.w $4384
+ 5346 dc.w $7d7f
+ 5348 subx.l d4, d5
+ 534a negx.w (a2)+
+ 534c dc.w $f1eb
+ 534e dc.w $f140
+ 5350 bne.b $5344
+ 5352 suba.l $7d(a0, d4.w), a3
+ 5356 dc.w $7f9b
+ 5358 or.w d0, d2
+ 535a spl.b ([$41437fb5])
+ 5362 dc.w $f3ed
+ 5364 adda.l #$df40b6f3, a3
+ 536a adda.w #$df7f, a4
+ 536e cmpa.w -$28(a3, d4.w), a3
+ 5372 unpk d3, d1, #$8292
+ 5376 unpk d2, d1, #$95fc
+ 537a cmpa.l -$591a(a0), a1
+ 537e eor.w d5, d0
+ 5380 dc.w $71b5
+ 5382 dc.w $41fc
+ 5384 fbf.l $f2d14656
+ 538a dc.w $f27f
+ 538c dc.w $3ff7
+ 538e eor.w d1, d1
+ 5390 dc.w $7bf7
+ 5392 lsl.w -$221a(a0)
+ 5396 adda.w -(a6), a6
+ 5398 adda.w -(a6), a6
+ 539a dc.w $4160
+ 539c dc.w $7fb3
+ 539e negx.l (a2)+
+ 53a0 dc.w $fd44
+ 53a2 dc.w $127c
+ 53a4 cmpa.l ([sp], $4409), a5
+ 53aa dc.w $e3fc
+ 53ac dc.w $fdd9
+ 53ae fbf.l $e3d84f9f
+ 53b4 dc.w $f7fb
+ 53b6 dc.w $fdfa
+ 53b8 dc.w $f4f0
+ 53ba fbf.l $c180103b
+ 53c0 dc.w $bc7f
+ 53c2 cmpa.w locf06, a6
+ 53c6 fbf.l $faf644c2
+ 53cc fbf.l $faf644c8
+ 53d2 dc.w $f5f0
+ 53d4 fbf.l $fcfd50c9
+ 53da fbf.l $fcfd50d8
+ 53e0 fbf.l $fcfe51df
+ 53e6 dc.w $fd7f
+ 53e8 subq.l #$4, (a2)+
+ 53ea sub.l ([a2]), d2
+ 53ee dc.w $7fae
+ 53f0 lsl.l #$8, d7
+ 53f2 unpk d5, d1, #$9486
+ 53f6 negx.w d7
+ 53f8 or.l d3, d3
+ 53fa dc.w $404b
+ 53fc _trap_a4fc 
+ 53fe or.l d7, d5
+ 5400 sub.w d2, d3
+ 5402 lea.l -$1012(a4), a2
+ 5406 adda.l -$809(a4), a1
+ 540a dc.w $f7f7
+ 540c dc.w $f7f7
+ 540e dc.w $f7c8
+ 5410 dc.w $7f41
+ 5412 dc.w $fbee
+ 5414 dc.w $eeee
+ 5416 dc.w $eeee
+ 5418 chk.w -(a5), d0
+ 541a chk.l d6, d0
+ 541c dc.w $8888
+ 541e dc.w $8888
+ 5420 dc.w $8888
+ 5422 dc.w $8888
+ 5424 dc.w $8888
+ 5426 dc.w $8888
+ 5428 dc.w $8888
+ 542a dc.w $8888
+ 542c dc.w $8888
+ 542e dc.w $8888
+ 5430 dc.w $8888
+ 5432 dc.w $8888
+ 5434 dc.w $8888
+ 5436 dc.w $8888
+ 5438 dc.w $8888
+ 543a dc.w $8888
+ 543c dc.w $8888
+ 543e or.l d7, d4
+ 5440 cmp.w d1, d1
+ 5442 beq.b $5422
+ 5444 dc.w $7f9f
+ 5446 adda.w -(a6), a0
+ 5448 dc.w $7fb5
+ 544a chk.l -$e2d(a2), d0
+ 544e fbf.l $c8801091
+ 5454 asr.l d4, d7
+ 5456 add.b d0, d7
+ 5458 ori.b #$59, d0
+ 545c dc.w $0ef6
+ 545e negx.l (a4)+
+ 5460 ori.b #$0, d0
